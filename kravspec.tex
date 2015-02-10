@@ -1,0 +1,97 @@
+\include{preamble}
+
+\begin{document}
+
+\section*{Termliste}
+\begin{itemize}
+\item Bruger
+\item Administrator
+\item Overview side
+\item Booking window
+\end{itemize}
+
+
+\section{Fully dressed usecase}
+
+\subsection{Use case 1}
+\begin{table}[H]
+	\centering
+    \begin{tabular}{ l | p{9.6cm} }
+    \toprule
+    \textbf{Navn} & \textbf{UC1: Display information}						\\\otoprule
+    Mål			& At Bruger får adgang til booking systemet			 	\\\hline
+    Initiator 	& Bruger 												\\\hline
+    Aktører og stakeholders 	& Bruger										\\\hline
+    Referencer 				& Ingen 										\\\hline
+    Antal samtidige hændelser 	& 1..*									\\\hline
+    Forudsætninger 				& \vspace{-2mm}							\\\hline
+    %Resultat 					& Bruger kan se batteri og hastighed 	\\\hline
+    Kommentar 					& 	 									\\\hline
+    Hovedscenarie 				& 
+    %\vspace{-2mm}
+    \begin{enumerate}
+    	\item Bruger indtaster login information i WAYF boksen. Og trykker login. 
+    	\item WAYF validerer login information.
+    	[Undtagelse 1]
+    	\item Bruger er logget på systemet og får vist Overview siden. 
+	\end{enumerate} 														\\\hline
+	
+    Undtagelser 			&
+ 	Undtagelse 1: Login mislykkedes
+        \begin{enumerate}
+        	\item WAYF godkender ikke login, og returnerer til punkt 1.
+        \end{enumerate}
+\\\bottomrule
+    \end{tabular}
+    \caption{Use case 1: Login}
+    \label{tab:use case 1}
+\end{table}
+
+
+
+\subsection{Use case 2}
+\begin{table}[H]
+	\centering
+    \begin{tabular}{ l | p{9.6cm} }
+    \toprule
+    \textbf{Navn} & \textbf{UC1: Display information}						\\\otoprule
+    Mål			& At Bruger booker tid til print.						\\\hline
+    Initiator 	& Bruger 												\\\hline
+    Aktører og stakeholders 	& Bruger										\\\hline
+    Referencer 				& Ingen 										\\\hline
+    Antal samtidige hændelser 	& 1..*									\\\hline
+    Forudsætninger 				& \vspace{-2mm}							\\\hline
+    %Resultat 					& Bruger kan se batteri og hastighed 	\\\hline
+    Kommentar 					& 	 									\\\hline
+    Hovedscenarie 				& 
+    %\vspace{-2mm}
+    \begin{enumerate}
+    	\item Bruger trykker på booking tab. Booking vindue vises.
+    	\item Bruger indtaster det estimerede antal timer for print og trykker på find næste ledige tid.
+    	[Undtagelse 2.1]
+    	\item Bruger bliver tildelt en tid.
+    	[Undtagelse 2.2]
+    	\item Bruger trykker på godkend.
+    	\item Systemet returnerer til overviewet som opdateres. 
+	\end{enumerate} 														\\\hline
+	
+    Undtagelser 			&
+ 	Undtagelse 2: Manuel valg af tid
+        \begin{enumerate}
+        	\item Bruger vælger selv tid og dato.
+        \end{enumerate}
+\\\bottomrule
+    \end{tabular}
+    \caption{Use case 2: Booking}
+    \label{tab:use case 1}
+\end{table}
+
+
+
+
+
+
+
+
+
+\end{document}
