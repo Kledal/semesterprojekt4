@@ -21,6 +21,11 @@ namespace Makerlab.Controllers
             return View();
         }
 
+        public ActionResult MyBookings()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
