@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Booking" EntityType="DatabaseModel.Store.Booking" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BookingPrintError" EntityType="DatabaseModel.Store.BookingPrintError" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Printer" EntityType="DatabaseModel.Store.Printer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="DatabaseModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserRole" EntityType="DatabaseModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BookingBookingPrintError" Association="DatabaseModel.Store.FK_BookingBookingPrintError">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="BookingPrintError" EntitySet="BookingPrintError" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingPrinter" Association="DatabaseModel.Store.FK_BookingPrinter">
+            <End Role="Printer" EntitySet="Printer" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingUser" Association="DatabaseModel.Store.FK_BookingUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBookingPrintError" Association="DatabaseModel.Store.FK_UserBookingPrintError">
+            <End Role="User" EntitySet="User" />
+            <End Role="BookingPrintError" EntitySet="BookingPrintError" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserUserRole" Association="DatabaseModel.Store.FK_UserUserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PrinterId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Printer_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookingPrintError">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BookingId" Type="int" Nullable="false" />
+          <Property Name="ErrorType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Booking_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Printer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserRoleId" Type="int" Nullable="false" />
+          <Property Name="StudieNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccessCard" Type="int" Nullable="false" />
+          <Property Name="UserRole_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CanCreateBooking" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BookingBookingPrintError">
+          <End Role="Booking" Type="DatabaseModel.Store.Booking" Multiplicity="1" />
+          <End Role="BookingPrintError" Type="DatabaseModel.Store.BookingPrintError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingPrintError">
+              <PropertyRef Name="Booking_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingPrinter">
+          <End Role="Printer" Type="DatabaseModel.Store.Printer" Multiplicity="1" />
+          <End Role="Booking" Type="DatabaseModel.Store.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Printer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="Printer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingUser">
+          <End Role="User" Type="DatabaseModel.Store.User" Multiplicity="1" />
+          <End Role="Booking" Type="DatabaseModel.Store.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserBookingPrintError">
+          <End Role="User" Type="DatabaseModel.Store.User" Multiplicity="1" />
+          <End Role="BookingPrintError" Type="DatabaseModel.Store.BookingPrintError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingPrintError">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserUserRole">
+          <End Role="UserRole" Type="DatabaseModel.Store.UserRole" Multiplicity="1" />
+          <End Role="User" Type="DatabaseModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserRole_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DatabaseEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Booking" EntityType="DatabaseModel.Booking" />
+          <EntitySet Name="BookingPrintError" EntityType="DatabaseModel.BookingPrintError" />
+          <EntitySet Name="Printer" EntityType="DatabaseModel.Printer" />
+          <EntitySet Name="User" EntityType="DatabaseModel.User" />
+          <EntitySet Name="UserRole" EntityType="DatabaseModel.UserRole" />
+          <AssociationSet Name="FK_BookingBookingPrintError" Association="DatabaseModel.FK_BookingBookingPrintError">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="BookingPrintError" EntitySet="BookingPrintError" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingPrinter" Association="DatabaseModel.FK_BookingPrinter">
+            <End Role="Printer" EntitySet="Printer" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingUser" Association="DatabaseModel.FK_BookingUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBookingPrintError" Association="DatabaseModel.FK_UserBookingPrintError">
+            <End Role="User" EntitySet="User" />
+            <End Role="BookingPrintError" EntitySet="BookingPrintError" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserUserRole" Association="DatabaseModel.FK_UserUserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PrinterId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Printer_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BookingPrintError" Relationship="DatabaseModel.FK_BookingBookingPrintError" FromRole="Booking" ToRole="BookingPrintError" />
+          <NavigationProperty Name="Printer" Relationship="DatabaseModel.FK_BookingPrinter" FromRole="Booking" ToRole="Printer" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.FK_BookingUser" FromRole="Booking" ToRole="User" />
+        </EntityType>
+        <EntityType Name="BookingPrintError">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BookingId" Type="Int32" Nullable="false" />
+          <Property Name="ErrorType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Booking_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="DatabaseModel.FK_BookingBookingPrintError" FromRole="BookingPrintError" ToRole="Booking" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.FK_UserBookingPrintError" FromRole="BookingPrintError" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Printer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Booking" Relationship="DatabaseModel.FK_BookingPrinter" FromRole="Printer" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" />
+          <Property Name="StudieNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="AccessCard" Type="Int32" Nullable="false" />
+          <Property Name="UserRole_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="DatabaseModel.FK_BookingUser" FromRole="User" ToRole="Booking" />
+          <NavigationProperty Name="BookingPrintError" Relationship="DatabaseModel.FK_UserBookingPrintError" FromRole="User" ToRole="BookingPrintError" />
+          <NavigationProperty Name="UserRole" Relationship="DatabaseModel.FK_UserUserRole" FromRole="User" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CanCreateBooking" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.FK_UserUserRole" FromRole="UserRole" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_BookingBookingPrintError">
+          <End Role="Booking" Type="DatabaseModel.Booking" Multiplicity="1" />
+          <End Role="BookingPrintError" Type="DatabaseModel.BookingPrintError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingPrintError">
+              <PropertyRef Name="Booking_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingPrinter">
+          <End Role="Printer" Type="DatabaseModel.Printer" Multiplicity="1" />
+          <End Role="Booking" Type="DatabaseModel.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Printer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="Printer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingUser">
+          <End Role="User" Type="DatabaseModel.User" Multiplicity="1" />
+          <End Role="Booking" Type="DatabaseModel.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserBookingPrintError">
+          <End Role="User" Type="DatabaseModel.User" Multiplicity="1" />
+          <End Role="BookingPrintError" Type="DatabaseModel.BookingPrintError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingPrintError">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserUserRole">
+          <End Role="UserRole" Type="DatabaseModel.UserRole" Multiplicity="1" />
+          <End Role="User" Type="DatabaseModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserRole_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="Booking">
+            <EntityTypeMapping TypeName="DatabaseModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PrinterId" ColumnName="PrinterId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Printer_Id" ColumnName="Printer_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingPrintError">
+            <EntityTypeMapping TypeName="DatabaseModel.BookingPrintError">
+              <MappingFragment StoreEntitySet="BookingPrintError">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="ErrorType" ColumnName="ErrorType" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Booking_Id" ColumnName="Booking_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Printer">
+            <EntityTypeMapping TypeName="DatabaseModel.Printer">
+              <MappingFragment StoreEntitySet="Printer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DatabaseModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="StudieNumber" ColumnName="StudieNumber" />
+                <ScalarProperty Name="AccessCard" ColumnName="AccessCard" />
+                <ScalarProperty Name="UserRole_Id" ColumnName="UserRole_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRole">
+            <EntityTypeMapping TypeName="DatabaseModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="CanCreateBooking" ColumnName="CanCreateBooking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
