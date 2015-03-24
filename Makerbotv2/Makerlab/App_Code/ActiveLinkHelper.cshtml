@@ -1,0 +1,11 @@
+﻿@using System.Web.Mvc.Html
+
+@helper ActiveLink(string action, string controller, string icon, string name)
+{
+      <li class="active">
+        <a href="@Html.ViewContext.RequestContext.ActionLink(action, controller)">
+            <i class="glyphicon @icon"/> @name
+        </a>
+    </li>
+}
+
