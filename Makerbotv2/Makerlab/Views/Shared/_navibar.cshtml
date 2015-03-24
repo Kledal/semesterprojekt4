@@ -1,4 +1,5 @@
-﻿<nav class="navbar navbar-default navbar-fixed-top">
+﻿@using Makerlab.Helpers
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -14,13 +15,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                @ActiveLinkHelper.ActiveLink("Index", "Frontend", "glyphicon-home", "Oversigt")
-                @*<li class="active">
-                    <a href="@Url.Action("Index", "Frontend")">
-                        <i class="glyphicon glyphicon-home"></i> Oversigt <span class="sr-only">(current)</span>
-                    </a>
-                </li>*@
-                <li ><a href="@Url.Action("MyBookings", "Frontend")"><i class="glyphicon glyphicon-th-list"></i> Mine bookinger</a></li>
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Frontend")"><i class="glyphicon glyphicon-home"></i> Oversigt</a></li>
+
+                <li class="@Html.IsSelected(action: "MyBookings")"><a href="@Url.Action("MyBookings", "Frontend")"><i class="glyphicon glyphicon-th-list"></i> Mine bookinger</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
