@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Makerlab.Models.User>
+﻿<link href="../../content/Overview.css" rel="stylesheet" type="text/css" />
+
+@model IEnumerable<Makerlab.Models.User>
 
 @{
     ViewBag.Title = "Oversigt";
@@ -20,15 +22,48 @@
     <div class="row" style="margin-top: 50px;">
         <div class="col-md-12">
             <div class="overview-container">
-                <div class="printer-names">
-                    <div></div>
-                    <div>Aragorn</div>
+
+
+                <div class="printer-name-container col-xs-1">
+                    <div class="printer-names">&nbsp;</div>
+                    <div class="printer-names">Aragorn</div>
+                    <div class="printer-names">Frodo</div>
+                    <div class="printer-names">Gollum</div>
+                    <div class="printer-names">Sauron</div>
+                    <div class="bottom-field printer-names">Gandalf</div>
                 </div>
-                <div class="time-table">
+
+                <div class="time-table col-xs-11">
                     @for (var i = 0; i < 24; i++)
-                    {<div class="time-header">@i:00</div>}
-                    <div class="time-row"></div>
+                    {<div class="time-header">
+                        @if (i < 10)
+                        {
+                            var n = 0;
+                            <div>@n@i:00</div>
+                        }
+                        else
+                        {
+                            <div>@i:00</div>
+                        }
+                    </div>}
+                    @for (var q = 0; q < 5; q++)
+                    {
+                        <div data-time="@q">
+                            @for (var i = 0; i < 24; i++)
+                            {<div @*data-time="@i"*@ class="time-row time-cells">
+                                
+                                    <div class="cells">&nbsp;</div>
+                                
+                            </div>}
+                        </div>
+                    }
+
+
+
+
                 </div>
+
+
             </div>
         </div>
     </div>

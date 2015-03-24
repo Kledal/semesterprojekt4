@@ -1,0 +1,45 @@
+﻿.printer-names {
+    border: 1px black solid;
+    padding: 5px;
+    border-bottom: 0;
+}
+
+.time-header {
+    float: left;
+    border: 1px solid black;
+    border-left: 0;
+    padding: 2px;
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+    height: 32px;
+    width: 4.12%
+}
+
+.time-row {
+    float: left;
+    border: 1px solid black;
+    border-left: 0;
+    padding: 2px;
+}
+
+.time-cells {
+    width: 4.12%;
+    border-top: 0;
+}
+
+.time-table {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.printer-name-container {
+    padding-right: 0;
+}
+
+.bottom-field {
+    border-bottom: 1px black solid;
+}
+
+.cells {
+    height: 26px;
+}
