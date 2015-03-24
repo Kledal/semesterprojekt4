@@ -6,20 +6,30 @@
 
 <div class="container">
     <div class="row">
-    <div class="col-md-12">
-        <h3>Beskeder</h3>
-        <div class="alert alert-warning" role="alert">
-        <b>Maintenance</b>
-        <p>
-            Gandalf er under maintenance
-        </p>
+        <div class="col-md-12">
+            <h3>Beskeder</h3>
+            <div class="alert alert-warning" role="alert">
+                <b>Maintenance</b>
+                <p>
+                    Gandalf er under maintenance
+                </p>
+            </div>
         </div>
-    </div>
     </div>
 
     <div class="row" style="margin-top: 50px;">
-    <div class="col-md-6">
-        <div class="" style="height: 100%; width: 100%;background-image: url('img/overview.png')">&nbsp;</div>
-    </div>
+        <div class="col-md-12">
+            <div class="overview-container">
+                <div class="printer-names">
+                    <div></div>
+                    <div>Aragorn</div>
+                </div>
+                <div class="time-table">
+                    @for (var i = 0; i < 24; i++)
+                    {<div class="time-header">@i:00</div>}
+                    <div class="time-row"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
