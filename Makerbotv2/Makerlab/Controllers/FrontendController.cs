@@ -26,6 +26,11 @@ namespace Makerlab.Controllers
             return View();
         }
 
+        public ActionResult LogInd()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
