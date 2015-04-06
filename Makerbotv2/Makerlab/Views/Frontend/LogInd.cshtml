@@ -5,16 +5,16 @@
 
 <div class="container" style="margin-top: 50px">
     <p>Du skal her anvende samme e-mailadresse og adgangskode, som når du logger ind på BlackBoard.</p>
-    
-    @*@foreach (var idp in Kentor.AuthServices.Configuration.KentorAuthServicesSection.Current.IdentityProviders)
+
+    @foreach (var idp in Kentor.AuthServices.Configuration.KentorAuthServicesSection.Current.IdentityProviders)
     {
         var entityID = idp.EntityId;
         var destinationUrl = idp.DestinationUrl;
         <br />
         <a href="@Url.Content("~/AuthServices/SignIn?idp=" + HttpUtility.UrlEncode(entityID))">Sign in</a>@: - @entityID - @destinationUrl
-        }*@
+        }
 
-    <label for "userName">Brugernavn: </label>
+    @*<label for "userName">Brugernavn: </label>
     <input class="userName" id="userName" name="userName" type="text" aria-invalid="False"/>
     <br/>
 
@@ -22,6 +22,6 @@
     <input id="password" name="password" type="text" aria-invalid="False" />
     <br/>
 
-    <button>Log ind</button>
+    <button name="logInd">Log ind</button>*@
 </div>
 
