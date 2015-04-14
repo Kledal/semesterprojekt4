@@ -137,40 +137,23 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\FrontendController.cs" />
+    <Compile Include="DAL\UserManager.cs" />
+    <Compile Include="DAL\UserRoleManager.cs" />
+    <Compile Include="MakerContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\IsSelected.cs" />
-    <Compile Include="Models\Booking.cs">
-      <DependentUpon>MakerLab.tt</DependentUpon>
+    <Compile Include="Migrations\201504140908419_InitialCreate.cs" />
+    <Compile Include="Migrations\201504140908419_InitialCreate.Designer.cs">
+      <DependentUpon>201504140908419_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookingPrintError.cs">
-      <DependentUpon>MakerLab.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MakerLab.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MakerLab.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MakerLab.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MakerLab.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MakerLab.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MakerLab.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Printer.cs">
-      <DependentUpon>MakerLab.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>MakerLab.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserRole.cs">
-      <DependentUpon>MakerLab.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Booking.cs" />
+    <Compile Include="Models\BookingPrintError.cs" />
+    <Compile Include="Models\Printer.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,29 +161,13 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\MakerLab.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MakerLab.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\MakerLab.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MakerLab.edmx</DependentUpon>
-      <LastGenOutput>MakerLab.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\MakerLab.edmx.diagram">
-      <DependentUpon>MakerLab.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\MakerLab.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MakerLab.edmx</DependentUpon>
-      <LastGenOutput>MakerLab.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Frontend\Index.cshtml" />
     <Content Include="Views\Shared\_navibar.cshtml" />
     <Content Include="Views\Frontend\LogInd.cshtml" />
+    <Content Include="Views\Frontend\MyBookings.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -210,9 +177,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
+    <Folder Include="KentorIT\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201504140908419_InitialCreate.resx">
+      <DependentUpon>201504140908419_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

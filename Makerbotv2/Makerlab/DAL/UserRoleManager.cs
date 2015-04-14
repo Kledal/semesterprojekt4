@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using Makerlab.Models;
+
+namespace Makerlab.DAL
+{
+    public class UserRoleManager
+    {
+        public static async Task<UserRole> Create(UserRole userRole)
+        {
+            using (var db = new MakerContext())
+            {
+                db.UserRoles.Add(userRole);
+                await db.SaveChangesAsync();
+
+                return userRole;
+            }
+        }
+
+        public static async Task<UserRole> Update(UserRole userRole)
+        {
+            using (var db = new MakerContext())
+            {
+                db.UserRoles.Attach(userRole);
+
+                var updatedUser = db.Entry(userRole);
+                updatedUser.State = EntityState.Modified;
+
+                await db.SaveChangesAsync();
+
+                return updatedUser.Entity;
+            }
+        }
+
+        public static async Task<IEnumerable<UserRole>> Read()
+        {
+            using (var db = new MakerContext())
+            {
+                var userRoles = await db.UserRoles
+                    .Include(u => u.Users)
+                    .ToListAsync();
+                return userRoles;
+            }
+        }
+
+        public static async Task<UserRole> Read(int id)
+        {
+            using (var db = new MakerContext())
+            {
+                var userRole = await db.UserRoles.Include(u => u.Users).SingleOrDefaultAsync(u => u.Id == id);
+
+                return userRole;
+            }
+        }
+
+        public static async Task Delete(UserRole userRole)
+        {
+            using (var db = new MakerContext())
+            {
+                db.UserRoles.Attach(userRole);
+                db.UserRoles.Remove(userRole);
+                await db.SaveChangesAsync();
+            }
+        }
+    }
+}

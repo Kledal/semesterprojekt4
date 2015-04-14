@@ -6,18 +6,15 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Makerlab.Models;
+using Makerlab.DAL;
 
 namespace Makerlab.Controllers
 {
     public class FrontendController : Controller
-    {
-        private DatabaseEntities db = new DatabaseEntities();
-
+    {  
         // GET: /Frontend/
         public ActionResult Index()
         {
-            //var user = db.User.Include(u => u.UserRole);
             return View();
         }
 
@@ -29,15 +26,6 @@ namespace Makerlab.Controllers
         public ActionResult LogInd()
         {
             return View();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
