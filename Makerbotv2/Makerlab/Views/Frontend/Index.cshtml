@@ -1,6 +1,6 @@
 ﻿<link href="../../content/Overview.css" rel="stylesheet" type="text/css" />
 
-@model IEnumerable<Makerlab.Models.User>
+@model Makerlab.Models.User
 
 @{
     ViewBag.Title = "Oversigt";
@@ -22,8 +22,6 @@
     <div class="row full-time-table">
         <div class="col-md-12">
             <div class="overview-container">
-
-
                 <div class="printer-name-container col-xs-1">
                     <div class="printer-names">&nbsp;</div>
                     <div class="printer-names">Aragorn</div>
@@ -51,9 +49,9 @@
                         <div data-time="@q">
                             @for (var i = 0; i < 24; i++)
                             {<div @*data-time="@i"*@ class="time-row time-cells">
-                                
-                                    <div class="cells">&nbsp;</div>
-                                
+
+                                <div class="cells">&nbsp;</div>
+
                             </div>}
                         </div>
                     }

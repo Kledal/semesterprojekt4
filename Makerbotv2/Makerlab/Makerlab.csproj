@@ -57,6 +57,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Database\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.IdentityModel.Services" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\FrontendController.cs" />
     <Compile Include="DAL\UserManager.cs" />
     <Compile Include="DAL\UserRoleManager.cs" />
@@ -147,6 +149,14 @@
     <Compile Include="Migrations\201504140908419_InitialCreate.cs" />
     <Compile Include="Migrations\201504140908419_InitialCreate.Designer.cs">
       <DependentUpon>201504140908419_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504141112417_AddedFirstAndLastNameTouse.cs" />
+    <Compile Include="Migrations\201504141112417_AddedFirstAndLastNameTouse.Designer.cs">
+      <DependentUpon>201504141112417_AddedFirstAndLastNameTouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504141321557_AddedEmailToUser.cs" />
+    <Compile Include="Migrations\201504141321557_AddedEmailToUser.Designer.cs">
+      <DependentUpon>201504141321557_AddedEmailToUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -186,6 +196,18 @@
     <EmbeddedResource Include="Migrations\201504140908419_InitialCreate.resx">
       <DependentUpon>201504140908419_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504141112417_AddedFirstAndLastNameTouse.resx">
+      <DependentUpon>201504141112417_AddedFirstAndLastNameTouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504141321557_AddedEmailToUser.resx">
+      <DependentUpon>201504141321557_AddedEmailToUser.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="KentorIT\Kentor.AuthServices.StubIdp\Kentor.AuthServices.StubIdp.csproj">
+      <Project>{7b60747d-6337-4424-acb5-7d580ec1e1a1}</Project>
+      <Name>Kentor.AuthServices.StubIdp</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -200,7 +222,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>1343</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:1287/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

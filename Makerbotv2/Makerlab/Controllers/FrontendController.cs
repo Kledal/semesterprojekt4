@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Diagnostics;
+using System.IdentityModel.Services;
+using System.Security.Claims;
 using System.Web.Mvc;
-using Makerlab.DAL;
+using System.Web.WebPages;
+using Makerlab.Models;
 
 namespace Makerlab.Controllers
 {
-    public class FrontendController : Controller
+    public class FrontendController : ApplicationController
     {  
         // GET: /Frontend/
         public ActionResult Index()

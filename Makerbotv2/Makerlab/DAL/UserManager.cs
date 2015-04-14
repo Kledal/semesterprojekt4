@@ -49,6 +49,17 @@ namespace Makerlab.DAL
             }
         }
 
+        public static User FindByEmail(string mail)
+        {
+            using (var db = new MakerContext())
+            {
+                var user = db.Users.Include(u => u.UserRole)
+                    .Include(u => u.Bookings)
+                    .Include(u => u.BookingPrintErrors).SingleOrDefault(u => u.Email == mail);
+                return user;
+            }
+        } 
+
         public static async Task<User> Read(int id)
         {
             using (var db = new MakerContext())
