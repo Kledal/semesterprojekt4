@@ -141,6 +141,7 @@
     <Compile Include="Controllers\FrontendController.cs" />
     <Compile Include="DAL\UserManager.cs" />
     <Compile Include="DAL\UserRoleManager.cs" />
+    <Compile Include="Extensions\ViewContextExtension.cs" />
     <Compile Include="MakerContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

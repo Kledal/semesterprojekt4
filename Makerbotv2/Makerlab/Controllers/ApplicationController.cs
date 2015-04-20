@@ -11,16 +11,6 @@ namespace Makerlab.Controllers
 {
     public class ApplicationController : Controller
     {
-        protected override void OnAuthorization(AuthorizationContext filterContext)
-        {
-            base.OnAuthorization(filterContext);
-
-            if (User.Identity.IsAuthenticated)
-            {
-                
-            }
-        }
-
         public User CurrentUser
         {
             get
@@ -29,7 +19,7 @@ namespace Makerlab.Controllers
 
                 var identity = (ClaimsIdentity)User.Identity;
                 var mail = identity.Claims.FirstOrDefault(claim => claim.Type == "mail");
-                return mail != null ? UserManager.FindByEmail(mail.Value) : new User();
+                return mail != null ? UserManager.FindByEmail(mail.Value) : null;
             }
         }
     }
