@@ -8,42 +8,53 @@
     <div class="row" style="margin-top: 50px;">
 
         <div class="col-md-6">
+
+            <h3>Planlagte bookinger &nbsp;</h3>
+            
             <table class="table table-hover">
 
-                <p><b>Planlagte bookinger &nbsp;</b></p>
-                 
-
-                 <thead>
+                <thead>
                     <tr>
-                            <th class="col-md-3">Printer</th>
-                            <th class="col-md-3">Dato</th>
-                            <th class="col-md-3">Filnavn</th>
-                            <th class="col-md-3">Indstillinger</th>
+                        <th class="col-md-2">Printer</th>
+                        <th class="col-md-3">Dato</th>
+                        <th class="col-md-3">Filnavn</th>
+                        <th class="col-md-4">Indstillinger</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>Hurtige Henning</td>
-                        <td>Farlige Frank</td>
-                        <td>Trælse Torben</td>
-                        <td>Saftige Susan</td>
-                    </tr>
+
+                    @foreach ()
+                    {
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></button>
+                                <button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+                                <button class="btn btn-info"><i class="glyphicon glyphicon-cloud-upload"></i></button>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
+
             </table>
         </div>
 
         <div class="col-md-6">
+
+            <h3>Historik &nbsp;</h3>
+
             <table class="table table-hover">
-                <p><b>Historik &nbsp;</b></p>
 
                 <thead>
                     <tr>
-                            <th class="col-md-3">Printer</th>
-                            <th class="col-md-3">Dato</th>
-                            <th class="col-md-3">Filnavn</th>
-                            <th class="col-md-3">Indstillinger</th>
-                    </tr>    
+                        <th class="col-md-2">Printer</th>
+                        <th class="col-md-3">Dato</th>
+                        <th class="col-md-3">Filnavn</th>
+                        <th class="col-md-4">Indstillinger</th>
+                    </tr>
                 </thead>
 
                 <tbody>
@@ -51,7 +62,9 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td>
+                            <button class="btn btn-primary"><i class="glyphicon glyphicon-camera"></i></button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

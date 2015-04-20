@@ -178,6 +178,7 @@
     <Content Include="Views\Shared\_navibar.cshtml" />
     <Content Include="Views\Frontend\LogInd.cshtml" />
     <Content Include="Views\Frontend\MyBookings.cshtml" />
+    <Content Include="Views\Frontend\NewBooking.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

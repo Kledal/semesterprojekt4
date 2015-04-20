@@ -24,5 +24,10 @@ namespace Makerlab.Controllers
         {
             return View();
         }
+
+        public ActionResult NewBooking()
+        {
+            return View();
+        }
     }
 }
