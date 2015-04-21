@@ -194,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
+    <Folder Include="App_Data\s3gfiler\" />
     <Folder Include="KentorIT\" />
   </ItemGroup>
   <ItemGroup>
