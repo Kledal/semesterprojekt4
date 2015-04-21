@@ -5,19 +5,18 @@
 <div class="container">
     <div class="row" style="margin-top: 50px;">
 
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h3>Book ny tid</h3>
 
-            <p>Printer: <input type="text" name="printer"/></p>
-            <p>Dato: <input type="text" name="date"/></p>
+            <p>Printer: <input type="text" name="printer" /></p>
+            <p>Dato: <input type="text" name="date" /></p>
 
-            <div class="form-group">
-                @Html.Label("Upload 3D print", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <input type="file" name="upload"/>
-                    <input type="submit" value="ok"/>
-                </div>
+
+            <div class="col-md-10">
+                <input type="file" name="upload"/>
+                <input type="submit" value="ok"/>
             </div>
+
 
         </div>
     </div>

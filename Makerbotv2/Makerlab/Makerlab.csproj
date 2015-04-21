@@ -163,6 +163,10 @@
     <Compile Include="Migrations\201504201157099_AddedFileToBooking.Designer.cs">
       <DependentUpon>201504201157099_AddedFileToBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504211146510_TonyTilfoejet.cs" />
+    <Compile Include="Migrations\201504211146510_TonyTilfoejet.Designer.cs">
+      <DependentUpon>201504211146510_TonyTilfoejet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
@@ -212,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504201157099_AddedFileToBooking.resx">
       <DependentUpon>201504201157099_AddedFileToBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504211146510_TonyTilfoejet.resx">
+      <DependentUpon>201504211146510_TonyTilfoejet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

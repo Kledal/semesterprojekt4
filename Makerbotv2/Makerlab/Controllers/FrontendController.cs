@@ -18,8 +18,6 @@ namespace Makerlab.Controllers
         public ActionResult Index()
         {
             var users = UserManager.Read();
-
-            var u = this.CurrentUser;
             return View();
         }
 
