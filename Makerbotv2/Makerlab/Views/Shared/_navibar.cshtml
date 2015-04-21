@@ -20,8 +20,12 @@
                 <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Frontend")"><i class="glyphicon glyphicon-home"></i> Oversigt</a></li>
 
                 <li class="@Html.IsSelected(action: "MyBookings")"><a href="@Url.Action("MyBookings", "Frontend")"><i class="glyphicon glyphicon-th-list"></i> Mine bookinger</a></li>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="@Html.IsSelected(action: "NewBooking")"><a href="@Url.Action("NewBooking", "Frontend")"><i class="glyphicon glyphicon glyphicon-plus"></i> Ny booking</a></li>
+                }
                 
-                <li class="@Html.IsSelected(action: "NewBooking")"><a href="@Url.Action("NewBooking", "Frontend")"><i class="glyphicon glyphicon glyphicon-plus"></i> Ny booking</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
