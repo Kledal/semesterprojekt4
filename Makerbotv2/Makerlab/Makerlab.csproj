@@ -167,11 +167,24 @@
     <Compile Include="Migrations\201504211146510_TonyTilfoejet.Designer.cs">
       <DependentUpon>201504211146510_TonyTilfoejet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504221150046_AddedPrinterCommand.cs" />
+    <Compile Include="Migrations\201504221150046_AddedPrinterCommand.Designer.cs">
+      <DependentUpon>201504221150046_AddedPrinterCommand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504221157305_AddedPrinterCommand1.cs" />
+    <Compile Include="Migrations\201504221157305_AddedPrinterCommand1.Designer.cs">
+      <DependentUpon>201504221157305_AddedPrinterCommand1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504221158552_AddedPrinterCommand2.cs" />
+    <Compile Include="Migrations\201504221158552_AddedPrinterCommand2.Designer.cs">
+      <DependentUpon>201504221158552_AddedPrinterCommand2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Printer.cs" />
+    <Compile Include="Models\PrinterCommand.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -219,6 +232,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504211146510_TonyTilfoejet.resx">
       <DependentUpon>201504211146510_TonyTilfoejet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504221150046_AddedPrinterCommand.resx">
+      <DependentUpon>201504221150046_AddedPrinterCommand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504221157305_AddedPrinterCommand1.resx">
+      <DependentUpon>201504221157305_AddedPrinterCommand1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504221158552_AddedPrinterCommand2.resx">
+      <DependentUpon>201504221158552_AddedPrinterCommand2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
