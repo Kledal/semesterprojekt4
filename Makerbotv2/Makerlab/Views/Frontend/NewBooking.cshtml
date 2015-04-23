@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Makerlab.DAL
+@using Makerlab.Extensions
+@{
     ViewBag.Title = "NewBooking";
 }
 
@@ -8,15 +10,24 @@
         <div class="col-md-12">
             <h3>Book ny tid</h3>
 
-            <p>Printer: <input type="text" name="printer" /></p>
-            <p>Dato: <input type="text" name="date" /></p>
-
-
-            <div class="col-md-10">
-                <input type="file" name="upload"/>
-                <input type="submit" value="ok"/>
+            <div class="col-md-12">
+                <div class="col-md-2">Printer: </div>
+                <div class="col-md-10 dropdown dropdown-menu">
+                    <select>
+                        @foreach (var d in @PrinterManager.Read())
+                        {
+                            <option>d.Name</option>
+                        }
+                    </select>
+                </div>
             </div>
 
+            <div class="col-md-12">
+                <div class="col-md-2">Dato: </div>
+                <div class="col-md-10">
+                    
+                </div>
+            </div>
 
         </div>
     </div>
