@@ -13,12 +13,12 @@ namespace Makerlab.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201504231210535_ChangeUuIdToStringPrinter"; }
+            get { return "201504231214394_ChangeUuIdToStringPrinter"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

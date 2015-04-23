@@ -5,8 +5,8 @@ namespace Makerlab.Models
     public class Printer
     {
         public int Id { get; set; }
-        public string UuId { get; set; }
         public string Name { get; set; }
+        public string UuId { get; set; }
 
         public bool Active { get; set; }
 
