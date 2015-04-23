@@ -20,7 +20,7 @@ namespace Makerlab.Controllers
         // GET api/Printers
         public IQueryable<Printer> GetPrinters()
         {
-            return db.Printers;
+            return db.Printers.Include(p => p.PrinterCommands).Include(p => p.Bookings);
         }
 
         // GET api/Printers/5
