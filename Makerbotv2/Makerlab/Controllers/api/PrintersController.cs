@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Makerlab.Models;
 using Makerlab;
+using Makerlab.DAL;
 
 namespace Makerlab.Controllers
 {
@@ -22,6 +23,15 @@ namespace Makerlab.Controllers
         {
             return db.Printers.Include(p => p.PrinterCommands).Include(p => p.Bookings);
         }
+
+        [AcceptVerbs("GET")]
+        public IEnumerable<PrinterCommand> PrinterCommands(int printerId)
+        {
+            IEnumerable<PrinterCommand> item = db.PrinterCommands.Min(pc => pc.Printer.PrinterCommands);
+        //    var command = db.PrinterCommands.Any(pc => pc.Printer.Id == printerId);
+            return item;
+        }
+
 
         // GET api/Printers/5
         [ResponseType(typeof(Printer))]
@@ -74,6 +84,9 @@ namespace Makerlab.Controllers
         [ResponseType(typeof(Printer))]
         public IHttpActionResult PostPrinter(Printer printer)
         {
+            if (db.Printers.Any(p => printer.UuId == p.UuId))
+                return CreatedAtRoute("DefaultApi", new {id = printer.Id}, printer);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
