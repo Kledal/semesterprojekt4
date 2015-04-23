@@ -11,6 +11,8 @@ namespace Makerlab.Models
         public int StudieNummer { get; set; }
         public int AccessCard { get; set; }
 
+        public int UserRoleId { get; set; }
+
         // Navigation
         public virtual UserRole UserRole { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }

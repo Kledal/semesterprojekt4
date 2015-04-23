@@ -1,3 +1,5 @@
+using System.EnterpriseServices;
+using System.Web.WebPages;
 using Makerlab.Models;
 
 namespace Makerlab.Migrations
@@ -11,25 +13,24 @@ namespace Makerlab.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Makerlab.MakerContext context)
         {
-            context.UserRoles.AddOrUpdate(ur => ur.RoleName, 
-                new UserRole{ CanCreateBooking =  true, RoleName = "Administrator"});
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.UserRoles.AddOrUpdate(ur => ur.RoleName,
+                new UserRole { CanCreateBooking = true, RoleName = "Administrator" },
+                new UserRole { CanCreateBooking = true, RoleName = "User" }); 
+            context.Users.AddOrUpdate(u => u.Id,
+                new User() { FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "testMail@mail.dk", StudieNummer = 123456789, UserRoleId = 1});
+            context.Printers.AddOrUpdate(p => p.Id,
+                  new Printer() { Name = "Gandalf", },
+                  new Printer() { Name = "Frodo", },
+                  new Printer() { Name = "Gollum", },
+                  new Printer() { Name = "Saruon", });
+            //context.Bookings.AddOrUpdate(x => x.Id,
+                //new Booking() { Id = 1, File = "Testfile1", Printer = Printer.1}
+               // );
         }
     }
 }
