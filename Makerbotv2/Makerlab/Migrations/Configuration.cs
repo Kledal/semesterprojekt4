@@ -14,23 +14,24 @@ namespace Makerlab.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Makerlab.MakerContext context)
         {
             context.UserRoles.AddOrUpdate(ur => ur.RoleName,
                 new UserRole { CanCreateBooking = true, RoleName = "Administrator" },
-                new UserRole { CanCreateBooking = true, RoleName = "User" }); 
+                new UserRole { CanCreateBooking = true, RoleName = "User" });
             context.Users.AddOrUpdate(u => u.Id,
-                new User() { FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "testMail@mail.dk", StudieNummer = 123456789, UserRoleId = 1});
+                new User() { FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "testMail@mail.dk", StudieNummer = 123456789, UserRoleId = 1 });
             context.Printers.AddOrUpdate(p => p.Id,
-                  new Printer() { Name = "Gandalf", },
-                  new Printer() { Name = "Frodo", },
-                  new Printer() { Name = "Gollum", },
-                  new Printer() { Name = "Saruon", });
+                  new Printer() { Name = "Gandalf", Active = true},
+                  new Printer() { Name = "Frodo", Active = true },
+                  new Printer() { Name = "Gollum", Active = true },
+                  new Printer() { Name = "Saruon", Active = true });
             //context.Bookings.AddOrUpdate(x => x.Id,
-                //new Booking() { Id = 1, File = "Testfile1", Printer = Printer.1}
-               // );
+            //    new Booking() { Id = 1, Printer = Pri}
+              //  );
         }
     }
 }

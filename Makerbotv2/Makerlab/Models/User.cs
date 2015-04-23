@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Makerlab.Models
 {
@@ -11,7 +12,8 @@ namespace Makerlab.Models
         public int StudieNummer { get; set; }
         public int AccessCard { get; set; }
 
-        public int UserRoleId { get; set; }
+        [ForeignKey("UserRole")]
+        public virtual int UserRoleId { get; set; }
 
         // Navigation
         public virtual UserRole UserRole { get; set; }

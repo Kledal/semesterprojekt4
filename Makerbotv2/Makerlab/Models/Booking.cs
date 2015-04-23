@@ -6,7 +6,6 @@ namespace Makerlab.Models
     public class Booking
     {
         public int Id { get; set; }
-        
 
         public virtual File File { get; set; }
         public virtual User User { get; set; }
