@@ -13,6 +13,7 @@ namespace Makerlab.Models
 
         // Navigation
         public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual ICollection<PrinterCommand> PrinterCommands { get; set; } 
 
         public Printer()
         {

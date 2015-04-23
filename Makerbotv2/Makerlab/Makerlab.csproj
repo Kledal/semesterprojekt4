@@ -184,10 +184,6 @@
     <Compile Include="Migrations\201504211146510_TonyTilfoejet.Designer.cs">
       <DependentUpon>201504211146510_TonyTilfoejet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504221150046_AddedPrinterCommand.cs" />
-    <Compile Include="Migrations\201504221150046_AddedPrinterCommand.Designer.cs">
-      <DependentUpon>201504221150046_AddedPrinterCommand.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201504221157305_AddedPrinterCommand1.cs" />
     <Compile Include="Migrations\201504221157305_AddedPrinterCommand1.Designer.cs">
       <DependentUpon>201504221157305_AddedPrinterCommand1.cs</DependentUpon>
@@ -257,9 +253,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504211146510_TonyTilfoejet.resx">
       <DependentUpon>201504211146510_TonyTilfoejet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504221150046_AddedPrinterCommand.resx">
-      <DependentUpon>201504221150046_AddedPrinterCommand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504221157305_AddedPrinterCommand1.resx">
       <DependentUpon>201504221157305_AddedPrinterCommand1.cs</DependentUpon>
