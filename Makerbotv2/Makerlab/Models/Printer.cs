@@ -7,6 +7,10 @@ namespace Makerlab.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+        public bool Active { get; set; }
+
+        public bool UnderMantenance { get; set; }
+
         // Navigation
         public virtual ICollection<Booking> Bookings { get; set; }
 
