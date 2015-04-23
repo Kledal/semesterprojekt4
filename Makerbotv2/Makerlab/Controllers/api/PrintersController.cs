@@ -8,49 +8,48 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Makerlab;
 using Makerlab.Models;
+using Makerlab;
 
 namespace Makerlab.Controllers
 {
-    public class PrinterCommandsController : ApiController
+    public class PrintersController : ApiController
     {
         private MakerContext db = new MakerContext();
 
-        // GET: api/PrinterCommands
-        public IQueryable<PrinterCommand> GetPrinter()
+        // GET api/Printers
+        public IQueryable<Printer> GetPrinters()
         {
-            return db.Printer;
+            return db.Printers;
         }
 
-        // GET: api/PrinterCommands/5
-        [ResponseType(typeof(PrinterCommand))]
-        public IHttpActionResult GetPrinterCommand(int id)
+        // GET api/Printers/5
+        [ResponseType(typeof(Printer))]
+        public IHttpActionResult GetPrinter(int id)
         {
-            PrinterCommand printerCommand = db.Printer.Find(id);
-            if (printerCommand == null)
+            Printer printer = db.Printers.Find(id);
+            if (printer == null)
             {
                 return NotFound();
             }
 
-            return Ok(printerCommand);
+            return Ok(printer);
         }
 
-        // PUT: api/PrinterCommands/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPrinterCommand(int id, PrinterCommand printerCommand)
+        // PUT api/Printers/5
+        public IHttpActionResult PutPrinter(int id, Printer printer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != printerCommand.Id)
+            if (id != printer.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(printerCommand).State = EntityState.Modified;
+            db.Entry(printer).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +57,7 @@ namespace Makerlab.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PrinterCommandExists(id))
+                if (!PrinterExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +70,35 @@ namespace Makerlab.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/PrinterCommands
-        [ResponseType(typeof(PrinterCommand))]
-        public IHttpActionResult PostPrinterCommand(PrinterCommand printerCommand)
+        // POST api/Printers
+        [ResponseType(typeof(Printer))]
+        public IHttpActionResult PostPrinter(Printer printer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Printer.Add(printerCommand);
+            db.Printers.Add(printer);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = printerCommand.Id }, printerCommand);
+            return CreatedAtRoute("DefaultApi", new { id = printer.Id }, printer);
         }
 
-        // DELETE: api/PrinterCommands/5
-        [ResponseType(typeof(PrinterCommand))]
-        public IHttpActionResult DeletePrinterCommand(int id)
+        // DELETE api/Printers/5
+        [ResponseType(typeof(Printer))]
+        public IHttpActionResult DeletePrinter(int id)
         {
-            PrinterCommand printerCommand = db.Printer.Find(id);
-            if (printerCommand == null)
+            Printer printer = db.Printers.Find(id);
+            if (printer == null)
             {
                 return NotFound();
             }
 
-            db.Printer.Remove(printerCommand);
+            db.Printers.Remove(printer);
             db.SaveChanges();
 
-            return Ok(printerCommand);
+            return Ok(printer);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +110,9 @@ namespace Makerlab.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PrinterCommandExists(int id)
+        private bool PrinterExists(int id)
         {
-            return db.Printer.Count(e => e.Id == id) > 0;
+            return db.Printers.Count(e => e.Id == id) > 0;
         }
     }
 }

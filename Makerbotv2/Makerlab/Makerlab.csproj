@@ -155,7 +155,7 @@
     <Compile Include="Controllers\FrontendController.cs" />
     <Compile Include="Controllers\PrintersController.cs" />
     <Compile Include="DAL\PrinterManager.cs" />
-    <Compile Include="Controllers\PrinterCommandsController.cs" />
+    <Compile Include="Controllers\api\PrintersController.cs" />
     <Compile Include="DAL\UserManager.cs" />
     <Compile Include="DAL\UserRoleManager.cs" />
     <Compile Include="Extensions\ViewContextExtension.cs" />
@@ -223,6 +223,11 @@
     <Content Include="Views\Frontend\LogInd.cshtml" />
     <Content Include="Views\Frontend\MyBookings.cshtml" />
     <Content Include="Views\Frontend\NewBooking.cshtml" />
+    <Content Include="Views\Printer\Create.cshtml" />
+    <Content Include="Views\Printer\Delete.cshtml" />
+    <Content Include="Views\Printer\Details.cshtml" />
+    <Content Include="Views\Printer\Edit.cshtml" />
+    <Content Include="Views\Printer\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
