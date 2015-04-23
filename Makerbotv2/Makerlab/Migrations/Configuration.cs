@@ -32,6 +32,6 @@ namespace Makerlab.Migrations
             //context.Bookings.AddOrUpdate(x => x.Id,
             //    new Booking() { Id = 1, Printer = Pri}
               //  );
-        }
+	}
     }
 }

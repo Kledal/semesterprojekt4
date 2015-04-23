@@ -155,6 +155,7 @@
     <Compile Include="Controllers\FrontendController.cs" />
     <Compile Include="Controllers\PrintersController.cs" />
     <Compile Include="DAL\PrinterManager.cs" />
+    <Compile Include="Controllers\api\PrintersController.cs" />
     <Compile Include="DAL\UserManager.cs" />
     <Compile Include="DAL\UserRoleManager.cs" />
     <Compile Include="Extensions\ViewContextExtension.cs" />
@@ -183,21 +184,24 @@
     <Compile Include="Migrations\201504211146510_TonyTilfoejet.Designer.cs">
       <DependentUpon>201504211146510_TonyTilfoejet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504221150046_AddedPrinterCommand.cs" />
-    <Compile Include="Migrations\201504221150046_AddedPrinterCommand.Designer.cs">
-      <DependentUpon>201504221150046_AddedPrinterCommand.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201504221157305_AddedPrinterCommand1.cs" />
     <Compile Include="Migrations\201504221157305_AddedPrinterCommand1.Designer.cs">
       <DependentUpon>201504221157305_AddedPrinterCommand1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504221158552_AddedPrinterCommand2.cs" />
-    <Compile Include="Migrations\201504221158552_AddedPrinterCommand2.Designer.cs">
-      <DependentUpon>201504221158552_AddedPrinterCommand2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.cs" />
     <Compile Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.Designer.cs">
       <DependentUpon>201504231128065_AddedPrinterBoolsAndBookingTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504221524416_AddedPrinterCommandController.cs" />
+    <Compile Include="Migrations\201504221524416_AddedPrinterCommandController.Designer.cs">
+      <DependentUpon>201504221524416_AddedPrinterCommandController.cs</DependentUpon>
+    <Compile Include="Migrations\201504231206322_AddedUuIdToPrinter.cs" />
+    <Compile Include="Migrations\201504231206322_AddedUuIdToPrinter.Designer.cs">
+      <DependentUpon>201504231206322_AddedUuIdToPrinter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504231210535_ChangeUuIdToStringPrinter.cs" />
+    <Compile Include="Migrations\201504231210535_ChangeUuIdToStringPrinter.Designer.cs">
+      <DependentUpon>201504231210535_ChangeUuIdToStringPrinter.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -222,6 +226,11 @@
     <Content Include="Views\Frontend\LogInd.cshtml" />
     <Content Include="Views\Frontend\MyBookings.cshtml" />
     <Content Include="Views\Frontend\NewBooking.cshtml" />
+    <Content Include="Views\Printer\Create.cshtml" />
+    <Content Include="Views\Printer\Delete.cshtml" />
+    <Content Include="Views\Printer\Details.cshtml" />
+    <Content Include="Views\Printer\Edit.cshtml" />
+    <Content Include="Views\Printer\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -253,17 +262,17 @@
     <EmbeddedResource Include="Migrations\201504211146510_TonyTilfoejet.resx">
       <DependentUpon>201504211146510_TonyTilfoejet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504221150046_AddedPrinterCommand.resx">
-      <DependentUpon>201504221150046_AddedPrinterCommand.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504221157305_AddedPrinterCommand1.resx">
       <DependentUpon>201504221157305_AddedPrinterCommand1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504221158552_AddedPrinterCommand2.resx">
-      <DependentUpon>201504221158552_AddedPrinterCommand2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.resx">
       <DependentUpon>201504231128065_AddedPrinterBoolsAndBookingTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504221524416_AddedPrinterCommandController.resx">
+      <DependentUpon>201504221524416_AddedPrinterCommandController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504231210535_ChangeUuIdToStringPrinter.resx">
+      <DependentUpon>201504231210535_ChangeUuIdToStringPrinter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

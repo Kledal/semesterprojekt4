@@ -7,18 +7,18 @@ namespace Makerlab.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedPrinterCommand2 : IMigrationMetadata
+    public sealed partial class ChangeUuIdToStringPrinter : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedPrinterCommand2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeUuIdToStringPrinter));
         
         string IMigrationMetadata.Id
         {
-            get { return "201504221158552_AddedPrinterCommand2"; }
+            get { return "201504231214394_ChangeUuIdToStringPrinter"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target
