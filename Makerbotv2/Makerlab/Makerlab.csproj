@@ -155,6 +155,7 @@
     <Compile Include="Controllers\FrontendController.cs" />
     <Compile Include="Controllers\PrintersController.cs" />
     <Compile Include="DAL\PrinterManager.cs" />
+    <Compile Include="Controllers\PrinterCommandsController.cs" />
     <Compile Include="DAL\UserManager.cs" />
     <Compile Include="DAL\UserRoleManager.cs" />
     <Compile Include="Extensions\ViewContextExtension.cs" />
@@ -198,6 +199,10 @@
     <Compile Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.cs" />
     <Compile Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.Designer.cs">
       <DependentUpon>201504231128065_AddedPrinterBoolsAndBookingTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504221524416_AddedPrinterCommandController.cs" />
+    <Compile Include="Migrations\201504221524416_AddedPrinterCommandController.Designer.cs">
+      <DependentUpon>201504221524416_AddedPrinterCommandController.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -264,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.resx">
       <DependentUpon>201504231128065_AddedPrinterBoolsAndBookingTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504221524416_AddedPrinterCommandController.resx">
+      <DependentUpon>201504221524416_AddedPrinterCommandController.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
