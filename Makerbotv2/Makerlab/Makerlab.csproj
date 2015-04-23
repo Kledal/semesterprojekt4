@@ -192,16 +192,9 @@
     <Compile Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.Designer.cs">
       <DependentUpon>201504231128065_AddedPrinterBoolsAndBookingTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504221524416_AddedPrinterCommandController.cs" />
-    <Compile Include="Migrations\201504221524416_AddedPrinterCommandController.Designer.cs">
-      <DependentUpon>201504221524416_AddedPrinterCommandController.cs</DependentUpon>
-    <Compile Include="Migrations\201504231206322_AddedUuIdToPrinter.cs" />
-    <Compile Include="Migrations\201504231206322_AddedUuIdToPrinter.Designer.cs">
-      <DependentUpon>201504231206322_AddedUuIdToPrinter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504231210535_ChangeUuIdToStringPrinter.cs" />
-    <Compile Include="Migrations\201504231210535_ChangeUuIdToStringPrinter.Designer.cs">
-      <DependentUpon>201504231210535_ChangeUuIdToStringPrinter.cs</DependentUpon>
+    <Compile Include="Migrations\201504231214394_ChangeUuIdToStringPrinter.cs" />
+    <Compile Include="Migrations\201504231214394_ChangeUuIdToStringPrinter.Designer.cs">
+      <DependentUpon>201504231214394_ChangeUuIdToStringPrinter.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -268,11 +261,8 @@
     <EmbeddedResource Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.resx">
       <DependentUpon>201504231128065_AddedPrinterBoolsAndBookingTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504221524416_AddedPrinterCommandController.resx">
-      <DependentUpon>201504221524416_AddedPrinterCommandController.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504231210535_ChangeUuIdToStringPrinter.resx">
-      <DependentUpon>201504231210535_ChangeUuIdToStringPrinter.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504231214394_ChangeUuIdToStringPrinter.resx">
+      <DependentUpon>201504231214394_ChangeUuIdToStringPrinter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
