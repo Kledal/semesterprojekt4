@@ -188,10 +188,6 @@
     <Compile Include="Migrations\201504221157305_AddedPrinterCommand1.Designer.cs">
       <DependentUpon>201504221157305_AddedPrinterCommand1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504221158552_AddedPrinterCommand2.cs" />
-    <Compile Include="Migrations\201504221158552_AddedPrinterCommand2.Designer.cs">
-      <DependentUpon>201504221158552_AddedPrinterCommand2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.cs" />
     <Compile Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.Designer.cs">
       <DependentUpon>201504231128065_AddedPrinterBoolsAndBookingTime.cs</DependentUpon>
@@ -199,6 +195,9 @@
     <Compile Include="Migrations\201504221524416_AddedPrinterCommandController.cs" />
     <Compile Include="Migrations\201504221524416_AddedPrinterCommandController.Designer.cs">
       <DependentUpon>201504221524416_AddedPrinterCommandController.cs</DependentUpon>
+    <Compile Include="Migrations\201504231206322_AddedUuIdToPrinter.cs" />
+    <Compile Include="Migrations\201504231206322_AddedUuIdToPrinter.Designer.cs">
+      <DependentUpon>201504231206322_AddedUuIdToPrinter.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -261,9 +260,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504221157305_AddedPrinterCommand1.resx">
       <DependentUpon>201504221157305_AddedPrinterCommand1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504221158552_AddedPrinterCommand2.resx">
-      <DependentUpon>201504221158552_AddedPrinterCommand2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504231128065_AddedPrinterBoolsAndBookingTime.resx">
       <DependentUpon>201504231128065_AddedPrinterBoolsAndBookingTime.cs</DependentUpon>
