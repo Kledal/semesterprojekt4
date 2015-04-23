@@ -25,11 +25,9 @@ namespace Makerlab.Controllers
         }
 
         [AcceptVerbs("GET")]
-        public IEnumerable<PrinterCommand> PrinterCommands(int printerId)
+        public PrinterCommand PrinterCommands(int printerId)
         {
-            IEnumerable<PrinterCommand> item = db.PrinterCommands.Min(pc => pc.Printer.PrinterCommands);
-        //    var command = db.PrinterCommands.Any(pc => pc.Printer.Id == printerId);
-            return item;
+            return db.PrinterCommands.Include(p => p.Printer).FirstOrDefault(pc => pc.Printer.Id == printerId);
         }
 
 
