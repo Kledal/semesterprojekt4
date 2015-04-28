@@ -17,7 +17,7 @@ namespace Makerlab.Controllers
         // GET: /Frontend/
         public ActionResult Index()
         {
-            var users = UserManager.Read();
+            //var users = UserManager.Read();
             return View();
         }
 

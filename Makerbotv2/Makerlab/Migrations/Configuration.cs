@@ -25,7 +25,7 @@ namespace Makerlab.Migrations
             context.Users.AddOrUpdate(u => u.Id,
                 new User() { FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "testMail@mail.dk", StudieNummer = 123456789, UserRoleId = 1 });
             context.Printers.AddOrUpdate(p => p.Id,
-                  new Printer() { Name = "Gandalf", Active = true},
+                  new Printer() { Name = "Gandalf", Active = true },
                   new Printer() { Name = "Frodo", Active = true },
                   new Printer() { Name = "Gollum", Active = true },
                   new Printer() { Name = "Saruon", Active = true });

@@ -1,32 +1,73 @@
 ﻿@using Makerlab.DAL
 @using Makerlab.Extensions
+
+<script>
+    $(function() {
+        $("#datepicker").datepicker();
+    });
+</script>
+<script>
+    $(function() {
+        $("#stepExample1").timepicker({ 'step': 15 });
+        $("#stepExample2").timepicker({
+            'step': function (i) {
+                return (i % 2) ? 15 : 45;
+            }
+        });
+    });
+</script>
+
+
+
+
+
 @{
     ViewBag.Title = "NewBooking";
 }
 
 <div class="container">
     <div class="row" style="margin-top: 50px;">
-
+        
         <div class="col-md-12">
             <h3>Book ny tid</h3>
+            <hr/>
 
             <div class="col-md-12">
-                <div class="col-md-2">Printer: </div>
-                <div class="col-md-10 dropdown dropdown-menu">
-                    <select>
-                        @foreach (var d in @PrinterManager.Read())
-                        {
-                            <option>d.Name</option>
-                        }
-                    </select>
-                </div>
+                <div class="col-md-1">Printer:</div>
+                <select>
+                    <option>Vælg printer..</option>
+                    @foreach (var d in @PrinterManager.Read())
+                    {
+                        <option>@d.Name</option>
+                    }
+                </select>
+            </div>
+
+
+
+            <div class="col-md-12">
+                <br />
+                <div class="col-md-1">Dato: </div>
+
+                <input type="text" id="datepicker">
             </div>
 
             <div class="col-md-12">
-                <div class="col-md-2">Dato: </div>
-                <div class="col-md-10">
-                    
-                </div>
+                <br/>
+                <div class="col-md-1">Klokkeslæt: </div>
+
+                <p><input id="stepExample1" type="text" class="time"/> &nbsp; - &nbsp; <input id="stepExample2" type="text" class="time"/>
+                </p>
+            </div>
+
+            <div class="col-md-12">
+                <br/>
+                <input type="file" value="Upload fil"/>
+            </div>
+
+            <div class="col-md-12">
+                <br/>
+                <input type="submit" value="Book printer" class="btn btn-primary"/>
             </div>
 
         </div>
