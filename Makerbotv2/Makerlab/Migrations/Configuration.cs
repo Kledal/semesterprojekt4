@@ -29,9 +29,12 @@ namespace Makerlab.Migrations
                   new Printer() { Name = "Frodo", Active = true },
                   new Printer() { Name = "Gollum", Active = true },
                   new Printer() { Name = "Saruon", Active = true });
-            //context.Bookings.AddOrUpdate(x => x.Id,
-            //    new Booking() { Id = 1, Printer = Pri}
-              //  );
-	}
+            context.Files.AddOrUpdate(f => f.Id,
+                new File() {FileName = "Testfile1"},
+                new File() {FileName = "Testfile2"});
+            context.Bookings.AddOrUpdate(x => x.Id,
+                new Booking() { PrinterId = 13, UserId = 1, FileId = 1, StartTime = new DateTime(2015, 4, 23, 8, 30, 52), EndTime = new DateTime(2015, 4, 23, 19, 00, 00)}
+                );
+        }
     }
 }
