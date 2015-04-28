@@ -195,6 +195,7 @@
     <Compile Include="Migrations\201504231214394_ChangeUuIdToStringPrinter.cs" />
     <Compile Include="Migrations\201504231214394_ChangeUuIdToStringPrinter.Designer.cs">
       <DependentUpon>201504231214394_ChangeUuIdToStringPrinter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201504231332550_AddedBookingPrinterIdForeignKey.cs" />
     <Compile Include="Migrations\201504231332550_AddedBookingPrinterIdForeignKey.Designer.cs">
       <DependentUpon>201504231332550_AddedBookingPrinterIdForeignKey.cs</DependentUpon>
@@ -270,6 +271,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504231214394_ChangeUuIdToStringPrinter.resx">
       <DependentUpon>201504231214394_ChangeUuIdToStringPrinter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504231332550_AddedBookingPrinterIdForeignKey.resx">
       <DependentUpon>201504231332550_AddedBookingPrinterIdForeignKey.cs</DependentUpon>
     </EmbeddedResource>
