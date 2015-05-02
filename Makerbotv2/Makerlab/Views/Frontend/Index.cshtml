@@ -1,4 +1,10 @@
-﻿<link href="../../content/Overview.css" rel="stylesheet" type="text/css" />
+﻿<script src="~/Scripts/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
+<script src="~/Scripts/dhtmlxscheduler_timeline.js" type="text/javascript" charset="utf-8"></script>
+<script src="~/Scripts/dhtmlxscheduler_tooltip.js" type="text/javascript" charset="utf-8"></script>
+<script src="~/Scripts/dhtmlxscheduler_minical.js" type="text/javascript" charset="utf-8"></script>
+
+<link rel="stylesheet" href="~/Content/dhtmlxscheduler.css" type="text/css" media="screen" title="no title" charset="utf-8">
+<link href="../../content/Overview.css" rel="stylesheet" type="text/css" />
 
 @model Makerlab.Models.User
 
@@ -6,59 +12,158 @@
     ViewBag.Title = "Oversigt";
 }
 
+<style>
+    .dhx_cal_data {
+        overflow-y: hidden;
+    }
+
+    .dhx_matrix_line .dhx_matrix_cell {
+        cursor: pointer;
+    }
+
+    .dhx_cal_event_line {
+        cursor: auto;
+    }
+</style>
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h3>Beskeder</h3>
-            <div class="alert alert-warning" role="alert">
-                <b>Maintenance</b>
-                <p>
-                    Gandalf er under maintenance
-                </p>
-            </div>
-        </div>
+<div id="printer_schedule" class="dhx_cal_container dhx_cal_timeline" style="height: 310px;">
+    <div class="dhx_cal_navline">
+        <div class="dhx_cal_prev_button">&nbsp;</div>
+        <div class="dhx_cal_next_button">&nbsp;</div>
+        <div class="dhx_cal_today_button">Today</div>
+        <div class="dhx_cal_date"></div>
+        <div class="dhx_minical_icon" id="dhx_minical_icon" onclick=" show_minical() ">&nbsp;</div>
+        <div class="dhx_cal_tab" name="day_tab" style="right: 204px;"></div>
+        <div class="dhx_cal_tab" name="week_tab" style="right: 140px;"></div>
+        <div class="dhx_cal_tab" name="month_tab" style="right: 76px;"></div>
+    </div>
+    <div class="dhx_cal_header"></div>
+    <div class="dhx_cal_data">
+        <table style="table-layout: fixed;"></table>
     </div>
 
-    <div class="row full-time-table">
-        <div class="col-md-12">
-            <div class="overview-container">
-                <div class="printer-name-container col-xs-1">
-                    <div class="printer-names">&nbsp;</div>
-                    <div class="printer-names">Aragorn</div>
-                    <div class="printer-names">Frodo</div>
-                    <div class="printer-names">Gollum</div>
-                    <div class="printer-names">Sauron</div>
-                    <div class="bottom-field printer-names">Gandalf</div>
-                </div>
-
-                <div class="time-table col-xs-11">
-                    @for (var i = 0; i < 24; i++)
-                    {<div class="time-header">
-                        @if (i < 10)
-                        {
-                            var n = 0;
-                            <div>@n@i:00</div>
-                        }
-                        else
-                        {
-                            <div>@i:00</div>
-                        }
-                    </div>}
-                    @for (var q = 0; q < 5; q++)
-                    {
-                        <div data-time="@q">
-                            @for (var i = 0; i < 24; i++)
-                            {<div @*data-time="@i"*@ class="time-row time-cells">
-
-                                <div class="cells">&nbsp;</div>
-
-                            </div>}
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+
+
+
+<script>
+    scheduler.init("printer_schedule", new Date(), "month");
+</script>
+
+
+
+
+
+
+
+
+@*<div class="container">
+    <style type="text/css" media="screen">
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <script type="text/javascript" charset="utf-8">
+        function init() {
+            scheduler.config.multi_day = true;
+
+            //scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+            //scheduler.init("scheduler_here", new Date(2015, 0, 10), "week");
+            //scheduler.load("./data/events.xml");
+        }
+
+        function show_minical() {
+            if (scheduler.isCalendarVisible())
+                scheduler.destroyCalendar();
+            else
+                scheduler.renderCalendar({
+                    position: "dhx_minical_icon",
+                    date: scheduler._date,
+                    navigation: true,
+                    handler: function(date, calendar) {
+                        scheduler.setCurrentView(date);
+                        scheduler.destroyCalendar()
+                    }
+                });
+        }
+    </script>
+
+    <div onload="init();">
+        <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+            <div class="dhx_cal_navline">
+                <div class="dhx_cal_prev_button">&nbsp;</div>
+                <div class="dhx_cal_next_button">&nbsp;</div>
+                <div class="dhx_cal_today_button"></div>
+                <div class="dhx_cal_date"></div>
+                <div class="dhx_minical_icon" id="dhx_minical_icon" onclick="show_minical()">&nbsp;</div>
+                <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
+                <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
+                <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
+            </div>
+            <div class="dhx_cal_header">
+            </div>
+            <div class="dhx_cal_data">
+            </div>
+        </div>
+    </div>*@
+
+
+    @*<div class="row">
+            <div class="col-md-12">
+                <h3>Beskeder</h3>
+                <div class="alert alert-warning" role="alert">
+                    <b>Maintenance</b>
+                    <p>
+                        Gandalf er under maintenance
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row full-time-table">
+            <div class="col-md-12">
+                <div class="overview-container">
+                    <div class="printer-name-container col-xs-1">
+                        <div class="printer-names">&nbsp;</div>
+                        <div class="printer-names">Aragorn</div>
+                        <div class="printer-names">Frodo</div>
+                        <div class="printer-names">Gollum</div>
+                        <div class="printer-names">Sauron</div>
+                        <div class="bottom-field printer-names">Gandalf</div>
+                    </div>
+
+                    <div class="time-table col-xs-11">
+                        @for (var i = 0; i < 24; i++)
+                        {<div class="time-header">
+                            @if (i < 10)
+                            {
+                                var n = 0;
+                                <div>@n@i:00</div>
+                            }
+                            else
+                            {
+                                <div>@i:00</div>
+                            }
+                        </div>}
+                        @for (var q = 0; q < 5; q++)
+                        {
+                            <div data-time="@q">
+                                @for (var i = 0; i < 24; i++)
+                                {<div data-time="@i" class="time-row time-cells">
+
+                                    <div class="cells">&nbsp;</div>
+
+                                </div>}
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>*@
+</div>
+
