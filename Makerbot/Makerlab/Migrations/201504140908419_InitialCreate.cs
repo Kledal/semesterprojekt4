@@ -53,11 +53,11 @@ namespace Makerlab.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         StudieNummer = c.Int(nullable: false),
                         AccessCard = c.Int(nullable: false),
-                        UserRole_Id = c.Int(),
+                        UserRoleId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.UserRole", t => t.UserRole_Id)
-                .Index(t => t.UserRole_Id);
+                .ForeignKey("dbo.UserRole", t => t.UserRoleId)
+                .Index(t => t.UserRoleId);
             
             CreateTable(
                 "dbo.UserRole",
@@ -78,7 +78,7 @@ namespace Makerlab.Migrations
             DropForeignKey("dbo.BookingPrintError", "User_Id", "dbo.User");
             DropForeignKey("dbo.Booking", "Printer_Id", "dbo.Printer");
             DropForeignKey("dbo.BookingPrintError", "Booking_Id", "dbo.Booking");
-            DropIndex("dbo.User", new[] { "UserRole_Id" });
+            DropIndex("dbo.User", new[] { "UserRoleId" });
             DropIndex("dbo.Booking", new[] { "User_Id" });
             DropIndex("dbo.Booking", new[] { "Printer_Id" });
             DropIndex("dbo.BookingPrintError", new[] { "User_Id" });

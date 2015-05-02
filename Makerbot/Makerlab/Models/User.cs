@@ -12,8 +12,7 @@ namespace Makerlab.Models
         public int StudieNummer { get; set; }
         public int AccessCard { get; set; }
 
-        [ForeignKey("UserRole")]
-        public virtual int UserRoleId { get; set; }
+        public int UserRoleId { get; set; }
 
         // Navigation
         public virtual UserRole UserRole { get; set; }

@@ -3,7 +3,7 @@ namespace Makerlab.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ChangeUuIdToStringPrinter : DbMigration
+    public partial class AddedUuidToPrinter : DbMigration
     {
         public override void Up()
         {
