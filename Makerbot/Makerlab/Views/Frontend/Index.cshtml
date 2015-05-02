@@ -26,57 +26,65 @@
     }
 </style>
 
+        <div id="printer_schedule" class="dhx_cal_container" style="height: 350px;">
+            <div class="dhx_cal_navline">
+                <div class="dhx_cal_prev_button">&nbsp;</div>
+                <div class="dhx_cal_next_button">&nbsp;</div>
+                <div class="dhx_cal_today_button"></div>
+                <div class="dhx_cal_date"></div>
+                @*<div class="dhx_cal_tab" name="day_tab" style="right: 30px;"></div>
+                    <div class="dhx_cal_tab" name="timeline_tab" style="right: 140px;"></div>*@
+                @*<div class="dhx_minical_icon" id="dhx_minical_icon" onclick=" show_minical() ">&nbsp;</div>*@
+                @*<div class="dhx_cal_tab" name="day_tab" style="right: 204px;"></div>*@
+                @*<div class="dhx_cal_tab" name="timeline_tab" style="right: 140px;"></div>
+                <div class="dhx_cal_tab" name="day_tab" style="right: 76px;"></div>*@
+            </div>
+            <div class="dhx_cal_header"></div>
+            <div class="dhx_cal_data"></div>
+        </div>
 
-<div id="printer_schedule" class="dhx_cal_container dhx_cal_timeline" style="height: 350px;">
-    <div class="dhx_cal_navline">
-        <div class="dhx_cal_prev_button">&nbsp;</div>
-        <div class="dhx_cal_next_button">&nbsp;</div>
-        <div class="dhx_cal_today_button">Today</div>
-        <div class="dhx_cal_date"></div>
-        @*<div class="dhx_minical_icon" id="dhx_minical_icon" onclick=" show_minical() ">&nbsp;</div>*@
-        @*<div class="dhx_cal_tab" name="day_tab" style="right: 204px;"></div>
-        <div class="dhx_cal_tab" name="week_tab" style="right: 140px;"></div>
-        <div class="dhx_cal_tab" name="month_tab" style="right: 76px;"></div>*@
-    </div>
-    <div class="dhx_cal_header"></div>
-    <div class="dhx_cal_data"></div>
-</div>
+        <script>
+            $(document).ready(function () {
 
-<script>
-    $(document).ready(function () {
+                // Timeline for printers
+                scheduler.locale.labels.timeline_tab = "Timeline";
+                scheduler.locale.labels.section_custom = "Printer";
+                scheduler.config.fix_tab_position = false;
+                scheduler.config.details_on_create = true;
 
-        // Timeline for printers
-        scheduler.locale.labels.timeline_tab = "Timeline";
-        scheduler.locale.labels.section_custom = "Printer";
-        scheduler.config.details_on_create = true;
-        //===============
-        //Configuration
-        //===============
-        var sections = [
-			{ key: 1, label: "Aragorn" },
-			{ key: 2, label: "Frodo" },
-			{ key: 3, label: "Gandalf" },
-			{ key: 4, label: "Gollum" },
-            { key: 5, label: "Sauron" }
-        ];
+                //===============
+                //Configuration
+                //===============
+                var sections = [
+                    { key: 1, label: "Aragorn" },
+                    { key: 2, label: "Frodo" },
+                    { key: 3, label: "Gandalf" },
+                    { key: 4, label: "Gollum" },
+                    { key: 5, label: "Sauron" }
+                ];
 
-        scheduler.createTimelineView({
-            name: "timeline",
-            x_unit: "minute",
-            x_date: "%H:%i",
-            x_step: 60,
-            x_size: 24,
-            x_start: 0,
-            x_length: 24,
-            dy: 40,
-            event_dy: 'full', 
-            round_position: true,
-            y_unit: sections,
-            y_property: "section_id",
-            render: "bar"
-        });
-    });
+                scheduler.createTimelineView({
+                    name: "timeline",
+                    x_unit: "minute",
+                    x_date: "%H:%i",
+                    x_step: 60,
+                    x_size: 24,
+                    x_start: 0,
+                    x_length: 24,
+                    dy: 40,
+                    event_dy: 'full',
+                    round_position: true,
+                    y_unit: sections,
+                    y_property: "section_id",
+                    render: "bar"
+                });
+            });
+            scheduler.config.first_hour = 6;
+            scheduler.config.last_hour = 23;
 
-    scheduler.init("printer_schedule", new Date(), "timeline");
-    scheduler.config.readonly_form = true;
-</script>
+            scheduler.init("printer_schedule", new Date(), "timeline");
+            scheduler.config.readonly_form = true;
+
+        </script>
+
+
