@@ -21,6 +21,7 @@
 
                 <li class="@Html.IsSelected(action: "MyBookings")"><a href="@Url.Action("MyBookings", "Frontend")"><i class="glyphicon glyphicon-th-list"></i> Mine bookinger</a></li>
 
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="@Html.IsSelected(action: "NewBooking")"><a href="@Url.Action("NewBooking", "Frontend")"><i class="glyphicon glyphicon glyphicon-plus"></i> Ny booking</a></li>

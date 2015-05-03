@@ -21,7 +21,9 @@
 </script>
 <script>
     $(function() {
-        $("#stepExample1").timepicker({ 'step': 15 });
+        $("#stepExample1").timepicker({
+            'step': 15
+        });
         $("#stepExample2").timepicker({
             'step': function (i) {
                 return (i % 2) ? 15 : 45;
@@ -37,14 +39,14 @@
 
 <div class="container">
     <div class="row" style="margin-top: 50px;">
-        
+
         <div class="col-md-12">
             <h3>Book ny tid</h3>
             <hr/>
 
             <div class="col-md-12">
                 <div class="col-md-1">Printer:</div>
-                <select>
+                <select name="printer">
                     <option>Vælg printer..</option>
                     @foreach (var d in @PrinterManager.Read())
                     {
@@ -54,7 +56,7 @@
             </div>
 
             <div class="col-md-12">
-                <br />
+                <br/>
                 <div class="col-md-1">Dato: </div>
 
                 <input type="text" id="datepicker">
