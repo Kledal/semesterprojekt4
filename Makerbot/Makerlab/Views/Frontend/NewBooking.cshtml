@@ -1,10 +1,23 @@
 ﻿@using Makerlab.DAL
 @using Makerlab.Extensions
 
+<script type="text/javascript"
+        src="http://jqueryui.com/ui/i18n/jquery.ui.datepicker-da.js">
+</script>
 <script>
     $(function() {
-        $("#datepicker").datepicker();
-    });
+        $("#datepicker").datepicker({
+            firstDay: 1, //First day is monday (For sunday set 0)
+            dayNames: ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'],
+            dayNamesShort: ['Søn', 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør'],
+            dayNamesMin: ['Sø', 'Ma', 'Ti', 'On', 'To', 'Fr', 'Lø'],
+            monthNames: ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"],
+            monthNamesShort: ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
+            dateFormat: "dd-mm-yy"
+        });
+    },
+    $.datepicker.regional['da']
+    );
 </script>
 <script>
     $(function() {
@@ -16,9 +29,6 @@
         });
     });
 </script>
-
-
-
 
 
 @{
@@ -42,8 +52,6 @@
                     }
                 </select>
             </div>
-
-
 
             <div class="col-md-12">
                 <br />
