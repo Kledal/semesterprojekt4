@@ -192,6 +192,7 @@
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\FrontendController.cs" />
+    <Compile Include="DAL\BookingManager.cs" />
     <Compile Include="DAL\PrinterManager.cs" />
     <Compile Include="Controllers\api\PrintersController.cs" />
     <Compile Include="DAL\UserManager.cs" />
