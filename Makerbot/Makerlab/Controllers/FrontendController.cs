@@ -17,7 +17,20 @@ namespace Makerlab.Controllers
         // GET: /Frontend/
         public ActionResult Index()
         {
-            //var users = UserManager.Read();
+            var printerList = new List<object>();
+            foreach (var printer in PrinterManager.Read())
+            {
+                printerList.Add(new {key = printer.Id, label = printer.Name});
+            }
+            ViewBag.printers = printerList;
+
+            var bookingList = new List<object>();
+            foreach (var booking in BookingManager.Read())
+            {
+                bookingList.Add(new { text = booking.User.FirstName +" "+ booking.User.LastName, start_date = booking.StartTime.ToString("g"), end_date = booking.EndTime.ToString("g"), printer_id = booking.PrinterId });
+            }
+            ViewBag.bookings = bookingList;
+
             return View();
         }
 

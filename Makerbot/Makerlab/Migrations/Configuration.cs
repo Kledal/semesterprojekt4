@@ -33,7 +33,7 @@ namespace Makerlab.Migrations
                 new File() { Id = 1, FileName = "Testfile1" },
                 new File() { Id = 2, FileName = "Testfile2" });
             context.Bookings.AddOrUpdate(x => x.Id,
-                new Booking() { Id = 1, PrinterId = 1, UserId = 1, FileId = 1, StartTime = new DateTime(2015, 4, 23, 8, 30, 52), EndTime = new DateTime(2015, 4, 23, 19, 00, 00) }
+                new Booking() { Id = 1, PrinterId = 1, UserId = 1, FileId = 1, StartTime = new DateTime(2015, 5, 5, 8, 30, 00), EndTime = new DateTime(2015, 5, 5, 19, 00, 00) }
                 );
         }
     }

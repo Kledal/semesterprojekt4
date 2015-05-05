@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Makerlab.Models;
@@ -16,6 +17,15 @@ namespace Makerlab.DAL
                 db.SaveChanges();
 
                 return booking;
+            }
+        }
+
+        public static IEnumerable<Booking> Read()
+        {
+            using (var db = new MakerContext())
+            {
+                var bookings = db.Bookings.Include(u => u.User).ToList();
+                return bookings;
             }
         }
 

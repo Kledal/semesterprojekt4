@@ -1,12 +1,4 @@
-﻿<script src="~/Scripts/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
-<script src="~/Scripts/dhtmlxscheduler_timeline.js" type="text/javascript" charset="utf-8"></script>
-<script src="~/Scripts/dhtmlxscheduler_tooltip.js" type="text/javascript" charset="utf-8"></script>
-<script src="~/Scripts/dhtmlxscheduler_minical.js" type="text/javascript" charset="utf-8"></script>
-
-<link rel="stylesheet" href="~/Content/dhtmlxscheduler.css" type="text/css" media="screen" title="no title" charset="utf-8">
-<link href="../../content/Overview.css" rel="stylesheet" type="text/css" />
-
-@model Makerlab.Models.User
+﻿@model Makerlab.Models.User
 
 @{
     ViewBag.Title = "Oversigt";
@@ -38,6 +30,9 @@
 </div>
 
 <script>
+    var printers = @Html.Raw(Json.Encode(ViewBag.printers));
+    var bookings = @Html.Raw(Json.Encode(ViewBag.bookings));
+
     $(document).ready(function () {
 
         // Timeline for printers
@@ -66,15 +61,7 @@
             dy: 40,
             event_dy: "full",
             round_position: true,
-            y_unit:
-                [
-            { key: 1, label: "Aragorn" },
-            { key: 2, label: "Frodo" },
-            { key: 3, label: "Gandalf" },
-            { key: 4, label: "Gollum" },
-            { key: 5, label: "Sauron" }
-            
-                ],
+            y_unit: printers,
             y_property: "printer_id",
             render: "bar"
         });
@@ -83,12 +70,8 @@
         //Initialize
         //========================
         scheduler.init("printer_schedule", new Date(), "timeline");
-        scheduler.parse([
-          { text: "Conference", start_date: "05/05/2015 12:00", end_date: "05/05/2015 21:00", printer_id: "1" },
-          { text: "Meeting", start_date: "05/05/2015 09:00", end_date: "05/05/2015 21:00", printer_id: "2" },
-          { text: "Conference", start_date: "05/05/2015 15:00", end_date: "05/05/2015 17:00", printer_id: "3" }
-                        ], "json");
-                                    });
+        scheduler.parse(bookings, "json");
+    });
 
 </script>
 
