@@ -20,10 +20,10 @@ namespace Makerlab.Migrations
         protected override void Seed(Makerlab.MakerContext context)
         {
             context.UserRoles.AddOrUpdate(ur => ur.RoleName,
-                new UserRole { Id = 1, CanCreateBooking = true, RoleName = "Administrator" },
-                new UserRole { Id = 2, CanCreateBooking = true, RoleName = "User" });
+                new UserRole { Id = 1, CanCreateBooking = true, CanViewDashboard = true, RoleName = "Administrator" },
+                new UserRole { Id = 2, CanCreateBooking = true, CanViewDashboard = false, RoleName = "User" });
             context.Users.AddOrUpdate(u => u.Id,
-                new User() { Id = 1, FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "testMail@mail.dk", StudieNummer = 123456789, UserRoleId = 1 });
+                new User() { Id = 1, FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "jens.jensen@institution.dk", StudieNummer = 123456789, UserRoleId = 1 });
             context.Printers.AddOrUpdate(p => p.Id,
                   new Printer() { Id = 1, Name = "Gandalf", Active = true },
                   new Printer() { Id = 2, Name = "Frodo", Active = true },

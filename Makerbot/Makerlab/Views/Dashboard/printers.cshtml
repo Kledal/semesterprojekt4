@@ -1,0 +1,45 @@
+﻿@using Makerlab.Helpers
+@{
+    ViewBag.Title = "MakerLab :: Printers";
+}
+@model List<Makerlab.Models.Printer> 
+<div class="container">
+    <div class="row">
+        @Html.Partial("_dashboard_navbar")
+        
+        <div class="col-md-10">
+            <h3 class="header-no-margin">Printere</h3>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Navn</th>
+                    <th>Uuid</th>
+                    <th>Aktiv</th>
+                    <th>UnderMantenance</th>
+                    <th>Handlinger</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var printer in Model)
+                    {
+                        <tr>
+                            <td>@printer.Id</td>
+                            <td>@printer.Name</td>
+                            <td>@printer.UuId</td>
+                            <td>@Html.DisplayFor(modelItem => printer.Active)</td>
+                            <td>@Html.DisplayFor(modelItem => printer.UnderMantenance)</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Printers", new {id=printer.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
+                                <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

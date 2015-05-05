@@ -17,19 +17,24 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Frontend")"><i class="glyphicon glyphicon-home"></i> Oversigt</a></li>
-
-                <li class="@Html.IsSelected(action: "MyBookings")"><a href="@Url.Action("MyBookings", "Frontend")"><i class="glyphicon glyphicon-th-list"></i> Mine bookinger</a></li>
-
-
+                <li class="@Html.IsSelected(controller: "Frontend", action: "Index")"><a href="@Url.Action("Index", "Frontend")"><i class="glyphicon glyphicon-home"></i> Oversigt</a></li>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li class="@Html.IsSelected(action: "NewBooking")"><a href="@Url.Action("NewBooking", "Frontend")"><i class="glyphicon glyphicon glyphicon-plus"></i> Ny booking</a></li>
+                    <li class="@Html.IsSelected(action: "MyBookings")"><a href="@Url.Action("MyBookings", "Frontend")"><i class="glyphicon glyphicon-th-list"></i> Mine bookinger</a></li>
                 }
-                
+
+                @if (ViewContext.Can(UserRoleMethod.CanCreateBooking))
+                {
+                    <li class="@Html.IsSelected(action: "NewBooking")"><a href="@Url.Action("NewBooking", "Frontend")"><i class="glyphicon glyphicon-plus"></i> Ny booking</a></li>
+                }
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                @if ( ViewContext.Can(UserRoleMethod.CanViewDashboard) )
+                {
+                    <li class="@Html.IsSelected(controller: "Dashboard", action: "Index")"><a href="@Url.Action("Index", "Dashboard")"><i class="glyphicon glyphicon-cog"></i> Dashboard</a></li>
+                }
+
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <li class="@Html.IsSelected(action: "LogInd")"><a href="@Url.Action("LogInd", "Frontend")"><i class="glyphicon glyphicon-log-in"></i> Log ind</a></li>
@@ -40,7 +45,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <i class="glyphicon glyphicon-user"></i>
-                             @*@ViewContext.BaseController().CurrentUser.FirstName*@<span class="caret"></span>
+                            @*@ViewContext.BaseController().CurrentUser.FirstName*@<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="@Url.Action("SignOut", "AuthServices")"><i class="glyphicon glyphicon-log-out"></i> Log ud</a></li>

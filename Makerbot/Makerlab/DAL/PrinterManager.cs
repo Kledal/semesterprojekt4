@@ -35,7 +35,7 @@ namespace Makerlab.DAL
             }
         }
 
-        public static IEnumerable<Printer> Read()
+        public static List<Printer> Read()
         {
             using (var db = new MakerContext())
             {

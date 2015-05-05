@@ -191,12 +191,15 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\BookingsController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\FrontendController.cs" />
+    <Compile Include="Controllers\PrintersController.cs" />
     <Compile Include="DAL\BookingManager.cs" />
     <Compile Include="DAL\PrinterManager.cs" />
     <Compile Include="Controllers\api\PrintersController.cs" />
     <Compile Include="DAL\UserManager.cs" />
     <Compile Include="DAL\UserRoleManager.cs" />
+    <Compile Include="Extensions\AuthAttribute.cs" />
     <Compile Include="Extensions\ViewContextExtension.cs" />
     <Compile Include="MakerContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -243,6 +246,10 @@
     <Compile Include="Migrations\201505021148061_AddedUuidToPrinter.Designer.cs">
       <DependentUpon>201505021148061_AddedUuidToPrinter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505050855370_UpdatedAttributeToUserRole.cs" />
+    <Compile Include="Migrations\201505050855370_UpdatedAttributeToUserRole.Designer.cs">
+      <DependentUpon>201505050855370_UpdatedAttributeToUserRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
@@ -265,11 +272,14 @@
     <Content Include="Views\Frontend\LogInd.cshtml" />
     <Content Include="Views\Frontend\MyBookings.cshtml" />
     <Content Include="Views\Frontend\NewBooking.cshtml" />
-    <Content Include="Views\Printer\Create.cshtml" />
-    <Content Include="Views\Printer\Delete.cshtml" />
-    <Content Include="Views\Printer\Details.cshtml" />
-    <Content Include="Views\Printer\Edit.cshtml" />
-    <Content Include="Views\Printer\Index.cshtml" />
+    <Content Include="Views\Dashboard\index.cshtml" />
+    <Content Include="Views\Dashboard\_dashboard_navbar.cshtml" />
+    <Content Include="Views\Dashboard\printers.cshtml" />
+    <Content Include="Views\Printers\Create.cshtml" />
+    <Content Include="Views\Printers\Delete.cshtml" />
+    <Content Include="Views\Printers\Details.cshtml" />
+    <Content Include="Views\Printers\Edit.cshtml" />
+    <Content Include="Views\Printers\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -315,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505021148061_AddedUuidToPrinter.resx">
       <DependentUpon>201505021148061_AddedUuidToPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505050855370_UpdatedAttributeToUserRole.resx">
+      <DependentUpon>201505050855370_UpdatedAttributeToUserRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

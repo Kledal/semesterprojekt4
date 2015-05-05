@@ -13,7 +13,7 @@ using ModelState = System.Web.ModelBinding.ModelState;
 namespace Makerlab.Controllers
 {
     public class FrontendController : ApplicationController
-    {  
+    {
         // GET: /Frontend/
         public ActionResult Index()
         {
@@ -30,7 +30,6 @@ namespace Makerlab.Controllers
                 bookingList.Add(new { text = booking.User.FirstName +" "+ booking.User.LastName, start_date = booking.StartTime.ToString("g"), end_date = booking.EndTime.ToString("g"), printer_id = booking.PrinterId });
             }
             ViewBag.bookings = bookingList;
-
             return View();
         }
 
