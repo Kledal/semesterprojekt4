@@ -4,10 +4,11 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Helpers;
-using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Http;
+using Hangfire;
+using GlobalConfiguration = System.Web.Http.GlobalConfiguration;
 
 namespace Makerlab
 {
@@ -22,5 +23,6 @@ namespace Makerlab
             GlobalConfiguration.Configuration.EnsureInitialized();
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
         }
+
     }
 }
