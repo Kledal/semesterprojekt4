@@ -361,13 +361,11 @@
     <EmbeddedResource Include="Migrations\201505071059380_RemovedPrinterBoolsActiveAndUnderMantananceAddedIsBookable.resx">
       <DependentUpon>201505071059380_RemovedPrinterBoolsActiveAndUnderMantananceAddedIsBookable.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201505071323295_AddedAttributesToprinter.resx">
       <DependentUpon>201505071323295_AddedAttributesToprinter.cs</DependentUpon>
-=======
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505071332417_AddedMessages.resx">
       <DependentUpon>201505071332417_AddedMessages.cs</DependentUpon>
->>>>>>> Kaare-AddedMessagesToDatabase
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
