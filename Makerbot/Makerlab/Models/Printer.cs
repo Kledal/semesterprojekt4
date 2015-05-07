@@ -12,6 +12,12 @@ namespace Makerlab.Models
         public bool IsBookable { get; set; }
         public DateTime LastSeen { get; set; }
 
+        public int BedTemperature { get; set; }
+        public int NozzleTemperature { get; set; }
+        public bool Printing { get; set; }
+        public bool Paused { get; set; }
+        public int CurrentLine { get; set; }
+
         // Navigation
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<PrinterCommand> PrinterCommands { get; set; } 
