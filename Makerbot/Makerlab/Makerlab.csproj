@@ -267,6 +267,7 @@
     <Compile Include="Migrations\201505071323295_AddedAttributesToprinter.cs" />
     <Compile Include="Migrations\201505071323295_AddedAttributesToprinter.Designer.cs">
       <DependentUpon>201505071323295_AddedAttributesToprinter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201505071332417_AddedMessages.cs" />
     <Compile Include="Migrations\201505071332417_AddedMessages.Designer.cs">
       <DependentUpon>201505071332417_AddedMessages.cs</DependentUpon>
