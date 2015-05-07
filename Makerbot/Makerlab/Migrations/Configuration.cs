@@ -25,10 +25,10 @@ namespace Makerlab.Migrations
             context.Users.AddOrUpdate(u => u.Id,
                 new User() { Id = 1, FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "jens.jensen@institution.dk", StudieNummer = 123456789, UserRoleId = 1 });
             context.Printers.AddOrUpdate(p => p.Id,
-                  new Printer() { Id = 1, Name = "Gandalf", Active = true },
-                  new Printer() { Id = 2, Name = "Frodo", Active = true },
-                  new Printer() { Id = 3, Name = "Gollum", Active = true },
-                  new Printer() { Id = 4, Name = "Saruon", Active = true });
+                  new Printer() { Id = 1, Name = "Gandalf", Active = true, LastSeen = DateTime.Now },
+                  new Printer() { Id = 2, Name = "Frodo", Active = true, LastSeen = DateTime.Now },
+                  new Printer() { Id = 3, Name = "Gollum", Active = true, LastSeen = DateTime.Now },
+                  new Printer() { Id = 4, Name = "Saruon", Active = true, LastSeen = DateTime.Now});
             context.Files.AddOrUpdate(f => f.Id,
                 new File() { Id = 1, FileName = "Testfile1" },
                 new File() { Id = 2, FileName = "Testfile2" });

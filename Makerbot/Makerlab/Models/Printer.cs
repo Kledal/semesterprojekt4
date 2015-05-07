@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,6 +11,7 @@ namespace Makerlab.Models
         public string UuId { get; set; }
         public bool Active { get; set; }
         public bool UnderMantenance { get; set; }
+        public DateTime LastSeen { get; set; }
 
         // Navigation
         public virtual ICollection<Booking> Bookings { get; set; }
