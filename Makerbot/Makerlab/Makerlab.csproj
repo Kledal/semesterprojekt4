@@ -268,6 +268,7 @@
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
     <Compile Include="Models\File.cs" />
+    <Compile Include="Models\Messages.cs" />
     <Compile Include="Models\Printer.cs" />
     <Compile Include="Models\PrinterCommand.cs" />
     <Compile Include="Models\User.cs" />
@@ -296,6 +297,7 @@
     <Content Include="Views\Printers\Details.cshtml" />
     <Content Include="Views\Printers\Edit.cshtml" />
     <Content Include="Views\Printers\Index.cshtml" />
+    <Content Include="Views\Dashboard\messages.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
