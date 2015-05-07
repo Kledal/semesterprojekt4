@@ -25,15 +25,21 @@ namespace Makerlab
             GlobalConfiguration.Configuration.EnsureInitialized();
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
 
-            Redis = ConnectionMultiplexer.Connect(new ConfigurationOptions()
+            try
             {
-                EndPoints = { "10.29.0.67", "6379" },
-                ServiceName = "MakerLab Redis",
-                Password = "JPFhQpvwxzSwsnJwfIHaoPgMxZJxFKO"
-            });
+                Redis = ConnectionMultiplexer.Connect(new ConfigurationOptions()
+                {
+                    EndPoints = {"10.29.0.67", "6379"},
+                    ServiceName = "MakerLab Redis",
+                    Password = "JPFhQpvwxzSwsnJwfIHaoPgMxZJxFKO"
+                });
 
-            // Start background workers
-            TaskManager.Initialize(new MyRegistry()); 
+                // Start background workers
+                TaskManager.Initialize(new MyRegistry());
+            } catch (Exception e)
+            {
+                
+            }
         }
     }
 }
