@@ -1,4 +1,6 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Http;
@@ -6,11 +8,14 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using FluentScheduler;
 using Makerlab.Tasks;
+using StackExchange.Redis;
 
 namespace Makerlab
 {
     public class MvcApplication : HttpApplication
     {
+        public static ConnectionMultiplexer Redis;
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -20,8 +25,15 @@ namespace Makerlab
             GlobalConfiguration.Configuration.EnsureInitialized();
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
 
+            Redis = ConnectionMultiplexer.Connect(new ConfigurationOptions()
+            {
+                EndPoints = { "10.29.0.67", "6379" },
+                ServiceName = "MakerLab Redis",
+                Password = "JPFhQpvwxzSwsnJwfIHaoPgMxZJxFKO"
+            });
+
+            // Start background workers
             TaskManager.Initialize(new MyRegistry()); 
         }
-
     }
 }

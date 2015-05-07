@@ -34,7 +34,7 @@ namespace Makerlab.DAL
                 return updatedPrinter.Entity;
             }
         }
-
+        
         public static List<Printer> Read()
         {
             using (var db = new MakerContext())
@@ -51,6 +51,17 @@ namespace Makerlab.DAL
             {
                 var printer = db.Printers.Include(u => u.Bookings)
                     .Include(u => u.Bookings).SingleOrDefault(u => u.Id == id);
+
+                return printer;
+            }
+        }
+
+        public static Printer Read(string uuid)
+        {
+            using (var db = new MakerContext())
+            {
+                var printer = db.Printers.Include(u => u.Bookings)
+                    .Include(u => u.Bookings).SingleOrDefault(u => u.UuId == uuid);
 
                 return printer;
             }
