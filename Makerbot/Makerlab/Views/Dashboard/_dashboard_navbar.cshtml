@@ -1,0 +1,12 @@
+﻿@using Makerlab.Helpers
+<div class="col-md-2">
+    <div class="list-group">
+        <a href="@Url.Action("Index", "Dashboard")" class="list-group-item @Html.IsSelected(controller: "Dashboard", action: "Index")">
+            <i class="glyphicon glyphicon-th-list"></i> Dashboard
+        </a>
+
+        <a href="@Url.Action("Printers", "Dashboard")" class="list-group-item @Html.IsSelected(controller: "Dashboard", action: "Printers")">
+            <i class="glyphicon glyphicon-print"></i> Printere
+        </a>
+    </div>
+</div>

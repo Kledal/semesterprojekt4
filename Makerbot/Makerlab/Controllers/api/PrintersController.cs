@@ -12,7 +12,7 @@ using Makerlab.Models;
 using Makerlab;
 using Makerlab.DAL;
 
-namespace Makerlab.Controllers
+namespace Makerlab.Controllers.api
 {
     public class PrintersController : ApiController
     {
