@@ -3,7 +3,7 @@ namespace Makerlab.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddedAttributesToprinter : DbMigration
+    public partial class AddedPrinterAttributes : DbMigration
     {
         public override void Up()
         {

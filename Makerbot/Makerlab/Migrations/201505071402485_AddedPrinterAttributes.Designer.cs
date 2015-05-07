@@ -7,13 +7,13 @@ namespace Makerlab.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedAttributesToprinter : IMigrationMetadata
+    public sealed partial class AddedPrinterAttributes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedAttributesToprinter));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedPrinterAttributes));
         
         string IMigrationMetadata.Id
         {
-            get { return "201505071323295_AddedAttributesToprinter"; }
+            get { return "201505071402485_AddedPrinterAttributes"; }
         }
         
         string IMigrationMetadata.Source
