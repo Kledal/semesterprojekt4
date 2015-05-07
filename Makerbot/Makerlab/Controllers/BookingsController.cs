@@ -2,105 +2,132 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
 using Makerlab;
 using Makerlab.Models;
 
 namespace Makerlab.Controllers
 {
-    public class BookingsController : ApiController
+    public class BookingsController : Controller
     {
         private MakerContext db = new MakerContext();
 
-        // GET: api/Bookings
-        public IQueryable<Booking> GetBookings()
+        // GET: Bookings
+        public async Task<ActionResult> Index()
         {
-            return db.Bookings;
+            var bookings = db.Bookings.Include(b => b.File).Include(b => b.Printer).Include(b => b.User);
+            return View(await bookings.ToListAsync());
         }
 
-        // GET: api/Bookings/5
-        [ResponseType(typeof(Booking))]
-        public async Task<IHttpActionResult> GetBooking(int id)
+        // GET: Bookings/Details/5
+        public async Task<ActionResult> Details(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Booking booking = await db.Bookings.FindAsync(id);
             if (booking == null)
             {
-                return NotFound();
+                return HttpNotFound();
             }
-
-            return Ok(booking);
+            return View(booking);
         }
 
-        // PUT: api/Bookings/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutBooking(int id, Booking booking)
+        // GET: Bookings/Create
+        public ActionResult Create()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            ViewBag.FileId = new SelectList(db.Files, "Id", "FileName");
+            ViewBag.PrinterId = new SelectList(db.Printers, "Id", "Name");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
+            return View();
+        }
 
-            if (id != booking.Id)
+        // POST: Bookings/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "Id,FileId,UserId,StartTime,EndTime,PrinterId")] Booking booking)
+        {
+            if (ModelState.IsValid)
             {
-                return BadRequest();
-            }
-
-            db.Entry(booking).State = EntityState.Modified;
-
-            try
-            {
+                db.Bookings.Add(booking);
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookingExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToAction("Index");
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            ViewBag.FileId = new SelectList(db.Files, "Id", "FileName", booking.FileId);
+            ViewBag.PrinterId = new SelectList(db.Printers, "Id", "Name", booking.PrinterId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", booking.UserId);
+            return View(booking);
         }
 
-        // POST: api/Bookings
-        [ResponseType(typeof(Booking))]
-        public async Task<IHttpActionResult> PostBooking(Booking booking)
+        // GET: Bookings/Edit/5
+        public async Task<ActionResult> Edit(int? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return BadRequest(ModelState);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            db.Bookings.Add(booking);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = booking.Id }, booking);
-        }
-
-        // DELETE: api/Bookings/5
-        [ResponseType(typeof(Booking))]
-        public async Task<IHttpActionResult> DeleteBooking(int id)
-        {
             Booking booking = await db.Bookings.FindAsync(id);
             if (booking == null)
             {
-                return NotFound();
+                return HttpNotFound();
             }
+            ViewBag.FileId = new SelectList(db.Files, "Id", "FileName", booking.FileId);
+            ViewBag.PrinterId = new SelectList(db.Printers, "Id", "Name", booking.PrinterId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", booking.UserId);
+            return View(booking);
+        }
 
+        // POST: Bookings/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,FileId,UserId,StartTime,EndTime,PrinterId")] Booking booking)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(booking).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.FileId = new SelectList(db.Files, "Id", "FileName", booking.FileId);
+            ViewBag.PrinterId = new SelectList(db.Printers, "Id", "Name", booking.PrinterId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", booking.UserId);
+            return View(booking);
+        }
+
+        // GET: Bookings/Delete/5
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Booking booking = await db.Bookings.FindAsync(id);
+            if (booking == null)
+            {
+                return HttpNotFound();
+            }
+            return View(booking);
+        }
+
+        // POST: Bookings/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            Booking booking = await db.Bookings.FindAsync(id);
             db.Bookings.Remove(booking);
             await db.SaveChangesAsync();
-
-            return Ok(booking);
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
@@ -110,11 +137,6 @@ namespace Makerlab.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private bool BookingExists(int id)
-        {
-            return db.Bookings.Count(e => e.Id == id) > 0;
         }
     }
 }

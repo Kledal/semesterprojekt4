@@ -136,7 +136,6 @@
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />
-    <Content Include="Content\jquery.timepicker.css" />
     <Content Include="Content\dhtmlxscheduler.css" />
     <Content Include="Content\imgs_dhx_terrace\arrow_left.png" />
     <Content Include="Content\imgs_dhx_terrace\arrow_right.png" />
@@ -153,6 +152,7 @@
     <Content Include="Content\imgs_dhx_terrace\export_pdf.png" />
     <Content Include="Content\imgs_dhx_terrace\resize_dots.png" />
     <Content Include="Content\imgs_dhx_terrace\resizing.png" />
+    <Content Include="Content\jquery.timepicker.css" />
     <Content Include="Content\Overview.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -181,7 +181,6 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
-    <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\jquery.timepicker.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -305,6 +304,11 @@
     <Content Include="Views\Printers\Edit.cshtml" />
     <Content Include="Views\Printers\Index.cshtml" />
     <Content Include="Views\Dashboard\messages.cshtml" />
+    <Content Include="Views\Bookings\Create.cshtml" />
+    <Content Include="Views\Bookings\Delete.cshtml" />
+    <Content Include="Views\Bookings\Details.cshtml" />
+    <Content Include="Views\Bookings\Edit.cshtml" />
+    <Content Include="Views\Bookings\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
