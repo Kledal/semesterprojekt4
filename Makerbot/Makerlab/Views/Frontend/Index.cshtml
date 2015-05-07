@@ -18,6 +18,11 @@
     }
 </style>
 
+<div class="alert alert-warning">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Warning!</strong> There was a problem with your network connection.
+</div>
+
 <div id="printer_schedule" class="dhx_cal_container" style="height: 350px;">
     <div class="dhx_cal_navline">
         <div class="dhx_cal_prev_button">&nbsp;</div>
@@ -39,6 +44,7 @@
         scheduler.locale.labels.timeline_tab = "Timeline";
         scheduler.locale.labels.section_custom = "Printer";
         scheduler.config.fix_tab_position = false;
+        scheduler.config.multisection = true; 
         //=====================
         //Block modifications
         //=====================
@@ -46,6 +52,7 @@
         scheduler.config.readonly_form = true;
         scheduler.config.dblclick_create = false; // Sørger for at der ikke er klik events.
         scheduler.attachEvent("onBeforeDrag", function () { return false; }); // Sørger for man ikke kan lave en drag event.
+
         //===============
         //Configuration
         //===============
@@ -66,9 +73,11 @@
             render: "bar"
         });
 
+
         //========================
         //Initialize
         //========================
+      
         scheduler.init("printer_schedule", new Date(), "timeline");
         scheduler.parse(bookings, "json");
     });

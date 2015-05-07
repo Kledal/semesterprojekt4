@@ -23,6 +23,11 @@ namespace Makerlab.Controllers
             return View(PrinterManager.Read());
         }
 
+        public ActionResult Messages()
+        {
+            return View();
+        }
+
         //
         // GET: /Dashboard/Details/5
         public ActionResult Details(int id)
