@@ -202,7 +202,6 @@
     <Compile Include="Controllers\PrintersController.cs" />
     <Compile Include="DAL\BookingManager.cs" />
     <Compile Include="DAL\PrinterManager.cs" />
-    <Compile Include="Controllers\api\PrintersController.cs" />
     <Compile Include="DAL\UserManager.cs" />
     <Compile Include="DAL\UserRoleManager.cs" />
     <Compile Include="Extensions\AuthAttribute.cs" />
