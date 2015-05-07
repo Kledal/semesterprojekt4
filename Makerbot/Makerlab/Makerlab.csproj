@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201505071014392_AddedLastSeenToPrinter.Designer.cs">
       <DependentUpon>201505071014392_AddedLastSeenToPrinter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505071059380_RemovedPrinterBoolsActiveAndUnderMantananceAddedIsBookable.cs" />
+    <Compile Include="Migrations\201505071059380_RemovedPrinterBoolsActiveAndUnderMantananceAddedIsBookable.Designer.cs">
+      <DependentUpon>201505071059380_RemovedPrinterBoolsActiveAndUnderMantananceAddedIsBookable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
@@ -343,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505071014392_AddedLastSeenToPrinter.resx">
       <DependentUpon>201505071014392_AddedLastSeenToPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505071059380_RemovedPrinterBoolsActiveAndUnderMantananceAddedIsBookable.resx">
+      <DependentUpon>201505071059380_RemovedPrinterBoolsActiveAndUnderMantananceAddedIsBookable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

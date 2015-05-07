@@ -20,7 +20,10 @@ namespace Makerlab.Controllers
             var printerList = new List<object>();
             foreach (var printer in PrinterManager.Read())
             {
-                printerList.Add(new {key = printer.Id, label = printer.Name});
+                if (printer.IsBookable == true)
+                {
+                   printerList.Add(new {key = printer.Id, label = printer.Name}); 
+                }
             }
             ViewBag.printers = printerList;
 

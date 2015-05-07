@@ -16,8 +16,7 @@
                     <th>#</th>
                     <th>Navn</th>
                     <th>Uuid</th>
-                    <th>Aktiv</th>
-                    <th>UnderMantenance</th>
+                    <th>IsBookable</th>
                     <th>Sidst opdateret</th>
                     <th>Handlinger</th>
                 </tr>
@@ -30,8 +29,7 @@
                             <td>@printer.Id</td>
                             <td>@printer.Name</td>
                             <td>@printer.UuId</td>
-                            <td>@Html.DisplayFor(modelItem => printer.Active)</td>
-                            <td>@Html.DisplayFor(modelItem => printer.UnderMantenance)</td>
+                            <td>@Html.DisplayFor(modelItem => printer.IsBookable)</td>
                             <td>@Html.DisplayFor(modelItem => printer.LastSeen)</td>
                             <td>
                                 <a href="@Url.Action("Edit", "Printers", new {id=printer.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>

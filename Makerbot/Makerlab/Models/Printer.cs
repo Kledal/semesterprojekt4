@@ -9,8 +9,7 @@ namespace Makerlab.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string UuId { get; set; }
-        public bool Active { get; set; }
-        public bool UnderMantenance { get; set; }
+        public bool IsBookable { get; set; }
         public DateTime LastSeen { get; set; }
 
         // Navigation
