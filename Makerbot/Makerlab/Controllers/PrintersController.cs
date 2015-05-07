@@ -81,14 +81,14 @@ namespace Makerlab.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Name,UuId,Active")] Printer printer)
+        public ActionResult Edit([Bind(Include = "Id,Name,UuId,IsBookable")] Printer printer)
         {
             if (ModelState.IsValid)
             {
                 var dbPrinter = db.Printers.First(p => p.Id == printer.Id);
                 dbPrinter.Name = printer.Name;
                 dbPrinter.UuId = printer.UuId;
-                dbPrinter.Active = printer.Active;
+                dbPrinter.IsBookable = printer.IsBookable;
                 db.SaveChanges();
                 return RedirectToAction("Printers", "Dashboard");
             }
