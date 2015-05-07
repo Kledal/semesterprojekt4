@@ -36,18 +36,10 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Active, new {@class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.IsBookable, new {@class = "control-label col-md-2"})
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Active)
-                        @Html.ValidationMessageFor(model => model.Active)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.UnderMantenance, new {@class = "control-label col-md-2"})
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.UnderMantenance)
-                        @Html.ValidationMessageFor(model => model.UnderMantenance)
+                        @Html.EditorFor(model => model.IsBookable)
+                        @Html.ValidationMessageFor(model => model.IsBookable)
                     </div>
                 </div>
 

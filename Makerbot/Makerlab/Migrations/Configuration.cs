@@ -21,7 +21,8 @@ namespace Makerlab.Migrations
         {
             context.UserRoles.AddOrUpdate(ur => ur.RoleName,
                 new UserRole { Id = 1, CanCreateBooking = true, CanViewDashboard = true, RoleName = "Administrator" },
-                new UserRole { Id = 2, CanCreateBooking = true, CanViewDashboard = false, RoleName = "User" });
+                new UserRole { Id = 2, CanCreateBooking = true, CanViewDashboard = false, RoleName = "ApprovedUser" },
+                new UserRole { Id = 3, CanCreateBooking = false, CanViewDashboard = false, RoleName = "DefaultUser" });
             context.Users.AddOrUpdate(u => u.Id,
                 new User() { Id = 1, FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "jens.jensen@institution.dk", StudieNummer = 123456789, UserRoleId = 1 });
             context.Printers.AddOrUpdate(p => p.Id,

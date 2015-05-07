@@ -25,7 +25,7 @@
 
                 <tbody>
 
-                    @foreach (var d in ViewContext.CurrentUser().Bookings)
+                    @foreach (var d in @ViewContext.CurrentUser().Bookings)
                     {
                         <tr>
                             <td>@d.Printer.Name</td>
