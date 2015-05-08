@@ -274,6 +274,7 @@
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
     <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FileUploadModel.cs" />
     <Compile Include="Models\Messages.cs" />
     <Compile Include="Models\Printer.cs" />
     <Compile Include="Models\PrinterCommand.cs" />
