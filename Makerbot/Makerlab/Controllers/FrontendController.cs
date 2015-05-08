@@ -35,7 +35,7 @@ namespace Makerlab.Controllers
                 bookingList.Add(new { text = booking.User.FirstName +" "+ booking.User.LastName, start_date = booking.StartTime.ToString("g"), end_date = booking.EndTime.ToString("g"), printer_id = booking.PrinterId });
             }
             ViewBag.bookings = bookingList;
-            return View();
+            return View(MessageManager.Read());
         }
 
         public ActionResult MyBookings()

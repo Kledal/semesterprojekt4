@@ -5,14 +5,14 @@ using System.Web;
 
 namespace Makerlab.Models
 {
-    public class Messages
+    public class Message
     {
         public int Id { get; set; }
-        public string Message { get; set; }
+        public string Content { get; set; }
 
         public string Type { get; set; }
 
-        public Messages()
+        public Message()
         {
             
         }
