@@ -86,7 +86,7 @@
                     <option>Vælg printer..</option>
                     @foreach (var d in @PrinterManager.Read())
                     {
-                        if (d.Active)
+                        if (d.IsBookable)
                         {
                             <option id="@d.Name">@d.Name</option>
 
