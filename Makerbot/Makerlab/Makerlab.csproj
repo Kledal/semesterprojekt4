@@ -200,6 +200,7 @@
     <Compile Include="Controllers\FrontendController.cs" />
     <Compile Include="Controllers\PrintersController.cs" />
     <Compile Include="DAL\BookingManager.cs" />
+    <Compile Include="DAL\MessageManager.cs" />
     <Compile Include="DAL\PrinterManager.cs" />
     <Compile Include="DAL\UserManager.cs" />
     <Compile Include="DAL\UserRoleManager.cs" />
@@ -270,12 +271,16 @@
     <Compile Include="Migrations\201505071402485_AddedPrinterAttributes.Designer.cs">
       <DependentUpon>201505071402485_AddedPrinterAttributes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505081054379_FixedMessage.cs" />
+    <Compile Include="Migrations\201505081054379_FixedMessage.Designer.cs">
+      <DependentUpon>201505081054379_FixedMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FileUploadModel.cs" />
-    <Compile Include="Models\Messages.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Printer.cs" />
     <Compile Include="Models\PrinterCommand.cs" />
     <Compile Include="Models\User.cs" />
@@ -370,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505071402485_AddedPrinterAttributes.resx">
       <DependentUpon>201505071402485_AddedPrinterAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505081054379_FixedMessage.resx">
+      <DependentUpon>201505081054379_FixedMessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
