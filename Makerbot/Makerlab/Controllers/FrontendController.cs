@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IdentityModel.Services;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Web;
@@ -20,12 +21,9 @@ namespace Makerlab.Controllers
         public ActionResult Index()
         {
             var printerList = new List<object>();
-            foreach (var printer in PrinterManager.Read())
+            foreach (var printer in PrinterManager.Read().Where(printer => printer.IsBookable))
             {
-                if (printer.IsBookable == true)
-                {
-                   printerList.Add(new {key = printer.Id, label = printer.Name}); 
-                }
+                  printerList.Add(new {key = printer.Id, label = printer.Name}); 
             }
             ViewBag.printers = printerList;
 
@@ -40,6 +38,12 @@ namespace Makerlab.Controllers
 
         public ActionResult MyBookings()
         {
+            var bookingList = new List<object>();
+            foreach (var booking in BookingManager.Read())
+            {
+                bookingList.Add(new { text = booking.User.FirstName + " " + booking.User.LastName, start_date = booking.StartTime.ToString("g"), end_date = booking.EndTime.ToString("g"), printer_id = booking.PrinterId });
+            }
+            ViewBag.bookings = bookingList;
             return View();
         }
 

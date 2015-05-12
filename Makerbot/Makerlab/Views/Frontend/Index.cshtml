@@ -1,4 +1,6 @@
-﻿@model Makerlab.Models.User
+﻿@using Makerlab.Extensions
+@using Makerlab.Models
+@model Makerlab.Models.User
 
 @{
     ViewBag.Title = "Oversigt";
@@ -17,71 +19,75 @@
         cursor: auto;
     }
 </style>
-
-<div class="alert alert-warning">
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>Warning!</strong> There was a problem with your network connection.
-</div>
-
-<div id="printer_schedule" class="dhx_cal_container" style="height: 350px;">
-    <div class="dhx_cal_navline">
-        <div class="dhx_cal_prev_button">&nbsp;</div>
-        <div class="dhx_cal_next_button">&nbsp;</div>
-        <div class="dhx_cal_today_button"></div>
-        <div class="dhx_cal_date"></div>
+@if (!ViewContext.Can(UserRoleMethod.CanCreateBooking))
+{
+    <div class="col-md-6 col-md-offset-3">
+        <div class="alert alert-info" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p class="text-center">Du kan ikke booke tider, før du er blevet godkendt af Samuel</p>
+        </div>
     </div>
-    <div class="dhx_cal_header"></div>
-    <div class="dhx_cal_data"></div>
-</div>
+}
+<div class="col-md-12 center-block">
+    <div id="printer_schedule" class="dhx_cal_container" style="height: 350px;">
+        <div class="dhx_cal_navline">
+            <div class="dhx_cal_prev_button">&nbsp;</div>
+            <div class="dhx_cal_next_button">&nbsp;</div>
+            <div class="dhx_cal_today_button"></div>
+            <div class="dhx_cal_date"></div>
+        </div>
+        <div class="dhx_cal_header"></div>
+        <div class="dhx_cal_data"></div>
+    </div>
 
-<script>
-    var printers = @Html.Raw(Json.Encode(ViewBag.printers));
-    var bookings = @Html.Raw(Json.Encode(ViewBag.bookings));
+    <script>
+        var printers = @Html.Raw(Json.Encode(ViewBag.printers));
+        var bookings = @Html.Raw(Json.Encode(ViewBag.bookings));
 
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-        // Timeline for printers
-        scheduler.locale.labels.timeline_tab = "Timeline";
-        scheduler.locale.labels.section_custom = "Printer";
-        scheduler.config.fix_tab_position = false;
-        scheduler.config.multisection = true; 
-        //=====================
-        //Block modifications
-        //=====================
-        scheduler.config.details_on_create = true;
-        scheduler.config.readonly_form = true;
-        scheduler.config.dblclick_create = false; // Sørger for at der ikke er klik events.
-        scheduler.attachEvent("onBeforeDrag", function () { return false; }); // Sørger for man ikke kan lave en drag event.
+            // Timeline for printers
+            scheduler.locale.labels.timeline_tab = "Timeline";
+            scheduler.locale.labels.section_custom = "Printer";
+            scheduler.config.fix_tab_position = false;
+            scheduler.config.multisection = true;
+            //=====================
+            //Block modifications
+            //=====================
+            scheduler.config.details_on_create = true;
+            scheduler.config.readonly_form = true;
+            scheduler.config.dblclick_create = false; // Sørger for at der ikke er klik events.
+            scheduler.attachEvent("onBeforeDrag", function () { return false; }); // Sørger for man ikke kan lave en drag event.
 
-        //===============
-        //Configuration
-        //===============
+            //===============
+            //Configuration
+            //===============
 
-        scheduler.createTimelineView({
-            name: "timeline",
-            x_unit: "minute",
-            x_date: "%H:%i",
-            x_step: 60,
-            x_size: 24,
-            x_start: 0,
-            x_length: 24,
-            dy: 40,
-            event_dy: "full",
-            round_position: true,
-            y_unit: printers,
-            y_property: "printer_id",
-            render: "bar"
+            scheduler.createTimelineView({
+                name: "timeline",
+                x_unit: "minute",
+                x_date: "%H:%i",
+                x_step: 60,
+                x_size: 24,
+                x_start: 0,
+                x_length: 24,
+                dy: 40,
+                event_dy: "full",
+                round_position: true,
+                y_unit: printers,
+                y_property: "printer_id",
+                render: "bar"
+            });
+
+
+            //========================
+            //Initialize
+            //========================
+
+            scheduler.init("printer_schedule", new Date(), "timeline");
+            scheduler.parse(bookings, "json");
         });
 
-
-        //========================
-        //Initialize
-        //========================
-      
-        scheduler.init("printer_schedule", new Date(), "timeline");
-        scheduler.parse(bookings, "json");
-    });
-
-</script>
-
+    </script>
+</div>
 
