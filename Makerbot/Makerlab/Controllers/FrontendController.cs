@@ -53,6 +53,11 @@ namespace Makerlab.Controllers
             return View();
         }
 
+        public ActionResult Printers()
+        {
+            return View(PrinterManager.Read());
+        }
+
         //[HttpPost]
         //public ActionResult BookPrinter(HttpPostedFileBase file)
         //{
