@@ -1,24 +1,26 @@
+
 ﻿@using Makerlab.Extensions
 @using Makerlab.Models
 @model Makerlab.Models.User
+﻿@using Makerlab.DAL
 
 @{
     ViewBag.Title = "Oversigt";
 }
 
-<style>
-    .dhx_cal_data {
-        overflow-y: hidden;
+@foreach (var item in MessageManager.Read())
+{
+    if (item.Show)
+    {
+        <div class="container">
+            <div class="alert alert-warning">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                @item.Content
+            </div>
+        </div>
     }
+}
 
-    .dhx_matrix_line .dhx_matrix_cell {
-        cursor: pointer;
-    }
-
-    .dhx_cal_event_line {
-        cursor: auto;
-    }
-</style>
 @if (!ViewContext.Can(UserRoleMethod.CanCreateBooking))
 {
     <div class="col-md-6 col-md-offset-3">
@@ -40,11 +42,11 @@
         <div class="dhx_cal_data"></div>
     </div>
 
-    <script>
-        var printers = @Html.Raw(Json.Encode(ViewBag.printers));
-        var bookings = @Html.Raw(Json.Encode(ViewBag.bookings));
+<script>
+    var printers = @Html.Raw(Json.Encode(ViewBag.printers));
+    var bookings = @Html.Raw(Json.Encode(ViewBag.bookings));
 
-        $(document).ready(function () {
+    $(document).ready(function () {
 
             // Timeline for printers
             scheduler.locale.labels.timeline_tab = "Timeline";

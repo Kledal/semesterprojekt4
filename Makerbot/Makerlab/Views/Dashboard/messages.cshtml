@@ -1,4 +1,9 @@
-﻿
+@using System.Web.UI.HtmlControls
+@using Makerlab.Controllers
+@using Makerlab.DAL
+@using Makerlab.Models
+@model Makerlab.Models.Message
+
 @{
     ViewBag.Title = "MakerLab :: Messages";
 }
@@ -7,27 +12,86 @@
     <div class="row">
         @Html.Partial("_dashboard_navbar")
         @*<div class="checkbox">
-        
-        <label>
-            <input type="checkbox"> Succes!
-        </label>
-        <label>
-            <input type="checkbox"> Warning!
-        </label>
-        <label>
-            <input type="checkbox"> Info!
-        </label>
-        <label>
-            <input type="checkbox"> Danger!
-        </label>
-    </div>*@
 
-        <div class="form-group">
-            <label for="msg">Besked:</label>
-            <input type="text" class="form-control" id="msg" placeholder="Skriv beskeden her">
-            <br/>
-            <button type="submit" class="btn btn-primary">Post besked</button>
+                <label>
+                    <input type="checkbox"> Succes!
+                </label>
+                <label>
+                    <input type="checkbox"> Warning!
+                </label>
+                <label>
+                    <input type="checkbox"> Info!
+                </label>
+                <label>
+                    <input type="checkbox"> Danger!
+                </label>
+            </div>*@
+
+
+        @using (Html.BeginForm("Create", "Messages"))
+        {
+            <div class="col-md-10">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Content, new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Content)
+                    @Html.ValidationMessageFor(model => model.Content)
+                </div>
+
+                <div class="checkbox">
+                    <label>Vis besked på forsiden</label>
+                    @Html.CheckBoxFor(model => model.Show, new { @class = "col-md-2" })
+                </div>
+
+                @*<div class="dropdown-menu">
+                      @Html.DropDownListFor(model => model.Type)
+                    </div>*@
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Post Besked" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        <div class="col-md-10">
+            <h3 class="header-no-margin">Beskeder</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Besked</th>
+                        <th>Type</th>
+                        <th>Show</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var message in MessageManager.Read())
+                    {
+                        <tr>
+                            <td>@message.Id</td>
+                            <td>@message.Content</td>
+                            <td>@message.Type</td>
+                            <td>@message.Show</td>
+
+                            @*<td>
+                                <a href="@Url.Action("Delete", "Messages", new {id = message.Id})" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </a>
+                            </td>*@
+
+
+                            <td>
+                                @using (Html.BeginForm("Delete", "Messages", new { id = message.Id }, FormMethod.Post))
+                                {
+                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
+
     </div>
 </div>
-
