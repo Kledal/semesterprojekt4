@@ -1,5 +1,6 @@
 ﻿@using Makerlab.Extensions
-@model dynamic
+@using Makerlab.Models
+@model List<Booking>
 
 @{
     ViewBag.Title = "Mine Bookinger";
@@ -24,16 +25,16 @@
                 </thead>
 
                 <tbody>
-                @foreach (var d in @ViewContext.CurrentUser().Bookings)
+                @foreach (var booking in Model)
                 {
                     <tr>
-                        <td>@d.Printer.Name</td>
-                        <td></td>
-                        <td>@d.File.FileName</td>
+                        <td>@booking.Printer.Name</td>
+                        <td>@Html.DisplayFor(modelItem => booking.StartTime) </td>
+                        <td>@booking.File.FileName</td>
                         <td>
                             <button class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></button>
                             <button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
-                            <button class="btn btn-info"><i class="glyphicon glyphicon-cloud-upload"></i></button>
+                            <button class="btn btn-primary"><i class="glyphicon glyphicon-camera"></i></button>
                         </td>
                     </tr>
                 }
@@ -53,7 +54,6 @@
                         <th class="col-md-2">Printer</th>
                         <th class="col-md-3">Dato</th>
                         <th class="col-md-3">Filnavn</th>
-                        <th class="col-md-4">Indstillinger</th>
                     </tr>
                 </thead>
 
@@ -62,9 +62,6 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <button class="btn btn-primary"><i class="glyphicon glyphicon-camera"></i></button>
-                        </td>
                     </tr>
                 </tbody>
             </table>

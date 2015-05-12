@@ -13,4 +13,15 @@
             <i class="glyphicon glyphicon-envelope"></i> Beskeder
         </a>
     </div>
+
+    <h3>Brugere</h3>
+    <div class="list-group">
+        <a href="@Url.Action("Userroles", "Dashboard")" class="list-group-item @Html.IsSelected(controller: "Dashboard", action: "Userroles")">
+            <i class="glyphicon glyphicon-user"></i> Brugerroller
+        </a>
+
+        <a href="@Url.Action("Users", "Dashboard")" class="list-group-item @Html.IsSelected(controller: "Dashboard", action: "Users")">
+            <i class="glyphicon glyphicon-user"></i> Brugere
+        </a>
+    </div>
 </div>

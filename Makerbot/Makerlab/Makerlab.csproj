@@ -316,6 +316,8 @@
     <Content Include="Views\Bookings\Edit.cshtml" />
     <Content Include="Views\Bookings\Index.cshtml" />
     <Content Include="Views\Frontend\Printers.cshtml" />
+    <Content Include="Views\Dashboard\userroles.cshtml" />
+    <Content Include="Views\Dashboard\users.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

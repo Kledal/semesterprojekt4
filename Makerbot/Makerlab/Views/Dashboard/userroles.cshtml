@@ -1,0 +1,43 @@
+﻿@using Makerlab.Helpers
+@{
+    ViewBag.Title = "MakerLab :: Brugerroller";
+}
+@model List<Makerlab.Models.UserRole> 
+<div class="container">
+    <div class="row">
+        @Html.Partial("_dashboard_navbar")
+        
+        <div class="col-md-10">
+            <h3 class="header-no-margin">Brugerroller</h3>
+
+            <a href="@Url.Action("Create", "Userroles")" class="btn btn-success">Tilføj ny brugerrolle</a>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Navn</th>
+                    <th>Antal medlemmer</th>
+                    <th>Handlinger</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var userrole in Model)
+                    {
+                        <tr>
+                            <td>@userrole.Id</td>
+                            <td>@userrole.RoleName</td>
+                            <td>@userrole.Users.Count</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "UserRoles", new {id=userrole.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
+                                <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

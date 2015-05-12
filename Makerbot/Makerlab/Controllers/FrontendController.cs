@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using Makerlab.DAL;
+using Makerlab.Extensions;
 using Makerlab.Models;
 using ModelState = System.Web.ModelBinding.ModelState;
 
@@ -17,6 +18,7 @@ namespace Makerlab.Controllers
 {
     public class FrontendController : ApplicationController
     {
+        private MakerContext db = new MakerContext();
         // GET: /Frontend/
         public ActionResult Index()
         {
@@ -36,15 +38,10 @@ namespace Makerlab.Controllers
             return View();
         }
 
+        [Auth("ApprovedUser", "Administrator")]
         public ActionResult MyBookings()
         {
-            var bookingList = new List<object>();
-            foreach (var booking in BookingManager.Read())
-            {
-                bookingList.Add(new { text = booking.User.FirstName + " " + booking.User.LastName, start_date = booking.StartTime.ToString("g"), end_date = booking.EndTime.ToString("g"), printer_id = booking.PrinterId });
-            }
-            ViewBag.bookings = bookingList;
-            return View();
+            return View(db.Bookings.Where(b => b.UserId == CurrentUser.Id).ToList());
         }
 
         public ActionResult LogInd()
