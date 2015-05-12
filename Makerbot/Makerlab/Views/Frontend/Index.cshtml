@@ -1,4 +1,6 @@
-﻿@model Makerlab.Models.User
+﻿@using Makerlab.DAL
+@model Makerlab.Models.Message
+           
 
 @{
     ViewBag.Title = "Oversigt";
@@ -18,10 +20,14 @@
     }
 </style>
 
-<div class="alert alert-warning">
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>Warning!</strong> There was a problem with your network connection.
-</div>
+    if (Model.Show)
+    {
+        <div class="alert alert-warning">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+           @Model.Content
+        </div>
+    }
+
 
 <div id="printer_schedule" class="dhx_cal_container" style="height: 350px;">
     <div class="dhx_cal_navline">

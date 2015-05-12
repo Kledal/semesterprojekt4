@@ -12,9 +12,12 @@ namespace Makerlab.Models
 
         public string Type { get; set; }
 
+        public bool Show { get; set; }
+        
         public Message()
         {
             
         }
+
     }
 }

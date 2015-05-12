@@ -275,6 +275,10 @@
     <Compile Include="Migrations\201505081054379_FixedMessage.Designer.cs">
       <DependentUpon>201505081054379_FixedMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505081100019_AddedMessageBool.cs" />
+    <Compile Include="Migrations\201505081100019_AddedMessageBool.Designer.cs">
+      <DependentUpon>201505081100019_AddedMessageBool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
@@ -378,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505081054379_FixedMessage.resx">
       <DependentUpon>201505081054379_FixedMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505081100019_AddedMessageBool.resx">
+      <DependentUpon>201505081100019_AddedMessageBool.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
