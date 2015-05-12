@@ -11,8 +11,6 @@ namespace Makerlab.Models
         public string Content { get; set; }
 
         public string Type { get; set; }
-
-        public bool Show { get; set; }
         
         public Message()
         {
