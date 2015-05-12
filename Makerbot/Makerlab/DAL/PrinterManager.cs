@@ -39,8 +39,7 @@ namespace Makerlab.DAL
         {
             using (var db = new MakerContext())
             {
-                var printers = db.Printers
-                    .Include(u => u.Bookings).ToList();
+                var printers = db.Printers.Include(u => u.Bookings).ToList();
                 return printers;
             }
         }

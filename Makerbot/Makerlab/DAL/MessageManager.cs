@@ -20,11 +20,11 @@ namespace Makerlab.DAL
             }
         }
 
-        public static IEnumerable<Message> Read()
+        public static List<Message> Read()
         {
             using (var db = new MakerContext())
             {
-                var messages = db.Messages.Include(u => u.Type).ToList();
+                var messages = db.Messages.ToList();
                 return messages;
             }
         }
