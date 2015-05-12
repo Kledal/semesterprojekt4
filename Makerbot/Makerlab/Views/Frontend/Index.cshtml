@@ -1,33 +1,24 @@
 ﻿@using Makerlab.DAL
-@model Makerlab.Models.Message
-           
+@using Makerlab.Models
+@model Makerlab.Models.User
+
 
 @{
     ViewBag.Title = "Oversigt";
 }
 
-<style>
-    .dhx_cal_data {
-        overflow-y: hidden;
-    }
-
-    .dhx_matrix_line .dhx_matrix_cell {
-        cursor: pointer;
-    }
-
-    .dhx_cal_event_line {
-        cursor: auto;
-    }
-</style>
-
-    if (Model.Show)
+@foreach (var item in MessageManager.Read())
+{
+    if (item.Show)
     {
-        <div class="alert alert-warning">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-           @Model.Content
+        <div class="container">
+            <div class="alert alert-warning">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                @item.Content
+            </div>
         </div>
     }
-
+}
 
 <div id="printer_schedule" class="dhx_cal_container" style="height: 350px;">
     <div class="dhx_cal_navline">
@@ -50,7 +41,7 @@
         scheduler.locale.labels.timeline_tab = "Timeline";
         scheduler.locale.labels.section_custom = "Printer";
         scheduler.config.fix_tab_position = false;
-        scheduler.config.multisection = true; 
+        scheduler.config.multisection = true;
         //=====================
         //Block modifications
         //=====================
@@ -83,11 +74,9 @@
         //========================
         //Initialize
         //========================
-      
+
         scheduler.init("printer_schedule", new Date(), "timeline");
         scheduler.parse(bookings, "json");
     });
 
 </script>
-
-

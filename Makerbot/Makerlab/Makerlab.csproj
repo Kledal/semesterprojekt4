@@ -198,6 +198,7 @@
     <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\FrontendController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\PrintersController.cs" />
     <Compile Include="DAL\BookingManager.cs" />
     <Compile Include="DAL\MessageManager.cs" />
@@ -330,6 +331,7 @@
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\s3gfiler\" />
     <Folder Include="KentorIT\" />
+    <Folder Include="Views\Messages\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

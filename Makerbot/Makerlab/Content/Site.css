@@ -43,3 +43,15 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.dhx_cal_data {
+    overflow-y: hidden;
+}
+
+.dhx_matrix_line .dhx_matrix_cell {
+    cursor: pointer;
+}
+
+.dhx_cal_event_line {
+    cursor: auto;
+}
