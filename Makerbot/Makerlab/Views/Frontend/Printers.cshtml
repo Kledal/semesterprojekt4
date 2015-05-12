@@ -1,0 +1,38 @@
+﻿@using Makerlab.Helpers
+@{
+    ViewBag.Title = "MakerLab :: Printers";
+}
+@model List<Makerlab.Models.Printer>
+<div class="container">
+        <div class="col-md-10">
+            <h3 class="header-no-margin">Printere</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Navn</th>
+                        <th>Printer?</th>
+                        <th>Temperature</th>
+                        <th>Stop print</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var printer in Model.Where(printer => printer.IsBookable))
+                    {
+                        <tr>
+                            <td>@printer.Id</td>
+                            <td>@printer.Name</td>
+                            <td>@Html.DisplayFor(modelItem => printer.Printing)</td>
+                            <td>Bed: @printer.BedTemperature, Nozzle: @printer.NozzleTemperature</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
