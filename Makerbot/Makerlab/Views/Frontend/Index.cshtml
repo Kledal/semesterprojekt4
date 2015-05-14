@@ -1,15 +1,13 @@
-
-﻿@using Makerlab.Extensions
+@using Makerlab.Extensions
 @using Makerlab.DAL
 @using Makerlab.Extensions
 @using Makerlab.Models
 @model Makerlab.Models.User
-﻿@using Makerlab.DAL
+@using Makerlab.DAL
 
 @{
     ViewBag.Title = "Oversigt";
 }
-
 @foreach (var item in MessageManager.Read())
 {
         <div class="container">
@@ -91,4 +89,3 @@
 
     </script>
 </div>
-
