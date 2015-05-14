@@ -30,15 +30,6 @@ namespace Makerlabr.Tests.Controllers
         {
           // Arrange 
 
-            // Arrange          
-            const string expectedViewName = "Index";
-            var dashboardController = new DashboardController();
-
-            // Act
-            var result = dashboardController.Index() as ViewResult;
-
-            // Assert
-            Assert.AreEqual(expectedViewName, result.ViewName, "View name should have been {0}", expectedViewName);
 
         }
         //[Test]
