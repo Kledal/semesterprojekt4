@@ -61,20 +61,12 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.UserRoleId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.UserRoleId, "UserRoleId", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.UserRoleId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownListFor(u => u.UserRoleId, (SelectList)ViewBag.UserRoleId)
                             @Html.ValidationMessageFor(model => model.UserRoleId, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
-                    @*<div class="form-group">
-                        @Html.LabelFor(model => model.UserRoleId, "UserRoleId", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownList("UserRoleId", null, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.UserRoleId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">

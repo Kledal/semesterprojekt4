@@ -40,6 +40,7 @@ namespace Makerlab.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserRoleId = new SelectList(db.UserRoles.ToList(), "Id", "RoleName", user.UserRoleId);
             return View(user);
         }
 
@@ -56,6 +57,7 @@ namespace Makerlab.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Users", "Dashboard");
             }
+            ViewBag.UserRoleId = new SelectList(db.UserRoles.ToList(), "Id", "RoleName", user.UserRoleId);
             return View(user);
         }
 

@@ -28,6 +28,13 @@
         </div>
     </div>
 }
+
+@*Anmod om adgangskortnummer fra brugere unden registeret adgangskort*@
+@*@if (ViewContext.CurrentUser().AccessCard.Equals(null))
+    {
+      Noget med at indskrive accesscard nummer
+    }*@
+
 <div class="col-md-12 center-block">
     <div id="printer_schedule" class="dhx_cal_container" style="height: 350px;">
         <div class="dhx_cal_navline">
