@@ -3,6 +3,7 @@
 @using Makerlab.Extensions
 @using Makerlab.Models
 @model Makerlab.Models.User
+
 @using Makerlab.DAL
 
 @{
@@ -10,12 +11,12 @@
 }
 @foreach (var item in MessageManager.Read())
 {
-        <div class="container">
-            <div class="alert @item.Type">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                @item.Content
-            </div>
+    <div class="container">
+        <div class="alert @item.Type">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            @item.Content
         </div>
+    </div>
 }
 
 @if (!ViewContext.Can(UserRoleMethod.CanCreateBooking))
