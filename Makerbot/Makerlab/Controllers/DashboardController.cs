@@ -23,28 +23,22 @@ namespace Makerlab.Controllers
 
         public ActionResult Users()
         {
-            return View(UserManager.Read());
+            return View("Users", UserManager.Read());
         }
 
         public ActionResult Printers()
         {
-            return View(PrinterManager.Read());
+            return View("Printers", PrinterManager.Read());
         }
 
         public ActionResult Userroles()
         {
-            return View(db.UserRoles.ToList());
+            return View("Userroles", db.UserRoles.ToList());
         }
 
         public ActionResult Messages()
         {
-            return View();
-        }
-
-        // GET: /Dashboard/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            return View("Messages");
         }
     }
 }
