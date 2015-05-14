@@ -18,7 +18,7 @@ namespace Makerlab.Controllers
         // GET: /Dashboard/
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public ActionResult Users()
