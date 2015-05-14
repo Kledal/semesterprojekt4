@@ -55,18 +55,16 @@
                         <th>Type</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     @foreach (var message in MessageManager.Read())
                     {
                         <tr>
                             <td>@message.Content</td>
                             <td>@message.Type</td>
-
                             <td>
                                 @using (Html.BeginForm("Delete", "Messages", new { id = message.Id }, FormMethod.Post))
                                 {
-                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
                                 }
                             </td>
                         </tr>
