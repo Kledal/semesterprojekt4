@@ -36,6 +36,18 @@ namespace Makerlab.Tasks
 
                     PrinterManager.Update(printer);
                 }
+
+                string camsJson = MvcApplication.Redis.GetDatabase().StringGet("cams");
+                dynamic cams = JsonConvert.DeserializeObject(camsJson);
+
+                foreach (var cam in cams)
+                {
+                    string uuid = cam.uuid;
+                    var printer = PrinterManager.Read(uuid);
+
+                    printer.LastFrame = cam.lastFrame;
+                    PrinterManager.Update(printer);
+                }
             }
             catch (Exception e)
             {

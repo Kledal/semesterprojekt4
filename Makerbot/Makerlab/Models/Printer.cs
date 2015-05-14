@@ -18,6 +18,8 @@ namespace Makerlab.Models
         public bool Paused { get; set; }
         public int CurrentLine { get; set; }
 
+        public string LastFrame { get; set; }
+
         // Navigation
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<PrinterCommand> PrinterCommands { get; set; } 

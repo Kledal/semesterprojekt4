@@ -24,7 +24,7 @@ namespace Makerlab.Extensions
             if (!user.Identity.IsAuthenticated) return false;
 
             var identity = (ClaimsIdentity)user.Identity;
-            var mail = identity.Claims.FirstOrDefault(claim => claim.Type == "mail");
+            var mail = identity.Claims.FirstOrDefault(claim => claim.Type == "eduPersonPrincipalName");
             if (mail == null) return false;
 
             var u = UserManager.FindByEmail(mail.Value);

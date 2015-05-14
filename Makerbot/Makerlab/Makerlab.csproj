@@ -200,6 +200,7 @@
     <Compile Include="Controllers\FrontendController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\PrintersController.cs" />
+    <Compile Include="Controllers\UserrolesController.cs" />
     <Compile Include="DAL\BookingManager.cs" />
     <Compile Include="DAL\MessageManager.cs" />
     <Compile Include="DAL\PrinterManager.cs" />
@@ -276,13 +277,9 @@
     <Compile Include="Migrations\201505081054379_FixedMessage.Designer.cs">
       <DependentUpon>201505081054379_FixedMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505081100019_AddedMessageBool.cs" />
-    <Compile Include="Migrations\201505081100019_AddedMessageBool.Designer.cs">
-      <DependentUpon>201505081100019_AddedMessageBool.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505121259332_Removed_message_bool.cs" />
-    <Compile Include="Migrations\201505121259332_Removed_message_bool.Designer.cs">
-      <DependentUpon>201505121259332_Removed_message_bool.cs</DependentUpon>
+    <Compile Include="Migrations\201505121447007_AddedLastFrameToCamera.cs" />
+    <Compile Include="Migrations\201505121447007_AddedLastFrameToCamera.Designer.cs">
+      <DependentUpon>201505121447007_AddedLastFrameToCamera.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -327,6 +324,11 @@
     <Content Include="Views\Frontend\Printers.cshtml" />
     <Content Include="Views\Dashboard\userroles.cshtml" />
     <Content Include="Views\Dashboard\users.cshtml" />
+    <Content Include="Views\Userroles\Create.cshtml" />
+    <Content Include="Views\Userroles\Delete.cshtml" />
+    <Content Include="Views\Userroles\Details.cshtml" />
+    <Content Include="Views\Userroles\Edit.cshtml" />
+    <Content Include="Views\Userroles\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -392,11 +394,16 @@
     <EmbeddedResource Include="Migrations\201505081054379_FixedMessage.resx">
       <DependentUpon>201505081054379_FixedMessage.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201505081100019_AddedMessageBool.resx">
       <DependentUpon>201505081100019_AddedMessageBool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505121259332_Removed_message_bool.resx">
       <DependentUpon>201505121259332_Removed_message_bool.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\201505121447007_AddedLastFrameToCamera.resx">
+      <DependentUpon>201505121447007_AddedLastFrameToCamera.cs</DependentUpon>
+>>>>>>> Added cam and dashboard
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,55 @@
+﻿@using Makerlab.Helpers
+@{
+    ViewBag.Title = "MakerLab :: Brugerroller";
+}
+@model Makerlab.Models.UserRole
+<div class="container">
+    <div class="row">
+        @Html.Partial("../Dashboard/_dashboard_navbar")
+
+        <div class="col-md-10">
+            <h3 class="header-no-margin">Are you sure you want to delete this?</h3>
+            <div>
+                <h4>UserRole</h4>
+                <hr/>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RoleName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RoleName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CanCreateBooking)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CanCreateBooking)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CanViewDashboard)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CanViewDashboard)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default"/> |
+                        @Html.ActionLink("Back to List", "Userroles", "Dashboard")
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

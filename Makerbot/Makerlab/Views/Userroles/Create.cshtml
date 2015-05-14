@@ -1,0 +1,59 @@
+﻿@using Makerlab.Helpers
+@{
+    ViewBag.Title = "MakerLab :: Brugerroller";
+}
+@model Makerlab.Models.UserRole
+<div class="container">
+    <div class="row">
+        @Html.Partial("../Dashboard/_dashboard_navbar")
+
+        <div class="col-md-10">
+            <h3 class="header-no-margin">Ny brugerroller</h3>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr/>
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RoleName, new {@class = "control-label col-md-2"})
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.RoleName)
+                            @Html.ValidationMessageFor(model => model.RoleName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CanCreateBooking, new {@class = "control-label col-md-2"})
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CanCreateBooking)
+                            @Html.ValidationMessageFor(model => model.CanCreateBooking)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CanViewDashboard, new {@class = "control-label col-md-2"})
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CanViewDashboard)
+                            @Html.ValidationMessageFor(model => model.CanViewDashboard)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default"/>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Tilbage til listen", "Userroles", "Dashboard")
+            </div>
+
+        </div>
+    </div>
+</div>

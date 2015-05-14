@@ -4,33 +4,34 @@
 }
 @model List<Makerlab.Models.Printer>
 <div class="container">
-        <div class="col-md-10">
-            <h3 class="header-no-margin">Aktive printere</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Navn</th>
-                        <th>Status</th>
-                        <th>Temperature</th>
-                        <th>Stop print</th>
-                    </tr>
+    <div class="col-md-10">
+        <h3 class="header-no-margin">Aktive printere</h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Navn</th>
+                <th>Status</th>
+                <th>Temperature</th>
+                <th>Stop print</th>
+            </tr>
 
-                </thead>
-                <tbody>
-                    @foreach (var printer in Model.Where(printer => printer.IsBookable))
-                    {
-                        <tr>
-                            <td>@printer.Name</td>
-                            <td>@Html.DisplayFor(modelItem => printer.Printing)</td>
-                            <td>Bed: @printer.BedTemperature, Nozzle: @printer.NozzleTemperature</td>
-                            <td>
-                                <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+            </thead>
+            <tbody>
+            @foreach (var printer in Model.Where(printer => printer.IsBookable))
+            {
+                <tr>
+                    <td>@printer.Name</td>
+                    <td>@Html.DisplayFor(modelItem => printer.Printing)</td>
+                    <td>Bed: @printer.BedTemperature, Nozzle: @printer.NozzleTemperature</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <img src="data:image/png;base64, @Model.First(p => p.Name == "Gollum").LastFrame"/>
     </div>
 </div>
 

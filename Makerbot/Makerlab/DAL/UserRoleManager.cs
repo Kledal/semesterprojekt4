@@ -36,14 +36,13 @@ namespace Makerlab.DAL
             }
         }
 
-        public static async Task<IEnumerable<UserRole>> Read()
+        public static List<UserRole> Read()
         {
             using (var db = new MakerContext())
             {
-                var userRoles = await db.UserRoles
-                    .Include(u => u.Users)
-                    .ToListAsync();
-                return userRoles;
+                var userRoles = db.UserRoles
+                    .Include(u => u.Users);
+                return userRoles.ToList();
             }
         }
 

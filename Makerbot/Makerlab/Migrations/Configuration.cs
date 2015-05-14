@@ -24,11 +24,11 @@ namespace Makerlab.Migrations
                 new UserRole { Id = 2, CanCreateBooking = true, CanViewDashboard = false, RoleName = "ApprovedUser" },
                 new UserRole { Id = 3, CanCreateBooking = false, CanViewDashboard = false, RoleName = "DefaultUser" });
             context.Users.AddOrUpdate(u => u.Id,
-                new User() { Id = 1, FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "jens.jensen@institution.dk", StudieNummer = 123456789, UserRoleId = 1 });
+                new User() { Id = 1, FirstName = "Test", LastName = "Person", AccessCard = 12345678, Email = "jj@testidp.wayf.dk", StudieNummer = 123456789, UserRoleId = 1 });
             context.Printers.AddOrUpdate(p => p.Id,
                   new Printer() { Id = 1, Name = "Gandalf", IsBookable = true, LastSeen = DateTime.Now },
                   new Printer() { Id = 2, Name = "Frodo", IsBookable = true, LastSeen = DateTime.Now },
-                  new Printer() { Id = 3, Name = "Gollum", IsBookable = true, LastSeen = DateTime.Now },
+                  new Printer() { Id = 3, Name = "Gollum", IsBookable = true, LastSeen = DateTime.Now, UuId = "55330343534351103222" },
                   new Printer() { Id = 4, Name = "Saruon", IsBookable = true, LastSeen = DateTime.Now });
             context.Files.AddOrUpdate(f => f.Id,
                 new File() { Id = 1, FileName = "Testfile1" },
