@@ -200,6 +200,7 @@
     <Compile Include="Controllers\FrontendController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\PrintersController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserrolesController.cs" />
     <Compile Include="DAL\BookingManager.cs" />
     <Compile Include="DAL\MessageManager.cs" />
@@ -329,6 +330,9 @@
     <Content Include="Views\Userroles\Details.cshtml" />
     <Content Include="Views\Userroles\Edit.cshtml" />
     <Content Include="Views\Userroles\Index.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

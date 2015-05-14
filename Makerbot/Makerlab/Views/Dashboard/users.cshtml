@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         @Html.Partial("_dashboard_navbar")
-        
+
         <div class="col-md-10">
             <h3 class="header-no-margin">Brugere</h3>
             <table class="table table-striped">
@@ -21,16 +21,45 @@
 
                 </thead>
                 <tbody>
-                    @foreach (var user in Model)
+                @foreach (var user in Model.Where(user => user.UserRoleId != 3))
+                {
+                    <tr>
+                        <td>@user.UserRole.RoleName</td>
+                        <td>@user.StudieNummer</td>
+                        <td>@user.FirstName @user.LastName</td>
+                        <td>@user.Email</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Users", new {id = user.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
+                            <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i></button>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-10">
+            <h3 class="header-no-margin">Ikke-godkendte brugere</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Studienummer</th>
+                        <th>Navn</th>
+                        <th>Email</th>
+                        <th>Godkend bruger</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var defaultUser in Model.Where(defaultUser => defaultUser.UserRoleId == 3))
                     {
                         <tr>
-                            <td>@user.UserRole.RoleName</td>
-                            <td>@user.StudieNummer</td>
-                            <td>@user.FirstName @user.LastName</td>
-                            <td>@user.Email</td>
+                            <td>@defaultUser.StudieNummer</td>
+                            <td>@defaultUser.FirstName @defaultUser.LastName</td>
+                            <td>@defaultUser.Email</td>
                             <td>
-                                <a href="@Url.Action("Edit", "Users", new {id = user.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
-                                <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
+                                @using (Html.BeginForm("Approve", "Users", new { id = defaultUser.Id }, FormMethod.Post))
+                                {
+                                    <input type="submit" value="Godkend" class="btn btn-success btn-sm" />
+                                }
                             </td>
                         </tr>
                     }
