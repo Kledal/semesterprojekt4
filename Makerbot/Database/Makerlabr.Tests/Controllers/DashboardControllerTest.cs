@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Web.Mvc;
+using Makerlab;
 using Makerlab.Controllers;
+using Makerlab.DAL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using NSubstitute; 
 using Assert = NUnit.Framework.Assert;
 
 
@@ -13,10 +16,13 @@ namespace Makerlabr.Tests.Controllers
     {
         private DashboardController _uut;
 
+       
+
         [SetUp]
         public void SetUp()
         {
             _uut = new DashboardController();
+          
         }
 
         [Test]
@@ -29,6 +35,9 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void Users_ActionReturns_UsersView()
         {
+    
+
+
             string viewName = "Users";
             Assert.AreEqual(viewName, ((ViewResult)_uut.Users()).ViewName, "View name should have been {0}", viewName);
         }
