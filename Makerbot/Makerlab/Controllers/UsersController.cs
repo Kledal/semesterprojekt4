@@ -49,7 +49,7 @@ namespace Makerlab.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,StudieNummer,AccessCard,UserRoldId")] User user)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,StudieNummer,AccessCard,UserRoleId")] User user)
         {
             if (ModelState.IsValid)
             {
