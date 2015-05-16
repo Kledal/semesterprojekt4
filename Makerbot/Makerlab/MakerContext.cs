@@ -16,7 +16,6 @@ namespace Makerlab
         public virtual DbSet<BookingPrintError> BookingPrintErrors { get; set; }
         public virtual DbSet<Printer> Printers { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
-        public virtual DbSet<PrinterCommand> PrinterCommands { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
 
         public MakerContext() : base("MakerLabConnection")

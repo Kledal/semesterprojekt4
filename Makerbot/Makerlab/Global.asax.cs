@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using FluentScheduler;
 using Makerlab.Tasks;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 
 namespace Makerlab
@@ -22,9 +23,11 @@ namespace Makerlab
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            GlobalConfiguration.Configuration.EnsureInitialized();
-            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
+            
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
+            
             try
             {
                 Redis = ConnectionMultiplexer.Connect(new ConfigurationOptions()
@@ -40,6 +43,8 @@ namespace Makerlab
             {
                 
             }
+
+            GlobalConfiguration.Configuration.EnsureInitialized();
         }
     }
 }

@@ -194,6 +194,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\api\PrintersController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -282,6 +283,10 @@
     <Compile Include="Migrations\201505121447007_AddedLastFrameToCamera.Designer.cs">
       <DependentUpon>201505121447007_AddedLastFrameToCamera.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505141644398_RemovePrinterCommandFromPrinter.cs" />
+    <Compile Include="Migrations\201505141644398_RemovePrinterCommandFromPrinter.Designer.cs">
+      <DependentUpon>201505141644398_RemovePrinterCommandFromPrinter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
@@ -289,7 +294,6 @@
     <Compile Include="Models\FileUploadModel.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Printer.cs" />
-    <Compile Include="Models\PrinterCommand.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -400,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505121447007_AddedLastFrameToCamera.resx">
       <DependentUpon>201505121447007_AddedLastFrameToCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505141644398_RemovePrinterCommandFromPrinter.resx">
+      <DependentUpon>201505141644398_RemovePrinterCommandFromPrinter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Makerlab.Models
 {
@@ -18,11 +19,11 @@ namespace Makerlab.Models
         public bool Paused { get; set; }
         public int CurrentLine { get; set; }
 
+        [JsonIgnore]
         public string LastFrame { get; set; }
 
         // Navigation
         public virtual ICollection<Booking> Bookings { get; set; }
-        public virtual ICollection<PrinterCommand> PrinterCommands { get; set; } 
 
         public Printer()
         {
