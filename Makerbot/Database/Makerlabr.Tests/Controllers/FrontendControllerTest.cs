@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Makerlab.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,8 +22,24 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void Logind_Returns_View()
         {
-            string viewName = "";
-            Assert.AreEqual(viewName, ((ViewResult)_uut.Index()).ViewName, "View name should have been {0}", viewName);
+            string viewName = "LogInd";
+            Assert.AreEqual(viewName, ((ViewResult)_uut.LogInd()).ViewName, "View name should have been {0}", viewName);
+        }
+
+        [Test]
+        public void NewBookings_Returns_View()
+        {
+            string viewName = "NewBooking";
+            Assert.AreEqual(viewName, ((ViewResult)_uut.NewBooking()).ViewName, "View name should have been {0}", viewName);
+        }
+
+        [Test]
+        public void MyBookings_Returns_View()
+        {
+
+            var abe = false; 
+
+            Assert.IsTrue(abe);
         }
     }
 }

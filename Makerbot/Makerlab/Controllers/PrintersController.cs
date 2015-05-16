@@ -20,7 +20,7 @@ namespace Makerlab.Controllers
         // GET: /Printers/
         public ActionResult Index()
         {
-            return View(db.Printers.ToList());
+            return View("Index",db.Printers.ToList());
         }
 
         // GET: /Printers/Details/5

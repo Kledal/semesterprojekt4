@@ -46,17 +46,17 @@ namespace Makerlab.Controllers
 
         public ActionResult LogInd()
         {
-            return View();
+            return View("LogInd");
         }
 
         public ActionResult NewBooking()
         {
-            return View();
+            return View("NewBooking");
         }
 
         public ActionResult Printers()
         {
-            return View(PrinterManager.Read());
+            return View("Printers",PrinterManager.Read());
         }
 
         //[HttpPost]

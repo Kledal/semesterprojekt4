@@ -16,8 +16,6 @@ namespace Makerlabr.Tests.Controllers
     {
         private DashboardController _uut;
 
-       
-
         [SetUp]
         public void SetUp()
         {
@@ -36,10 +34,31 @@ namespace Makerlabr.Tests.Controllers
         public void Users_ActionReturns_UsersView()
         {
     
-
-
             string viewName = "Users";
             Assert.AreEqual(viewName, ((ViewResult)_uut.Users()).ViewName, "View name should have been {0}", viewName);
+        }
+
+        [Test]
+        public void Printers_ActionReturns_UsersView()
+        {
+            string viewName = "Printers";
+            Assert.AreEqual(viewName, ((ViewResult)_uut.Printers()).ViewName, "View name should have been {0}", viewName);
+        }
+
+        [Test]
+        public void Userroles_ActionReturns_UsersView()
+        {
+
+            string viewName = "Userroles";
+            Assert.AreEqual(viewName, ((ViewResult)_uut.Userroles()).ViewName, "View name should have been {0}", viewName);
+        }
+
+        [Test]
+        public void Messages_ActionReturns_UsersView()
+        {
+
+            string viewName = "Messages";
+            Assert.AreEqual(viewName, ((ViewResult)_uut.Messages()).ViewName, "View name should have been {0}", viewName);
         }
 
     }
