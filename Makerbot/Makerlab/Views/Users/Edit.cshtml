@@ -63,7 +63,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.UserRoleId, "UserRoleId", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownListFor(u => u.UserRoleId, (SelectList)ViewBag.UserRoleId)
+                            @Html.DropDownListFor(u => u.UserRoleId, (SelectList)ViewBag.UserRoles)
                             @Html.ValidationMessageFor(model => model.UserRoleId, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -79,11 +79,6 @@
             <div>
                 @Html.ActionLink("Back to List", "Users", "Dashboard")
             </div>
-
-            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-            <script src="~/Scripts/jquery.validate.min.js"></script>
-            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
         </div>
     </div>
 </div>

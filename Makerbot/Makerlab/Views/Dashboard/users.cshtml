@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "MakerLab :: Brugere";
 }
-@model List<Makerlab.Models.User> 
 <div class="container">
     <div class="row">
         @Html.Partial("_dashboard_navbar")
@@ -21,7 +20,7 @@
 
                 </thead>
                 <tbody>
-                @foreach (var user in Model.Where(user => user.UserRoleId != 3))
+                @foreach (var user in ViewBag.AllUsers)
                 {
                     <tr>
                         <td>@user.UserRole.RoleName</td>
@@ -49,16 +48,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var defaultUser in Model.Where(defaultUser => defaultUser.UserRoleId == 3))
+                    @foreach (var user in ViewBag.NonApprovedUsers)
                     {
                         <tr>
-                            <td>@defaultUser.StudieNummer</td>
-                            <td>@defaultUser.FirstName @defaultUser.LastName</td>
-                            <td>@defaultUser.Email</td>
+                            <td>@user.StudieNummer</td>
+                            <td>@user.FirstName @user.LastName</td>
+                            <td>@user.Email</td>
                             <td>
-                                @using (Html.BeginForm("Approve", "Users", new { id = defaultUser.Id }, FormMethod.Post))
+                                @using (Html.BeginForm("Approve", "Users", new {id = user.Id}, FormMethod.Post))
                                 {
-                                    <input type="submit" value="Godkend" class="btn btn-success btn-sm" />
+                                    <a href="@Url.Action("Edit", "Users", new {id = user.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
+                                    <input type="submit" value="Godkend" class="btn btn-success btn-sm"/>
                                 }
                             </td>
                         </tr>
