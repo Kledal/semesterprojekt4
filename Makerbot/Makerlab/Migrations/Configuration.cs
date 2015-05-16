@@ -14,7 +14,7 @@ namespace Makerlab.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Makerlab.MakerContext context)
