@@ -18,7 +18,9 @@ namespace Makerlab.Controllers
 
         public ActionResult Users()
         {
-            return View("Users", UserManager.Read());
+            ViewBag.NonApprovedUsers = db.Users.Where(u => u.UserRoleId == 3).ToList();
+            ViewBag.AllUsers = db.Users.ToList();
+            return View("Users");
         }
 
         public ActionResult Printers()

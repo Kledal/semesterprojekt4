@@ -35,12 +35,13 @@ namespace Makerlab.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            var user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserRoleId = new SelectList(db.UserRoles.ToList(), "Id", "RoleName", user.UserRoleId);
+
+            ViewBag.UserRoles = new SelectList(db.UserRoles, "Id", "RoleName");
             return View(user);
         }
 
@@ -49,7 +50,7 @@ namespace Makerlab.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,StudieNummer,AccessCard,UserRoldId")] User user)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,StudieNummer,AccessCard,UserRoleId")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +58,7 @@ namespace Makerlab.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Users", "Dashboard");
             }
-            ViewBag.UserRoleId = new SelectList(db.UserRoles.ToList(), "Id", "RoleName", user.UserRoleId);
+            ViewBag.UserRoles = new SelectList(db.UserRoles.ToList(), "Id", "RoleName", user.UserRole.RoleName);
             return View(user);
         }
 
