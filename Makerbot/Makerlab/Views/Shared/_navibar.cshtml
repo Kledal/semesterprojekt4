@@ -30,7 +30,7 @@
 
                 @if (ViewContext.Can(UserRoleMethod.CanCreateBooking))
                 {
-                    <li class="@Html.IsSelected(action: "NewBooking")"><a href="@Url.Action("NewBooking", "Frontend")"><i class="glyphicon glyphicon-plus"></i> Ny booking</a></li>
+                    <li class="@Html.IsSelected(action: "Create", controller: "Bookings")"><a href="@Url.Action("Create", "Bookings")"><i class="glyphicon glyphicon-plus"></i> Ny booking</a></li>
                 }
             </ul>
 

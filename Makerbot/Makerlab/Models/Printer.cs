@@ -29,5 +29,13 @@ namespace Makerlab.Models
         {
             
         }
+
+        public void CancelPrint()
+        {
+            if (!MvcApplication.Redis.IsConnected) throw new Exception("Redis is not connected.");
+            var redisDb = MvcApplication.Redis.GetDatabase();
+
+            redisDb.Publish("commands", new NodeCommand("cancel_print", new { uuid = UuId }).ToString());
+        }
     }
 }

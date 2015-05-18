@@ -33,7 +33,8 @@
                             <td>@Html.DisplayFor(modelItem => printer.IsBookable)</td>
                             <td>@Html.DisplayFor(modelItem => printer.LastSeen)</td>
                             <td>
-                                <a href="@Url.Action("Edit", "Printers", new {id=printer.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
+                                <a href="@Url.Action("Edit", "Printers", new {id = printer.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
+                                <a href="@Url.Action("CancelPrint", "Printers", new { Id = printer.Id })" class="btn btn-warning btn-sm" title="Annuller print"> <i class="glyphicon glyphicon-trash"></i>  </a>
                                 <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
                             </td>
                         </tr>

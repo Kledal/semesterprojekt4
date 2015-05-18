@@ -20,11 +20,11 @@ namespace Makerlab
                 defaults: new { controller = "Frontend", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapHttpRoute(
-                name: "OneLevelNested",
-                routeTemplate: "api/{controller}/{printerId}/{action}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "OneLevelNested",
+            //    url: "api/{controller}/{id}/{action}",
+            //    defaults: new { action = RouteParameter.Optional }
+            //);
 
         }
     }

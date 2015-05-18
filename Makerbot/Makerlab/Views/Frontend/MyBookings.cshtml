@@ -30,9 +30,20 @@
                     <tr>
                         <td>@booking.Printer.Name</td>
                         <td>@Html.DisplayFor(modelItem => booking.StartTime) </td>
-                        <td>@booking.File.FileName</td>
+                        
+                            @if (booking.File != null)
+                            {
+                                <td>
+                                @Html.DisplayFor(modelItme => booking.File.FileName)
+                                    </td>
+                            }
+                            else
+                            {
+                                <td>Fil mangler.</td>
+                            }
+
                         <td>
-                            <button class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></button>
+                            <a href="@Url.Action("UploadFile", "Bookings", new { id = booking.Id })" class="btn btn-success"><i class="glyphicon glyphicon-upload"></i> </a> 
                             <button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
                             <button class="btn btn-primary"><i class="glyphicon glyphicon-camera"></i></button>
                         </td>
@@ -58,11 +69,14 @@
                 </thead>
 
                 <tbody>
+                @foreach (Booking booking in ViewBag.HistoryBookings)
+                {
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td>@Html.DisplayFor(modelItem => booking.Printer.Name) </td>
+                        <td>@Html.DisplayFor(modelItem => booking.StartTime) </td>
                         <td></td>
                     </tr>
+                }
                 </tbody>
             </table>
         </div>

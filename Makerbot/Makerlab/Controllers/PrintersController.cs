@@ -23,6 +23,21 @@ namespace Makerlab.Controllers
             return View("Index",db.Printers.ToList());
         }
 
+        public ActionResult CancelPrint(int id)
+        {
+            var printer = db.Printers.Find(id);
+            try
+            {
+                printer.CancelPrint();
+            }
+            catch (Exception e)
+            {
+                
+            }
+
+            return RedirectToAction("Printers", "Dashboard");
+        }
+
         // GET: /Printers/Details/5
         public ActionResult Details(int? id)
         {

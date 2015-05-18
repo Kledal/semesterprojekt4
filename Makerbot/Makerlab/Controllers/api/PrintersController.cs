@@ -10,9 +10,11 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Makerlab.Models;
 using Makerlab;
+using StackExchange.Redis;
 
 namespace Makerlab.Controllers.api
 {
+    [RoutePrefix("api/Printers")]
     public class PrintersController : ApiController
     {
         private MakerContext db = new MakerContext();
@@ -21,6 +23,18 @@ namespace Makerlab.Controllers.api
         public List<Printer> GetPrinters()
         {
             return db.Printers.ToList();
+        }
+
+        // GET api/Printers/id/CancelPrint
+        [Route("{id:int}/CancelPrint")]
+        [HttpGet]
+        public IHttpActionResult CancelPrint(int id)
+        {
+            
+            var printer = db.Printers.Find(id);
+            printer.CancelPrint();
+
+            return Ok();
         }
 
         // GET api/Printers/5
@@ -35,7 +49,7 @@ namespace Makerlab.Controllers.api
 
             return Ok(printer);
         }
-
+        
         // PUT api/Printers/5
         public IHttpActionResult PutPrinter(int id, Printer printer)
         {

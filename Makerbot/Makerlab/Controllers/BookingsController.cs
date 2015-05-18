@@ -12,7 +12,7 @@ using Makerlab.Models;
 
 namespace Makerlab.Controllers
 {
-    public class BookingsController : Controller
+    public class BookingsController : ApplicationController
     {
         private MakerContext db = new MakerContext();
 
@@ -41,9 +41,7 @@ namespace Makerlab.Controllers
         // GET: Bookings/Create
         public ActionResult Create()
         {
-            ViewBag.FileId = new SelectList(db.Files, "Id", "FileName");
             ViewBag.PrinterId = new SelectList(db.Printers, "Id", "Name");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
@@ -52,18 +50,27 @@ namespace Makerlab.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,FileId,UserId,StartTime,EndTime,PrinterId")] Booking booking)
+        public async Task<ActionResult> Create([Bind(Include = "Id,StartTime,EndTime,PrinterId")] Booking booking)
         {
+            booking.UserId = CurrentUser.Id;
+
+            var overlappingBookings = 
+                db.Bookings.Where(b => b.StartTime < booking.EndTime && booking.StartTime < b.EndTime).ToList();
+
+            if (overlappingBookings.Count > 0)
+            {
+                ModelState.AddModelError("StartTime", "Din valgte tid er optaget.");
+                ModelState.AddModelError("EndTime", "Din valgte tid er optaget.");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Bookings.Add(booking);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyBookings", "Frontend");
             }
 
-            ViewBag.FileId = new SelectList(db.Files, "Id", "FileName", booking.FileId);
             ViewBag.PrinterId = new SelectList(db.Printers, "Id", "Name", booking.PrinterId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", booking.UserId);
             return View(booking);
         }
 
@@ -128,6 +135,11 @@ namespace Makerlab.Controllers
             db.Bookings.Remove(booking);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult UploadFile(int id)
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)

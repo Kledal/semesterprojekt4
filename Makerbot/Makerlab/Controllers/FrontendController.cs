@@ -12,6 +12,7 @@ using System.Web.WebPages;
 using Makerlab.DAL;
 using Makerlab.Extensions;
 using Makerlab.Models;
+using File = Makerlab.Models.File;
 using ModelState = System.Web.ModelBinding.ModelState;
 
 namespace Makerlab.Controllers
@@ -41,7 +42,8 @@ namespace Makerlab.Controllers
         [Auth("ApprovedUser", "Administrator")]
         public ActionResult MyBookings()
         {
-            return View(db.Bookings.Where(b => b.UserId == CurrentUser.Id).ToList());
+            ViewBag.HistoryBookings = db.Bookings.Where(b => b.UserId == CurrentUser.Id && b.StartTime < DateTime.Now).ToList();
+            return View(db.Bookings.Where(b => b.UserId == CurrentUser.Id && b.StartTime > DateTime.Now).ToList());
         }
 
         public ActionResult LogInd()
@@ -80,18 +82,18 @@ namespace Makerlab.Controllers
                 string fileName = string.Empty;
                 string destinationPath = string.Empty;
 
-                List<FileUploadModel> uploadFileModel = new List<FileUploadModel>();
+                List<File> uploadFileModel = new List<File>();
 
                 fileName = Path.GetFileName(file_Uploader.FileName);
                 destinationPath = Path.Combine(Server.MapPath("~/App_Data/s3gfiler"), fileName);
                 file_Uploader.SaveAs(destinationPath);
                 if (Session["fileUploader"] != null)
                 {
-                    var isFileNameRepete = ((List<FileUploadModel>)Session["fileUploader"]).Find(x => x.FileName == fileName);
+                    var isFileNameRepete = ((List<File>)Session["fileUploader"]).Find(x => x.FileName == fileName);
                     if (isFileNameRepete == null)
                     {
-                        uploadFileModel.Add(new FileUploadModel { FileName = fileName, FilePath = destinationPath });
-                        ((List<FileUploadModel>)Session["fileUploader"]).Add(new FileUploadModel { FileName = fileName, FilePath = destinationPath });
+                        uploadFileModel.Add(new File { FileName = fileName, FilePath = destinationPath });
+                        ((List<File>)Session["fileUploader"]).Add(new File { FileName = fileName, FilePath = destinationPath });
                         ViewBag.Message = "File Uploaded Successfully";
                     }
                     else
@@ -101,7 +103,7 @@ namespace Makerlab.Controllers
                 }
                 else
                 {
-                    uploadFileModel.Add(new FileUploadModel { FileName = fileName, FilePath = destinationPath });
+                    uploadFileModel.Add(new File { FileName = fileName, FilePath = destinationPath });
                     Session["fileUploader"] = uploadFileModel;
                     ViewBag.Message = "File Uploaded Successfully";
                 }
@@ -118,8 +120,8 @@ namespace Makerlab.Controllers
             {
                 if (Session["fileUploader"] != null)
                 {
-                    ((List<FileUploadModel>)Session["fileUploader"]).RemoveAll(x => x.FileName == fileName);
-                    sessionFileCount = ((List<FileUploadModel>)Session["fileUploader"]).Count;
+                    ((List<File>)Session["fileUploader"]).RemoveAll(x => x.FileName == fileName);
+                    sessionFileCount = ((List<File>)Session["fileUploader"]).Count;
                     if (fileName != null || fileName != string.Empty)
                     {
                         FileInfo file = new FileInfo(Server.MapPath("~/App_Data/s3gfiler" + fileName));

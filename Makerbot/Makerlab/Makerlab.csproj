@@ -152,6 +152,7 @@
     <Content Include="Content\imgs_dhx_terrace\export_pdf.png" />
     <Content Include="Content\imgs_dhx_terrace\resize_dots.png" />
     <Content Include="Content\imgs_dhx_terrace\resizing.png" />
+    <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\jquery.timepicker.css" />
     <Content Include="Content\Overview.css" />
     <Content Include="Content\Site.css" />
@@ -181,6 +182,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\jquery.timepicker.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -287,13 +289,21 @@
     <Compile Include="Migrations\201505141644398_RemovePrinterCommandFromPrinter.Designer.cs">
       <DependentUpon>201505141644398_RemovePrinterCommandFromPrinter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505181025528_EnableOptionalFile.cs" />
+    <Compile Include="Migrations\201505181025528_EnableOptionalFile.Designer.cs">
+      <DependentUpon>201505181025528_EnableOptionalFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505181143204_AddedStuff.cs" />
+    <Compile Include="Migrations\201505181143204_AddedStuff.Designer.cs">
+      <DependentUpon>201505181143204_AddedStuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
     <Compile Include="Models\File.cs" />
-    <Compile Include="Models\FileUploadModel.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Printer.cs" />
+    <Compile Include="Models\NodeCommand.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -407,6 +417,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505141644398_RemovePrinterCommandFromPrinter.resx">
       <DependentUpon>201505141644398_RemovePrinterCommandFromPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505181025528_EnableOptionalFile.resx">
+      <DependentUpon>201505181025528_EnableOptionalFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505181143204_AddedStuff.resx">
+      <DependentUpon>201505181143204_AddedStuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
