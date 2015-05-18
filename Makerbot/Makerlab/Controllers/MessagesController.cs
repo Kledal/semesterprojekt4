@@ -17,7 +17,7 @@ namespace Makerlab.Controllers
         // GET: Messages
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         [HttpPost]

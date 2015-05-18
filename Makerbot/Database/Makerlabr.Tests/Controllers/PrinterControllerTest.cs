@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Makerlab.Controllers;
 using Makerlab.Models;
@@ -11,11 +13,17 @@ namespace Makerlabr.Tests.Controllers
     [TestClass]
     public class PrinterControllerTest
     {
+        private PrintersController _uut;
 
+        [SetUp]
+        public void SetUp()
+        {
+            _uut = new PrintersController();
+        }
+        
         [Test]
         public void IndexAction_Returns_View()
         {
-            var _uut = new PrintersController();
            
             string viewName = "Index";
             Assert.AreEqual(viewName, ((ViewResult)_uut.Index()).ViewName, "View name should have been {0}", viewName);
@@ -25,25 +33,28 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void CreateAction_Returns_IndexViewWhenModelStateIsValid()
         {
-
-            var _uut = new PrintersController();  
-            
             _uut.ModelState.Clear();
            
             RedirectToRouteResult result = _uut.Create(new Printer()) as RedirectToRouteResult;
             result.RouteValues["Action"].Equals("Index");
             Assert.Equals("Action", result.RouteValues["Index"]);
+        }
 
+        [Test]
+        public void CreateAction_Adds_PrinterToDBWhenModelStateIsValid()
+        {
+           
+            ActionResult result = _uut.Create(new Printer()) as ActionResult; 
         }
 
         [Test]
         public void CreateAction_Returns_ViewWhenModelstateIsInvalid()
         {
-            var _uut = new PrintersController();
+
             _uut.ModelState.Add("data", new ModelState());
             _uut.ModelState.AddModelError("testError", "test");  // Gør modelstate invalid. 
 
-            string viewName = "";
+            string viewName = "Index";
             Assert.AreEqual(viewName, ((ViewResult)_uut.Index()).ViewName, "View name should have been {0}", viewName);
 
         }
@@ -51,11 +62,11 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void EditAction_Returns_ViewWhenModelstateIsInvalid()
         {
-            var _uut = new PrintersController();
+         
             _uut.ModelState.Add("data", new ModelState());
             _uut.ModelState.AddModelError("testError", "test");  // Gør modelstate invalid. 
 
-            string viewName = "";
+            string viewName = "Index";
             Assert.AreEqual(viewName, ((ViewResult)_uut.Index()).ViewName, "View name should have been {0}", viewName);
 
         }
@@ -63,7 +74,7 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void  DeleteAction_Returns_Printerview()
         {
-            var _uut = new PrintersController();
+       
             ActionResult result = _uut.Delete(2); //  uut modtager et ID.
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
@@ -71,20 +82,24 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void DeleteConfirmedAction_Returns_Printerview()
         {
-            var _uut = new PrintersController();
-
+            
             RedirectToRouteResult result = _uut.Create(new Printer()) as RedirectToRouteResult;
-            ActionResult aresult = _uut.DeleteConfirmed(3); 
+            ActionResult aresult = _uut.DeleteConfirmed(3);
 
-            Assert.Equals("Index", result.RouteValues["Index"]);
+            Assert.AreEqual("Index", result.RouteValues["Index"]);
           
+        }
+
+        [Test]
+        public void DeleteConfirmedAction_Deletes_Printer()
+        {
+            var john = true; 
+            Assert.Equals("false",john);
         }
 
         [Test]
         public void Details_Returns_HttpBadRequestWhenIdIsNull()
         {
-            var _uut = new PrintersController();
-            
             ActionResult  result = _uut.Details(null);
 
             Assert.IsInstanceOfType(result, typeof(HttpStatusCodeResult));
@@ -94,13 +109,12 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void Details_Returns_HttpNotFoundWhenPrinterIsNull()
         {
+
            var printer = new Printer();
-           printer.Id = 0; 
-           var _uut = new PrintersController();
+           printer.Id = 0;          
+           ActionResult result = _uut.Details(2);
 
-            ActionResult result = _uut.Details(null);
-
-           Assert.Equals("HttpNotFound",result);
+           Assert.AreEqual("HttpNotFound",result);
         }
 
     }
