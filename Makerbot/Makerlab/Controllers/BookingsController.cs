@@ -171,6 +171,7 @@ namespace Makerlab.Controllers
 
                 if (file.ValidFilename())
                 {
+                    file.NumberOfLines = System.IO.File.ReadLines(destinationPath).Count();
                     file.Booking = db.Bookings.Find(id);
                     file.BookingId = id;
                     db.Files.Add(file);

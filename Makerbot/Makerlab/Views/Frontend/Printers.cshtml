@@ -11,6 +11,7 @@
                 <th>Navn</th>
                 <th>Status</th>
                 <th>Temperature</th>
+                <th>Billede</th>
                 <th class="col-md-1">Stop print</th>
             </tr>
 
@@ -22,6 +23,7 @@
                     <td>@printer.Name</td>
                     <td>@Html.DisplayFor(modelItem => printer.Printing)</td>
                     <td>Bed: @printer.BedTemperature, Nozzle: @printer.NozzleTemperature</td>
+                    <td><img id="printer_frame_@(printer.Id)" src="data:image/png;base64, @printer.LastFrame"/></td>
                     <td>
                         <a href="@Url.Action("CancelPrint", "Printers", new { Id = printer.Id })" class="btn btn-warning btn-sm" title="Annuller print"> <i class="glyphicon glyphicon-trash"></i></a>
                     </td>
@@ -29,8 +31,13 @@
             }
             </tbody>
         </table>
-
-        <img src="data:image/png;base64, @Model.First(p => p.Name == "Saruon").LastFrame"/>
     </div>
 </div>
-
+<script>
+    var printer_ids = @Json.Encode(@Model.Select(p => p.Id).ToList());
+    $(function() {
+        function loadFrame() {
+            
+        }
+    });
+</script>
