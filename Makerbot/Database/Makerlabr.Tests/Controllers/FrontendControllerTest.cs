@@ -37,9 +37,16 @@ namespace Makerlabr.Tests.Controllers
         public void MyBookings_Returns_View()
         {
 
-            var abe = false; 
+            string viewName = "MyBookings";
+            Assert.AreEqual(viewName, ((ViewResult)_uut.MyBookings()).ViewName, "View name should have been {0}", viewName);
+        }
 
-            Assert.IsTrue(abe);
+        [Test]
+        public void Printers_Returns_View()
+        {
+
+            string viewName = "Printers";
+            Assert.AreEqual(viewName, ((ViewResult)_uut.Printers()).ViewName, "View name should have been {0}", viewName);
         }
     }
 }

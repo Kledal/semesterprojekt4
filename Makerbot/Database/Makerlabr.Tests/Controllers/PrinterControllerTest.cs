@@ -7,6 +7,7 @@ using Makerlab.Controllers;
 using Makerlab.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Makerlabr.Tests.Controllers
@@ -44,7 +45,7 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void CreateAction_Adds_PrinterToDBWhenModelStateIsValid()
         {
-
+            
             ActionResult result = _uut.Create(new Printer()) as ActionResult;
         }
 
@@ -58,6 +59,23 @@ namespace Makerlabr.Tests.Controllers
             string viewName = "Index";
             Assert.AreEqual(viewName, ((ViewResult)_uut.Index()).ViewName, "View name should have been {0}", viewName);
 
+        }
+
+        [Test]
+        public void Delete_Returns_HttpBadRequestWhenIdIsNull()
+        {
+            ActionResult result = _uut.Delete(null);
+            Assert.IsInstanceOfType(result, typeof(HttpStatusCodeResult));
+        }
+
+        [Test]
+        public void Delete_Returns_HttpNotFoundWhenPrinterIsNull()
+        {
+
+            var printer = new Printer();
+            printer.Id = 0;
+            ActionResult result = _uut.Delete(printer.Id);
+            Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult));
         }
 
         [Test]
@@ -115,5 +133,31 @@ namespace Makerlabr.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult));
         }
 
+        [Test]
+        public void Edit_Returns_HttpBadRequestWhenIdIsNull()
+        {
+           
+            ActionResult result = _uut.Edit((int?) null);
+            Assert.IsInstanceOfType(result, typeof(HttpStatusCodeResult));
+        }
+
+        [Test]
+        public void Edit_Returns_HttpNotFoundWhenPrinterIsNull()
+        {
+
+            var printer = new Printer();
+            printer.Id = 0;
+            ActionResult result = _uut.Edit(printer.Id);
+            Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult));
+        }
+
+        [Test]
+        public void Edit_Returns_ViewWhenRun()
+        {
+            var printer = new Printer();
+            printer.Id = 3;
+            ActionResult result = _uut.Edit(printer.Id);
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
     }
 }
