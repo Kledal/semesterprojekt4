@@ -5,18 +5,35 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            
- @using (Html.BeginForm("UploadFile", "Bookings", FormMethod.Post, new { @enctype = "multipart/form-data" }))
- {
-     @Html.AntiForgeryToken()
-     <div class="form-horizontal">
-         <div class="form-group">
-             <label for="fileinput">Vælg fil</label>
-             <input type="file" name="File" id="fileinput">
-         </div>
-     </div>
- }
-     </div>
+        <div class="col-md-offset-4 col-md-4">
+
+            @if (ViewBag.Message != null )
+            {
+                <div class="alert alert-warning" role="alert">
+                    @ViewBag.Message
+                </div>
+            }
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @using (Html.BeginForm("UploadFile", "Bookings", FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label for="fileinput">Vælg fil</label>
+                            <input type="file" name="fileUploader" id="fileinput">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Upload gcode fil</button>
+                        </div>
+
+                        <p>
+                            <a href="@Url.Action("MyBookings", "Frontend")">Tilbage til mine bookinger</a>
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-</div> 
+</div>
