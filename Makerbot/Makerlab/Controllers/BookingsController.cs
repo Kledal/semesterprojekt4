@@ -156,6 +156,12 @@ namespace Makerlab.Controllers
         [HttpPost]
         public ActionResult UploadFile(int id, HttpPostedFileBase fileUploader)
         {
+
+            if (db.Bookings.Find(id) == null)
+            {
+                return RedirectToAction("Index", "Frontend");
+            }
+
             if (fileUploader != null)
             {
                 var fileName = Path.GetFileName(fileUploader.FileName);
@@ -165,6 +171,7 @@ namespace Makerlab.Controllers
 
                 if (file.ValidFilename())
                 {
+                    file.BookingId = id;
                     db.Files.Add(file);
                     db.SaveChangesAsync();
                     return RedirectToAction("MyBookings", "Frontend");
