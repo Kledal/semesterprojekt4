@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Makerlab;
 using Makerlab.Controllers;
 using Makerlab.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,6 +18,7 @@ namespace Makerlabr.Tests.Controllers
         public void setup()
         {
             var _uut = new UsersController();
+            var mock = new Mock<MakerContext>();
             
         }
 
@@ -24,12 +26,12 @@ namespace Makerlabr.Tests.Controllers
         public void DeleteAction_Returns_UsersviewResult()
         {
 
-            var mock = new Mock<ControllerContext>();
-            mock.SetupGet(x => x.HttpContext.User.Identity.Name).Returns("SOMEUSER");
-            mock.SetupGet(x => x.HttpContext.Request.IsAuthenticated).Returns(true);
-            _uut.ControllerContext = mock.Object;
-            
-   
+
+     
+
+            //mock.SetupGet(x => x.Users.Create().Email).Returns("jj@testidp.wayf.dk");
+            //mock.SetupGet(x => _uut.CurrentUser).Returns(currentUser);
+            //_uut.CurrentUser = mock.Object;
             
             ActionResult result = _uut.Delete(2); //  uut modtager et ID.
             Assert.IsInstanceOfType(result, typeof(ViewResult));
@@ -38,6 +40,12 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void Details_Returns_HttpBadRequestWhenIdIsNull()
         {
+            var mock = new Mock<MakerContext>();
+            var currentUser = new User();
+
+            mock.Setup(x => x.Users).Equals("jj@testidp.wayf.dk");
+            mock.Setup(x => _uut.CurrentUser).Returns(currentUser);
+
             ActionResult result = _uut.Details(null);
 
             Assert.IsInstanceOfType(result, typeof(HttpStatusCodeResult));

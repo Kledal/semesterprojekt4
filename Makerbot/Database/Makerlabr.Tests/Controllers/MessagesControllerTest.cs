@@ -35,8 +35,8 @@ namespace Makerlabr.Tests.Controllers
 
             RedirectToRouteResult result = _uut.Create(new Message()) as RedirectToRouteResult;
 
-
-              Assert.AreEqual("Controller", result.RouteValues["dashboard"]);
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+           // Assert.AreEqual("Controller", result.RouteValues["dashboard"]);
 
         }
 
@@ -67,17 +67,21 @@ namespace Makerlabr.Tests.Controllers
         [Test]
         public void Delete_Returns_HttpNotFoundWhenPrinterIsNull()
         {
-            var printer = new Printer();
-            printer.Id = 0;
-            ActionResult result = _uut.Delete(printer.Id);
+            var message = new Message();
+            message.Id = 0;
+            ActionResult result = _uut.Delete(message.Id);
             Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult));
         }
 
         [Test]
         public void DeleteAction_Returns_Messageview()
         {
+            var message = new Message();
+            message.Id = 2;
+            message.Content = "fielaursen";
+            ActionResult result = _uut.Delete(message.Id);
 
-            ActionResult result = _uut.Delete(3); //  uut modtager et ID.
+           // ActionResult result = _uut.Delete(2); //  uut modtager et ID.
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
 

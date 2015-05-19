@@ -30,7 +30,7 @@ namespace Makerlab.Controllers
         }
 
 
-        // GET: /Printers/Delete/5
+        // GET: /Messages/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)

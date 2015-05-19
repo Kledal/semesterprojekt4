@@ -1,7 +1,13 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Runtime.Remoting.Channels;
+using System.Web.Mvc;
+using Makerlab;
 using Makerlab.Controllers;
 using Makerlab.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+
 using NUnit.Framework;
 
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -35,14 +41,27 @@ namespace Makerlabr.Tests.Controllers
 
             RedirectToRouteResult result = _uut.Create(new Printer()) as RedirectToRouteResult;
             result.RouteValues["Action"].Equals("Index");
-            Assert.Equals("Action", result.RouteValues["Index"]);
+            Assert.AreEqual("Action", result.RouteValues["Index"]);
         }
 
         [Test]
         public void CreateAction_Adds_PrinterToDBWhenModelStateIsValid()
         {
-            
+            var set = new Mock<DbSet<Printer>>();
+            var mockContext = new Mock<MakerContext>();
+
+            var printers = new List<Printer>();
+            mockContext.Setup(r => r.Printers).Returns(set.Object);
+            _uut = new PrintersController();
+
+
             ActionResult result = _uut.Create(new Printer()) as ActionResult;
+           
+          //   var service = new Printer();
+          //  _uut.Create(service);
+
+
+          
         }
 
         [Test]
@@ -101,7 +120,8 @@ namespace Makerlabr.Tests.Controllers
             RedirectToRouteResult result = _uut.Create(new Printer()) as RedirectToRouteResult;
             ActionResult aresult = _uut.DeleteConfirmed(3);
 
-            Assert.AreEqual("Index", result.RouteValues["Index"]);
+           // Assert.AreEqual("Index", result.RouteValues["Index"]);
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
 
         }
 
