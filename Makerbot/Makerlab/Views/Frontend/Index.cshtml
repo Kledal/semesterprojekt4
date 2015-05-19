@@ -51,7 +51,7 @@
     var printers = @Html.Raw(Json.Encode(ViewBag.printers));
     var bookings = @Html.Raw(Json.Encode(ViewBag.bookings));
 
-    $(document).ready(function () {
+    $(function() {
 
             // Timeline for printers
             scheduler.locale.labels.timeline_tab = "Timeline";

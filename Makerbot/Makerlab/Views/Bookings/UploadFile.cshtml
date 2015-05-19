@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            
+ @using (Html.BeginForm("UploadFile", "Bookings", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+ {
+     @Html.AntiForgeryToken()
+     <div class="form-horizontal">
+         <div class="form-group">
+             <label for="fileinput">Vælg fil</label>
+             <input type="file" name="File" id="fileinput">
+         </div>
+     </div>
+ }
+     </div>
+    </div>
+</div> 

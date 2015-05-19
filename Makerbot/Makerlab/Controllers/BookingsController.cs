@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
@@ -9,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using Makerlab;
 using Makerlab.Models;
+using File = Makerlab.Models.File;
 
 namespace Makerlab.Controllers
 {
@@ -149,6 +151,84 @@ namespace Makerlab.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //
+
+        //[HttpPost]
+        //public ActionResult BookPrinter(HttpPostedFileBase file)
+        //{
+        //    if (file != null && file.ContentLength > 0)
+        //    {
+        //        var fileName = Path.GetFileName(file.FileName);
+
+        //        var path = Path.Combine(Server.MapPath("~/App_Data/s3gfiler"), fileName);
+        //        file.SaveAs(path);
+        //    }
+        //    return NewBooking(); // Vil dette ikke fjerne andet der er indtastet???
+        //}
+
+        [HttpPost]
+        public ActionResult UploadFile(HttpPostedFileBase fileUploader)
+        {
+            if (fileUploader != null)
+            {
+                var uploadFileModel = new List<File>();
+
+                var fileName = Path.GetFileName(fileUploader.FileName);
+                var destinationPath = Path.Combine(Server.MapPath("~/App_Data/s3gfiler"), fileName);
+                fileUploader.SaveAs(destinationPath);
+                if (Session["fileUploader"] != null)
+                {
+                    var isFileNameRepete = ((List<File>)Session["fileUploader"]).Find(x => x.FileName == fileName);
+                    if (isFileNameRepete == null)
+                    {
+                        uploadFileModel.Add(new File { FileName = fileName, FilePath = destinationPath });
+                        ((List<File>)Session["fileUploader"]).Add(new File { FileName = fileName, FilePath = destinationPath });
+                        ViewBag.Message = "File Uploaded Successfully";
+                    }
+                    else
+                    {
+                        ViewBag.Message = "File is already exists";
+                    }
+                }
+                else
+                {
+                    uploadFileModel.Add(new File { FileName = fileName, FilePath = destinationPath });
+                    Session["fileUploader"] = uploadFileModel;
+                    ViewBag.Message = "File Uploaded Successfully";
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RemoveUploadFile(string fileName)
+        {
+            int sessionFileCount = 0;
+
+            try
+            {
+                if (Session["fileUploader"] != null)
+                {
+                    ((List<File>)Session["fileUploader"]).RemoveAll(x => x.FileName == fileName);
+                    sessionFileCount = ((List<File>)Session["fileUploader"]).Count;
+                    if (fileName != null || fileName != string.Empty)
+                    {
+                        var file = new FileInfo(Server.MapPath("~/App_Data/s3gfiler" + fileName));
+                        if (file.Exists)
+                        {
+                            file.Delete();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return Json(sessionFileCount, JsonRequestBehavior.AllowGet);
         }
     }
 }
