@@ -11,7 +11,7 @@
 }
 @foreach (var item in MessageManager.Read())
 {
-    <div class="container">
+    <div class="col-md-6 col-md-offset-3">
         <div class="alert @item.Type">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             @item.Content
@@ -69,7 +69,6 @@
             //===============
             //Configuration
             //===============
-
             scheduler.createTimelineView({
                 name: "timeline",
                 x_unit: "minute",
@@ -82,15 +81,13 @@
                 event_dy: "full",
                 round_position: true,
                 y_unit: printers,
-                y_property: "printer_id",
+                y_property: 'printer_key',
                 render: "bar"
             });
-
 
             //========================
             //Initialize
             //========================
-
             scheduler.init("printer_schedule", new Date(), "timeline");
             scheduler.parse(bookings, "json");
         });

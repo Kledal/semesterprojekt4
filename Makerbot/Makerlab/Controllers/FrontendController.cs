@@ -31,13 +31,14 @@ namespace Makerlab.Controllers
             ViewBag.printers = printerList;
 
             var bookingList = new List<object>();
-            foreach (var booking in db.Bookings)
+            
+            foreach (var booking in BookingManager.Read())
             {
-                bookingList.Add(new { 
-                    text = booking.User.FirstName +" "+ booking.User.LastName,
+                bookingList.Add(new { text = booking.User.FirstName +" "+ booking.User.LastName,
                     start_date = booking.StartTime.ToString("g"),
                     end_date = booking.EndTime.ToString("g"),
-                    printer_id = (int)booking.PrinterId });
+                    printer_id = booking.PrinterId
+                });
             }
             ViewBag.bookings = bookingList;
             return View();
