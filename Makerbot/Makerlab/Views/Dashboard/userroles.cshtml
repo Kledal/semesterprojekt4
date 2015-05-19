@@ -1,5 +1,4 @@
-﻿@using Makerlab.Helpers
-@{
+﻿@{
     ViewBag.Title = "MakerLab :: Brugerroller";
 }
 @model List<Makerlab.Models.UserRole> 
@@ -17,7 +16,9 @@
                 <tr>
                     <th>#</th>
                     <th>Navn</th>
-                    <th>Antal medlemmer</th>
+                    <th>Antal brugere</th>
+                    <th>Kan oprette booking</th>
+                    <th>Kan tilgå Dashboard</th>
                     <th>Handlinger</th>
                 </tr>
 
@@ -29,6 +30,8 @@
                             <td>@userrole.Id</td>
                             <td>@userrole.RoleName</td>
                             <td>@userrole.Users.Count</td>
+                            <td>@Html.DisplayFor(modelItem => userrole.CanCreateBooking)</td>
+                            <td>@Html.DisplayFor(modelItem => userrole.CanViewDashboard)</td>
                             <td>
                                 <a href="@Url.Action("Edit", "UserRoles", new {id=userrole.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
                                 <a href="@Url.Action("Delete", "UserRoles", new {id=userrole.Id})" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </a>

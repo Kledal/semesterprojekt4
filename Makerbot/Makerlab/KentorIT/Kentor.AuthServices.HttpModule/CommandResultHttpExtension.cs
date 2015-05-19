@@ -1,14 +1,10 @@
-﻿using Kentor.AuthServices.WebSso;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Services;
 using System.IdentityModel.Tokens;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
+using Kentor.AuthServices.WebSso;
 
 namespace Kentor.AuthServices.HttpModule
 {
@@ -22,7 +18,7 @@ namespace Kentor.AuthServices.HttpModule
         /// </summary>
         /// <param name="commandResult">The CommandResult that will update the HttpResponse.</param>
         /// <param name="response">Http Response to write the result to.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "HttpStatusCode")]
+        [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "HttpStatusCode")]
         public static void Apply(this CommandResult commandResult, HttpResponseBase response)
         {
             if (commandResult == null)

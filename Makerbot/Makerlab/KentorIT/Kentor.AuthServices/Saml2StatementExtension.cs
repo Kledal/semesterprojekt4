@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Tokens;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using Kentor.AuthServices.Internal;
 
@@ -19,7 +16,7 @@ namespace Kentor.AuthServices
         /// </summary>
         /// <param name="statement">Statement to create xml for.</param>
         /// <returns>XElement</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
+        [SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         public static XElement ToXElement(this Saml2Statement statement)
         {
             if (statement == null)

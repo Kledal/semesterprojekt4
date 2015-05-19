@@ -1,12 +1,10 @@
-﻿using Kentor.AuthServices.Configuration;
-using Kentor.AuthServices.Internal;
-using System;
-using System.IdentityModel.Metadata;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Selectors;
-using System.IdentityModel.Services;
-using System.IdentityModel.Services.Configuration;
 using System.IdentityModel.Tokens;
 using System.Security.Claims;
+using Kentor.AuthServices.Configuration;
+using Kentor.AuthServices.Internal;
 
 namespace Kentor.AuthServices.Saml2P
 {
@@ -24,7 +22,7 @@ namespace Kentor.AuthServices.Saml2P
         /// </summary>
         /// <param name="spOptions">Options for the service provider that
         /// this token handler should work with.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
         public Saml2PSecurityTokenHandler(ISPOptions spOptions)
         {
             if(spOptions== null)

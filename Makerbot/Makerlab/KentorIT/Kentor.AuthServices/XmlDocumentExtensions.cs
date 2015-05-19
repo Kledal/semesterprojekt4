@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
@@ -17,7 +18,7 @@ namespace Kentor.AuthServices
         /// <param name="xmlDocument">XmlDocument to be signed. The signature is
         /// added as a node in the document, right after the Issuer node.</param>
         /// <param name="cert">Certificate to use when signing.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
+        [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
         public static void Sign(this XmlDocument xmlDocument, X509Certificate2 cert)
         {
             Sign(xmlDocument, cert, false);
@@ -30,7 +31,7 @@ namespace Kentor.AuthServices
         /// added as a node in the document, right after the Issuer node.</param>
         /// <param name="cert">Certificate to use when signing.</param>
         /// <param name="includeKeyInfo">Include public key in signed output.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
+        [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
         public static void Sign(this XmlDocument xmlDocument, X509Certificate2 cert, bool includeKeyInfo)
         {
             if (xmlDocument == null)

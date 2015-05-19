@@ -1,8 +1,7 @@
 ﻿using System;
 using FluentScheduler;
-using Newtonsoft.Json;
 using Makerlab.DAL;
-using Makerlab.Models;
+using Newtonsoft.Json;
 
 namespace Makerlab.Tasks
 {

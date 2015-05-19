@@ -1,5 +1,4 @@
-﻿@using Makerlab.Helpers
-@{
+﻿@{
     ViewBag.Title = "MakerLab :: Printers";
 }
 @model List<Makerlab.Models.Printer>
@@ -24,7 +23,7 @@
                     <td>@Html.DisplayFor(modelItem => printer.Printing)</td>
                     <td>Bed: @printer.BedTemperature, Nozzle: @printer.NozzleTemperature</td>
                     <td>
-                        <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
+                        <a href="@Url.Action("CancelPrint", "Printers", new { Id = printer.Id })" class="btn btn-warning btn-sm" title="Annuller print"> <i class="glyphicon glyphicon-trash"></i></a>
                     </td>
                 </tr>
             }

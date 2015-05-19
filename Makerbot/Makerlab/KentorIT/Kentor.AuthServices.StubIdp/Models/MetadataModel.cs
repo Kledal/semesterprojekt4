@@ -1,10 +1,7 @@
-﻿using Kentor.AuthServices.Metadata;
-using Kentor.AuthServices.WebSso;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IdentityModel.Metadata;
-using System.Linq;
-using System.Web;
+using Kentor.AuthServices.Metadata;
+using Kentor.AuthServices.WebSso;
 
 namespace Kentor.AuthServices.StubIdp.Models
 {

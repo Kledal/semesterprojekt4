@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using Kentor.AuthServices.Internal;
 
 namespace Kentor.AuthServices.Configuration
@@ -10,7 +9,7 @@ namespace Kentor.AuthServices.Configuration
     /// <summary>
     /// Config collection of contacts.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1010:CollectionsShouldImplementGenericInterface")]
+    [SuppressMessage("Microsoft.Design", "CA1010:CollectionsShouldImplementGenericInterface")]
     public class ContactPersonsCollection : ConfigurationElementCollection, IEnumerable<ContactPersonElement>
     {
         /// <summary>

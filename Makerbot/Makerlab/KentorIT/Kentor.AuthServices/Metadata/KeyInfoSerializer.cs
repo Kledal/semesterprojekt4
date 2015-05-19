@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Selectors;
 using System.IdentityModel.Tokens;
-using System.Linq;
 using System.Security.Cryptography.Xml;
 using System.ServiceModel.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Kentor.AuthServices.Metadata
@@ -17,7 +14,7 @@ namespace Kentor.AuthServices.Metadata
     // that doesn't contain the info required to create the key, we're stuck.
     class KeyInfoSerializer : SecurityTokenSerializer
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Only called by framework code")]
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Only called by framework code")]
         protected override SecurityKeyIdentifier ReadKeyIdentifierCore(XmlReader reader)
         {
             var result = new SecurityKeyIdentifier();
@@ -112,67 +109,67 @@ namespace Kentor.AuthServices.Metadata
         #region overrides throwing NotImplementedException
 
         [ExcludeFromCodeCoverage]
-        protected override bool CanReadKeyIdentifierClauseCore(System.Xml.XmlReader reader)
+        protected override bool CanReadKeyIdentifierClauseCore(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override bool CanReadKeyIdentifierCore(System.Xml.XmlReader reader)
+        protected override bool CanReadKeyIdentifierCore(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override bool CanReadTokenCore(System.Xml.XmlReader reader)
+        protected override bool CanReadTokenCore(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override bool CanWriteKeyIdentifierClauseCore(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause)
+        protected override bool CanWriteKeyIdentifierClauseCore(SecurityKeyIdentifierClause keyIdentifierClause)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override bool CanWriteKeyIdentifierCore(System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier)
+        protected override bool CanWriteKeyIdentifierCore(SecurityKeyIdentifier keyIdentifier)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override bool CanWriteTokenCore(System.IdentityModel.Tokens.SecurityToken token)
+        protected override bool CanWriteTokenCore(SecurityToken token)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override System.IdentityModel.Tokens.SecurityKeyIdentifierClause ReadKeyIdentifierClauseCore(System.Xml.XmlReader reader)
+        protected override SecurityKeyIdentifierClause ReadKeyIdentifierClauseCore(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override System.IdentityModel.Tokens.SecurityToken ReadTokenCore(System.Xml.XmlReader reader, SecurityTokenResolver tokenResolver)
+        protected override SecurityToken ReadTokenCore(XmlReader reader, SecurityTokenResolver tokenResolver)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override void WriteKeyIdentifierClauseCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause)
+        protected override void WriteKeyIdentifierClauseCore(XmlWriter writer, SecurityKeyIdentifierClause keyIdentifierClause)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override void WriteKeyIdentifierCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier)
+        protected override void WriteKeyIdentifierCore(XmlWriter writer, SecurityKeyIdentifier keyIdentifier)
         {
             throw new NotImplementedException();
         }
 
         [ExcludeFromCodeCoverage]
-        protected override void WriteTokenCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityToken token)
+        protected override void WriteTokenCore(XmlWriter writer, SecurityToken token)
         {
             throw new NotImplementedException();
         }

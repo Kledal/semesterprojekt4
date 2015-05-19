@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 using Kentor.AuthServices.Internal;
 
 namespace Kentor.AuthServices.Configuration
@@ -45,7 +43,7 @@ namespace Kentor.AuthServices.Configuration
         /// Registers the identity providers from the configured federations in the identity provider dictionary.
         /// </summary>
         /// <param name="options">Current options.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1806:DoNotIgnoreMethodResults", MessageId = "Kentor.AuthServices.Federation", Justification="The federation will register its identity providers in the options")]
+        [SuppressMessage("Microsoft.Usage", "CA1806:DoNotIgnoreMethodResults", MessageId = "Kentor.AuthServices.Federation", Justification="The federation will register its identity providers in the options")]
         public void RegisterFederations(IOptions options)
         {
             if(options == null)

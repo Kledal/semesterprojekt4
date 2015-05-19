@@ -1,13 +1,9 @@
-﻿using Kentor.AuthServices.Internal;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
+using Kentor.AuthServices.Internal;
 
 namespace Kentor.AuthServices.WebSso
 {
@@ -24,7 +20,7 @@ namespace Kentor.AuthServices.WebSso
         /// <param name="url">Full url requested</param>
         /// <param name="formData">Form data, if present (only for POST requests)</param>
         /// <param name="applicationPath">Path to the application root</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
+        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public HttpRequestData(
             string httpMethod,
             Uri url,

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Metadata;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using Kentor.AuthServices.Internal;
@@ -36,7 +33,7 @@ namespace Kentor.AuthServices.Saml2P
         /// <summary>
         /// Version of the SAML request. Always returns "2.0"
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public string Version
         {
             get
@@ -114,7 +111,7 @@ namespace Kentor.AuthServices.Saml2P
         /// Also validates basic properties of the request
         /// </summary>
         /// <param name="xml">The xml document to parse</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
+        [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
         protected void ReadBaseProperties(XmlDocument xml)
         {
             if (xml == null)

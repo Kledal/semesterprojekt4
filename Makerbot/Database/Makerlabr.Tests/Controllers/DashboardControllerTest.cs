@@ -1,13 +1,8 @@
-﻿using System;
-using System.Web.Mvc;
-using Makerlab;
+﻿using System.Web.Mvc;
 using Makerlab.Controllers;
-using Makerlab.DAL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using NSubstitute; 
 using Assert = NUnit.Framework.Assert;
-
 
 namespace Makerlabr.Tests.Controllers
 {

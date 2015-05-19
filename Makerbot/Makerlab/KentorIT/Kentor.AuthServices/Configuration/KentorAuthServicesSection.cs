@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IdentityModel.Configuration;
 using System.IdentityModel.Metadata;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Kentor.AuthServices.Internal;
 using Kentor.AuthServices.Metadata;
 using Kentor.AuthServices.Saml2P;
-using System.IdentityModel.Configuration;
-using System.IdentityModel.Services.Configuration;
 
 namespace Kentor.AuthServices.Configuration
 {
@@ -26,7 +23,7 @@ namespace Kentor.AuthServices.Configuration
 
         private bool allowChange = true;
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1500:VariableNamesShouldNotMatchFieldNames", MessageId = "allowChange")]
+        [SuppressMessage("Microsoft.Maintainability", "CA1500:VariableNamesShouldNotMatchFieldNames", MessageId = "allowChange")]
         internal void AllowChange(bool allowChange)
         {
             this.allowChange = allowChange;

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using Makerlab.DAL;
-using Makerlab.Models;
-using RedirectToRouteResult = System.Web.Http.Results.RedirectToRouteResult;
 
 namespace Makerlab.Extensions
 {

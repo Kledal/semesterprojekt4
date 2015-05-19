@@ -1,12 +1,9 @@
-﻿using Kentor.AuthServices.Configuration;
-using Kentor.AuthServices.WebSso;
-using System;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IdentityModel.Services;
-using System.IdentityModel.Tokens;
-using System.Linq;
 using System.Net;
 using System.Web;
+using Kentor.AuthServices.Configuration;
+using Kentor.AuthServices.WebSso;
 
 namespace Kentor.AuthServices.HttpModule
 {

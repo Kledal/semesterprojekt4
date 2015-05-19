@@ -1,18 +1,19 @@
-﻿using Kentor.AuthServices.Configuration;
-using System;
+﻿using System;
 using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IdentityModel.Metadata;
 using System.IdentityModel.Tokens;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
+using System.Threading.Tasks;
+using Kentor.AuthServices.Configuration;
 using Kentor.AuthServices.Internal;
 using Kentor.AuthServices.Metadata;
 using Kentor.AuthServices.Saml2P;
 using Kentor.AuthServices.WebSso;
-using System.Threading.Tasks;
-using System.Net;
 
 namespace Kentor.AuthServices
 {
@@ -27,7 +28,7 @@ namespace Kentor.AuthServices
         /// <param name="entityId">Entity id of the identityprovider.</param>
         /// <param name="spOptions">Service provider options to use when 
         /// creating AuthnRequests for this Idp.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
         public IdentityProvider(EntityId entityId, ISPOptions spOptions)
         {
             EntityId = entityId;
@@ -140,7 +141,7 @@ namespace Kentor.AuthServices
         /// The Url of the single sign on service. This is where the browser is redirected or
         /// where the post data is sent to when sending an AuthnRequest to the idp.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "SignOn")]
+        [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "SignOn")]
         public Uri SingleSignOnServiceUrl
         {
             get

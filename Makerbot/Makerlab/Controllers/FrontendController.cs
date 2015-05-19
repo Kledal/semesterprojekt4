@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IdentityModel.Services;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Security.Claims;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.WebPages;
 using Makerlab.DAL;
 using Makerlab.Extensions;
-using Makerlab.Models;
-using File = Makerlab.Models.File;
-using ModelState = System.Web.ModelBinding.ModelState;
 
 namespace Makerlab.Controllers
 {
@@ -31,7 +21,6 @@ namespace Makerlab.Controllers
             ViewBag.printers = printerList;
 
             var bookingList = new List<object>();
-            
             foreach (var booking in BookingManager.Read())
             {
                 bookingList.Add(new { text = booking.User.FirstName +" "+ booking.User.LastName,

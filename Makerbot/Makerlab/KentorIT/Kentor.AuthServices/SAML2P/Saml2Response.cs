@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IdentityModel.Metadata;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
 using Kentor.AuthServices.Configuration;
-using System.IdentityModel.Metadata;
-using System.Security.Cryptography;
-using System.IdentityModel.Services;
 using Kentor.AuthServices.Internal;
 
 namespace Kentor.AuthServices.Saml2P
@@ -113,7 +113,7 @@ namespace Kentor.AuthServices.Saml2P
         /// The response as an xml docuemnt. Either the original xml, or xml that is
         /// generated from supplied data.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
+        [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
         public XmlDocument XmlDocument
         {
             get
@@ -304,7 +304,7 @@ namespace Kentor.AuthServices.Saml2P
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "InResponseTo")]
+        [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "InResponseTo")]
         private void ValidateInResponseTo(IOptions options)
         {
             if (InResponseTo == null)
@@ -439,7 +439,7 @@ namespace Kentor.AuthServices.Saml2P
         /// <param name="options">Service provider settings used when processing the response into claims.</param>
         /// <returns>ClaimsIdentities</returns>
         // Method might throw expections so make it a method and not a property.
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public IEnumerable<ClaimsIdentity> GetClaims(IOptions options)
         {
             if (createClaimsException != null)

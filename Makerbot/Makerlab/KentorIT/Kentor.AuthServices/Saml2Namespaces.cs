@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace Kentor.AuthServices
 {
@@ -21,7 +17,7 @@ namespace Kentor.AuthServices
         /// <summary>
         /// Namespace of the SAML2 protocol.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly XNamespace Saml2P = XNamespace.Get(Saml2PName);
 
         /// <summary>
@@ -32,7 +28,7 @@ namespace Kentor.AuthServices
         /// <summary>
         /// Namespace of SAML2 assertions.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly XNamespace Saml2 = XNamespace.Get(Saml2Name);
 
         /// <summary>
@@ -43,7 +39,7 @@ namespace Kentor.AuthServices
         /// <summary>
         /// Namespace of SAML2 Metadata.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly XNamespace Saml2Metadata = XNamespace.Get(Saml2MetadataName);
 
         /// <summary>
@@ -54,13 +50,13 @@ namespace Kentor.AuthServices
         /// <summary>
         /// Namespace for idp discovery protocol extension.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly XNamespace Saml2IdpDiscovery = XNamespace.Get(Saml2IdpDiscoveryName);
 
         /// <summary>
         /// Namespace for Xml schema instance.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        public static readonly XNamespace XmlSchemaInstance = XNamespace.Get(System.Xml.Schema.XmlSchema.InstanceNamespace);
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
+        public static readonly XNamespace XmlSchemaInstance = XNamespace.Get(XmlSchema.InstanceNamespace);
     }
 }

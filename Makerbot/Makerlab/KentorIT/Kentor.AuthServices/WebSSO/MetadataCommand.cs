@@ -1,13 +1,5 @@
-﻿using Kentor.AuthServices.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Metadata;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Xml.Linq;
+﻿using System;
+using Kentor.AuthServices.Configuration;
 using Kentor.AuthServices.Metadata;
 
 namespace Kentor.AuthServices.WebSso
