@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Linq;
 
 namespace Makerlab.Models
 {
@@ -12,10 +14,17 @@ namespace Makerlab.Models
         [MaxLength]
         public string ContentType { get; set; }
 
+        private readonly string[] _allowedFileTypes = {".gcode"};
+
         public File()
         {
             
         }
 
+        public bool ValidFilename()
+        {
+            var ext = Path.GetExtension(FileName);
+            return _allowedFileTypes.Contains(ext);
+        }
     }
 }

@@ -153,80 +153,30 @@ namespace Makerlab.Controllers
 
         //
 
-        //[HttpPost]
-        //public ActionResult BookPrinter(HttpPostedFileBase file)
-        //{
-        //    if (file != null && file.ContentLength > 0)
-        //    {
-        //        var fileName = Path.GetFileName(file.FileName);
-
-        //        var path = Path.Combine(Server.MapPath("~/App_Data/s3gfiler"), fileName);
-        //        file.SaveAs(path);
-        //    }
-        //    return NewBooking(); // Vil dette ikke fjerne andet der er indtastet???
-        //}
-
         [HttpPost]
-        public ActionResult UploadFile(HttpPostedFileBase fileUploader)
+        public ActionResult UploadFile(int id, HttpPostedFileBase fileUploader)
         {
             if (fileUploader != null)
             {
-                var uploadFileModel = new List<File>();
-
                 var fileName = Path.GetFileName(fileUploader.FileName);
                 var destinationPath = Path.Combine(Server.MapPath("~/App_Data/s3gfiler"), fileName);
                 fileUploader.SaveAs(destinationPath);
-                if (Session["fileUploader"] != null)
+                var file = new File {FileName = fileName, FilePath = destinationPath};
+
+                if (file.ValidFilename())
                 {
-                    var isFileNameRepete = ((List<File>)Session["fileUploader"]).Find(x => x.FileName == fileName);
-                    if (isFileNameRepete == null)
-                    {
-                        uploadFileModel.Add(new File { FileName = fileName, FilePath = destinationPath });
-                        ((List<File>)Session["fileUploader"]).Add(new File { FileName = fileName, FilePath = destinationPath });
-                        ViewBag.Message = "File Uploaded Successfully";
-                    }
-                    else
-                    {
-                        ViewBag.Message = "File is already exists";
-                    }
+                    db.Files.Add(file);
+                    db.SaveChangesAsync();
+                    return RedirectToAction("MyBookings", "Frontend");
                 }
                 else
                 {
-                    uploadFileModel.Add(new File { FileName = fileName, FilePath = destinationPath });
-                    Session["fileUploader"] = uploadFileModel;
-                    ViewBag.Message = "File Uploaded Successfully";
+                    ViewBag.Message = "Forkert filtype";
                 }
+
+                
             }
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult RemoveUploadFile(string fileName)
-        {
-            int sessionFileCount = 0;
-
-            try
-            {
-                if (Session["fileUploader"] != null)
-                {
-                    ((List<File>)Session["fileUploader"]).RemoveAll(x => x.FileName == fileName);
-                    sessionFileCount = ((List<File>)Session["fileUploader"]).Count;
-                    if (fileName != null || fileName != string.Empty)
-                    {
-                        var file = new FileInfo(Server.MapPath("~/App_Data/s3gfiler" + fileName));
-                        if (file.Exists)
-                        {
-                            file.Delete();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return Json(sessionFileCount, JsonRequestBehavior.AllowGet);
         }
     }
 }
