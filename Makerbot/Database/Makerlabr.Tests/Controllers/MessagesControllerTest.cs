@@ -58,20 +58,38 @@ namespace Makerlabr.Tests.Controllers
         }
 
         [Test]
-        public void DeleteAction_Returns_Messagesview()
+        public void Delete_Returns_HttpBadRequestWhenIdIsNull()
         {
-            ActionResult result = _uut.Delete(null); //  uut modtager et ID.
-            // Assert.IsInstanceOfType(result, typeof(ViewResult));
-            Assert.AreEqual("HttpNotFound", result);
+            ActionResult result = _uut.Delete(null);
+            Assert.IsInstanceOfType(result, typeof(HttpStatusCodeResult));
+        }
+
+        [Test]
+        public void Delete_Returns_HttpNotFoundWhenPrinterIsNull()
+        {
+            var printer = new Printer();
+            printer.Id = 0;
+            ActionResult result = _uut.Delete(printer.Id);
+            Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult));
+        }
+
+        [Test]
+        public void DeleteAction_Returns_Messageview()
+        {
+
+            ActionResult result = _uut.Delete(3); //  uut modtager et ID.
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
 
 
         [Test]
-        public void DeleteConfirmedAction_Returns_Mssageview()
+        public void DeleteConfirmedAction_Returns_Messageview()
         {
             var sandt = true;
             Assert.AreEqual(sandt, false);
         }
+
+
 
     }
 }
