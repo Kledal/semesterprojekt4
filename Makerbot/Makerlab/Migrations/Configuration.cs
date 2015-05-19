@@ -48,7 +48,7 @@ namespace Makerlab.Migrations
                   new Printer() { Id = 1, Name = "Gandalf", IsBookable = true, LastSeen = DateTime.Now },
                   new Printer() { Id = 2, Name = "Frodo", IsBookable = true, LastSeen = DateTime.Now },
                   new Printer() { Id = 3, Name = "Gollum", IsBookable = true, LastSeen = DateTime.Now, UuId = "55330343534351103222" },
-                  new Printer() { Id = 4, Name = "Saruon", IsBookable = true, LastSeen = DateTime.Now });
+                  new Printer() { Id = 4, Name = "Saruon", IsBookable = true, LastSeen = DateTime.Now, UuId = "55330343434351D072C1" });
             context.Files.AddOrUpdate(f => f.Id,
                 new File() { Id = 1, FileName = "Testfile1" },
                 new File() { Id = 2, FileName = "Testfile2" });
