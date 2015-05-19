@@ -301,6 +301,18 @@
     <Compile Include="Migrations\201505181143204_AddedStuff.Designer.cs">
       <DependentUpon>201505181143204_AddedStuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505191217127_AddRequiredBookingToFile.cs" />
+    <Compile Include="Migrations\201505191217127_AddRequiredBookingToFile.Designer.cs">
+      <DependentUpon>201505191217127_AddRequiredBookingToFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505191225342_AddedShit.cs" />
+    <Compile Include="Migrations\201505191225342_AddedShit.Designer.cs">
+      <DependentUpon>201505191225342_AddedShit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505191230109_EnableOptionalFile1.cs" />
+    <Compile Include="Migrations\201505191230109_EnableOptionalFile1.Designer.cs">
+      <DependentUpon>201505191230109_EnableOptionalFile1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingPrintError.cs" />
@@ -428,6 +440,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505181143204_AddedStuff.resx">
       <DependentUpon>201505181143204_AddedStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505191217127_AddRequiredBookingToFile.resx">
+      <DependentUpon>201505191217127_AddRequiredBookingToFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505191225342_AddedShit.resx">
+      <DependentUpon>201505191225342_AddedShit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505191230109_EnableOptionalFile1.resx">
+      <DependentUpon>201505191230109_EnableOptionalFile1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
