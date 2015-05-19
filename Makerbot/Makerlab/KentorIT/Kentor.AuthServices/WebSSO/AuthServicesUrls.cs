@@ -1,9 +1,6 @@
-﻿using Kentor.AuthServices.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using Kentor.AuthServices.Configuration;
 
 namespace Kentor.AuthServices.WebSso
 {
@@ -17,7 +14,7 @@ namespace Kentor.AuthServices.WebSso
         /// </summary>
         /// <param name="request">Request to get application root url from.</param>
         /// <param name="spOptions">SP Options to get module path from.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2208:InstantiateArgumentExceptionsCorrectly"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
+        [SuppressMessage("Microsoft.Usage", "CA2208:InstantiateArgumentExceptionsCorrectly"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
         public AuthServicesUrls(HttpRequestData request, ISPOptions spOptions)
         {
             if (request == null)
@@ -39,7 +36,7 @@ namespace Kentor.AuthServices.WebSso
         /// </summary>
         /// <param name="applicationUrl">The full Url to the root of the application.</param>
         /// <param name="modulePath">Path of module, starting with / and ending without.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Design", "CA1057:StringUriOverloadsCallSystemUriOverloads"
+        [SuppressMessage( "Microsoft.Design", "CA1057:StringUriOverloadsCallSystemUriOverloads"
             , Justification = "Incorrect warning. modulePath isn't a string representation of a Uri" )]
         public AuthServicesUrls(Uri applicationUrl, string modulePath)
         {

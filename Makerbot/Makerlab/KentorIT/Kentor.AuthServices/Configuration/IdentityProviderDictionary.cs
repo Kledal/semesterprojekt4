@@ -1,10 +1,9 @@
-﻿using Kentor.AuthServices.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Metadata;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Kentor.AuthServices.Internal;
 
 namespace Kentor.AuthServices.Configuration
 {
@@ -18,7 +17,7 @@ namespace Kentor.AuthServices.Configuration
     /// is dynamically loaded from a federation and later removed. Locks are simple and
     /// this part of the code shouldn't be that performance sensitive.
     /// </remarks>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix", Justification="It works like dictionary, even though it doesn't implement the full interface.")]
+    [SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix", Justification="It works like dictionary, even though it doesn't implement the full interface.")]
     public class IdentityProviderDictionary
     {
         private Dictionary<EntityId, IdentityProvider> dictionary =
@@ -29,7 +28,7 @@ namespace Kentor.AuthServices.Configuration
         /// </summary>
         /// <param name="entityId">entity Id to look up.</param>
         /// <returns>IdentityProvider</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1043:UseIntegralOrStringArgumentForIndexers")]
+        [SuppressMessage("Microsoft.Design", "CA1043:UseIntegralOrStringArgumentForIndexers")]
         public IdentityProvider this[EntityId entityId]
         {
             get

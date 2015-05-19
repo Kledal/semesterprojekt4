@@ -1,5 +1,4 @@
-﻿@using Makerlab.Helpers
-@{
+﻿@{
     ViewBag.Title = "MakerLab :: Printers";
 }
 @model List<Makerlab.Models.Printer> 
@@ -14,10 +13,11 @@
                 <tr>
                     <th>#</th>
                     <th>Navn</th>
-                    <th>Uuid</th>
-                    <th>Temperature</th>
-                    <th>IsBookable</th>
+                    <th>Makerbot Printer Id (UuId)</th>
+                    <th>Temperatur</th>
+                    <th>Kan bookes</th>
                     <th>Sidst opdateret</th>
+                    <th>Stop print</th>
                     <th>Handlinger</th>
                 </tr>
 
@@ -33,15 +33,15 @@
                             <td>@Html.DisplayFor(modelItem => printer.IsBookable)</td>
                             <td>@Html.DisplayFor(modelItem => printer.LastSeen)</td>
                             <td>
-                                <a href="@Url.Action("Edit", "Printers", new {id = printer.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
-                                <a href="@Url.Action("CancelPrint", "Printers", new { Id = printer.Id })" class="btn btn-warning btn-sm" title="Annuller print"> <i class="glyphicon glyphicon-trash"></i>  </a>
-                                <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> </button>
+                                <a href="@Url.Action("CancelPrint", "Printers", new {Id = printer.Id})" class="btn btn-warning btn-sm" title="Annuller print"> <i class="glyphicon glyphicon-trash"></i></a>
                             </td>
-                        </tr>
+                            <td>
+                                <a href="@Url.Action("Edit", "Printers", new {id = printer.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
+                            </td>
+</tr>
                     }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-

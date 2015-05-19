@@ -1,14 +1,12 @@
-﻿using Kentor.AuthServices.Configuration;
-using Kentor.AuthServices.Metadata;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
+using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Metadata;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
+using Kentor.AuthServices.Configuration;
+using Kentor.AuthServices.Metadata;
 
 namespace Kentor.AuthServices
 {
@@ -23,7 +21,7 @@ namespace Kentor.AuthServices
         /// <param name="config">Config to use to initialize the federation.</param>
         /// <param name="options">Options to pass on to created IdentityProvider
         /// instances and register identity providers in.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
         public Federation(FederationElement config, IOptions options)
         {
             if (config == null)
@@ -42,7 +40,7 @@ namespace Kentor.AuthServices
         /// from idps in this federation be accepted?</param>
         /// <param name="options">Options to pass on to created IdentityProvider
         /// instances and register identity providers in.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
         public Federation(Uri metadataUrl, bool allowUnsolicitedAuthnResponse, IOptions options)
         {
             Init(metadataUrl, allowUnsolicitedAuthnResponse, options);
@@ -52,7 +50,7 @@ namespace Kentor.AuthServices
         private IOptions options;
         private Uri metadataUrl;
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1500:VariableNamesShouldNotMatchFieldNames", MessageId = "metadataUrl"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1500:VariableNamesShouldNotMatchFieldNames", MessageId = "allowUnsolicitedAuthnResponse"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1500:VariableNamesShouldNotMatchFieldNames", MessageId = "options")]
+        [SuppressMessage("Microsoft.Maintainability", "CA1500:VariableNamesShouldNotMatchFieldNames", MessageId = "metadataUrl"), SuppressMessage("Microsoft.Maintainability", "CA1500:VariableNamesShouldNotMatchFieldNames", MessageId = "allowUnsolicitedAuthnResponse"), SuppressMessage("Microsoft.Maintainability", "CA1500:VariableNamesShouldNotMatchFieldNames", MessageId = "options")]
         private void Init(Uri metadataUrl, bool allowUnsolicitedAuthnResponse, IOptions options)
         {
             this.allowUnsolicitedAuthnResponse = allowUnsolicitedAuthnResponse;

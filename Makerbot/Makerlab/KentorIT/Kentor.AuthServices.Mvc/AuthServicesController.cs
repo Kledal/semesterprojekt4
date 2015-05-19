@@ -1,11 +1,9 @@
-﻿using System;
-using System.Net;
-using System.Web.Mvc;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Services;
-using Kentor.AuthServices.HttpModule;
+using System.Web.Mvc;
 using Kentor.AuthServices.Configuration;
+using Kentor.AuthServices.HttpModule;
 using Kentor.AuthServices.WebSso;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Kentor.AuthServices.Mvc
 {

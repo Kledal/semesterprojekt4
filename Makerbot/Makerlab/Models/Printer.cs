@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 using Newtonsoft.Json;
 
 namespace Makerlab.Models
@@ -9,7 +9,9 @@ namespace Makerlab.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        [DisplayName("Makerbot Printer Id (UuId)")]
         public string UuId { get; set; }
+        [DisplayName("Kan bookes")]
         public bool IsBookable { get; set; }
         public DateTime LastSeen { get; set; }
 

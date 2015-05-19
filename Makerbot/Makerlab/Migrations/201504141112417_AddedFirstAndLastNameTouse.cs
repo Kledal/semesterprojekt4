@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace Makerlab.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class AddedFirstAndLastNameTouse : DbMigration
     {
         public override void Up()

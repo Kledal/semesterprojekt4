@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Deployment.Internal.CodeSigning;
-using System.IdentityModel.Configuration;
-using System.IdentityModel.Metadata;
-using System.Linq;
+﻿using System.Deployment.Internal.CodeSigning;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kentor.AuthServices.Configuration
 {
@@ -36,7 +29,7 @@ namespace Kentor.AuthServices.Configuration
         /// Creates an options object with the specified SPOptions.
         /// </summary>
         /// <param name="spOptions"></param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "sp")]
         public Options(ISPOptions spOptions)
         {
             this.spOptions = spOptions;
@@ -74,7 +67,7 @@ namespace Kentor.AuthServices.Configuration
         /// <summary>
         /// Make Sha256 signature algorithm available in this process (not just Kentor.AuthServices)
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Sha" )]
+        [SuppressMessage( "Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Sha" )]
         public static void GlobalEnableSha256XmlSignatures()
         {
             CryptoConfig.AddAlgorithm(typeof(RSAPKCS1SHA256SignatureDescription), RsaSha256Namespace);

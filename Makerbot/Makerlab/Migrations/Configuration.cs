@@ -1,15 +1,10 @@
-using System.EnterpriseServices;
-using System.Web.WebPages;
+using System;
+using System.Data.Entity.Migrations;
 using Makerlab.Models;
 
 namespace Makerlab.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<Makerlab.MakerContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<MakerContext>
     {
         public Configuration()
         {
@@ -17,12 +12,12 @@ namespace Makerlab.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Makerlab.MakerContext context)
+        protected override void Seed(MakerContext context)
         {
             context.UserRoles.AddOrUpdate(ur => ur.RoleName,
                 new UserRole { Id = 1, CanCreateBooking = true, CanViewDashboard = true, RoleName = "Administrator" },
-                new UserRole { Id = 2, CanCreateBooking = true, CanViewDashboard = false, RoleName = "ApprovedUser" },
-                new UserRole { Id = 3, CanCreateBooking = false, CanViewDashboard = false, RoleName = "DefaultUser" });
+                new UserRole { Id = 2, CanCreateBooking = true, CanViewDashboard = false, RoleName = "Godkendt Bruger" },
+                new UserRole { Id = 3, CanCreateBooking = false, CanViewDashboard = false, RoleName = "Default Bruger" });
             context.Users.AddOrUpdate(u => u.Id,
                 new User()
                 {

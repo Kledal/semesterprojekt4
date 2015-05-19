@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IdentityModel.Metadata;
 using System.IdentityModel.Selectors;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -45,7 +41,7 @@ namespace Kentor.AuthServices.Metadata
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Method is only called by base class no validation needed.")]
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Method is only called by base class no validation needed.")]
         protected override void WriteCustomAttributes<T>(XmlWriter writer, T source)
         {
             var cachedMetadata = source as ICachedMetadata;
@@ -75,7 +71,7 @@ namespace Kentor.AuthServices.Metadata
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Method is only called by base class no validation needed.")]
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Method is only called by base class no validation needed.")]
         protected override void WriteCustomElements<T>(XmlWriter writer, T source)
         {
             // WriteCustomElement is called multiple times with the same SPSSODescriptor element
@@ -131,7 +127,7 @@ namespace Kentor.AuthServices.Metadata
             return new ExtendedEntityDescriptor();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         protected override void ReadCustomAttributes<T>(XmlReader reader, T target)
         {
             var cachedMetadata = target as ICachedMetadata;

@@ -1,5 +1,4 @@
-﻿@using Makerlab.Helpers
-@{
+﻿@{
     ViewBag.Title = "MakerLab :: Brugere";
 }
 <div class="container">
@@ -44,6 +43,7 @@
                         <th>Studienummer</th>
                         <th>Navn</th>
                         <th>Email</th>
+                        <th>Handlinger</th>
                         <th>Godkend bruger</th>
                     </tr>
                 </thead>
@@ -54,10 +54,10 @@
                             <td>@user.StudieNummer</td>
                             <td>@user.FirstName @user.LastName</td>
                             <td>@user.Email</td>
+                            <td><a href="@Url.Action("Edit", "Users", new {id = user.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a></td>
                             <td>
                                 @using (Html.BeginForm("Approve", "Users", new {id = user.Id}, FormMethod.Post))
                                 {
-                                    <a href="@Url.Action("Edit", "Users", new {id = user.Id})" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i> </a>
                                     <input type="submit" value="Godkend" class="btn btn-success btn-sm"/>
                                 }
                             </td>

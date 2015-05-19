@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Net.Mime;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Kentor.AuthServices.StubIdp.Controllers

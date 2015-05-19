@@ -1,9 +1,5 @@
-﻿using Kentor.AuthServices.Saml2P;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Kentor.AuthServices.Saml2P;
 
 namespace Kentor.AuthServices.WebSso
 {

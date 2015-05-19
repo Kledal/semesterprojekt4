@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using FluentScheduler;
+﻿using FluentScheduler;
 
 namespace Makerlab.Tasks
 {

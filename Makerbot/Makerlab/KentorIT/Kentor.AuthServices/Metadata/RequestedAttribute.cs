@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Tokens;
-using System.Linq;
-using System.Text;
 
 namespace Kentor.AuthServices.Metadata
 {
     /// <summary>
     /// Specifies an attribute requested by the service provider.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")]
+    [SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")]
     public class RequestedAttribute : Saml2Attribute
     {
         /// <summary>

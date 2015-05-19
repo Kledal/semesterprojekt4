@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kentor.AuthServices.Internal
 {
@@ -28,7 +24,7 @@ namespace Kentor.AuthServices.Internal
                 // Non generic IEnumerator doesn't implement IDisposable so do nothing.
             }
 
-            object System.Collections.IEnumerator.Current
+            object IEnumerator.Current
             {
                 get
                 {

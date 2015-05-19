@@ -1,19 +1,10 @@
-﻿using System.IO;
-using System.Net.Mime;
-using Kentor.AuthServices.StubIdp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
-using Kentor.AuthServices.Mvc;
-using System.IdentityModel.Metadata;
-using Kentor.AuthServices.Configuration;
-using System.IdentityModel.Tokens;
-using System.Configuration;
-using Kentor.AuthServices.Saml2P;
-using Kentor.AuthServices.WebSso;
 using Kentor.AuthServices.HttpModule;
+using Kentor.AuthServices.Mvc;
+using Kentor.AuthServices.Saml2P;
+using Kentor.AuthServices.StubIdp.Models;
+using Kentor.AuthServices.WebSso;
 
 namespace Kentor.AuthServices.StubIdp.Controllers
 {

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Makerlab.Models
 {
@@ -10,8 +8,11 @@ namespace Makerlab.Models
     public class UserRole
     {
         public int Id { get; set; }
+        [DisplayName("Rollenavn")]
         public string RoleName { get; set; }
+        [DisplayName("Kan oprette booking")]
         public bool CanCreateBooking { get; set; }
+        [DisplayName("Kan tilgå Dashboard")]
         public bool CanViewDashboard { get; set; }
 
         // Navigation

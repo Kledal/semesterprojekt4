@@ -1,11 +1,9 @@
-﻿using Kentor.AuthServices.Internal;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Linq;
 using System.Security.Cryptography.X509Certificates;
-using System.Web;
+using Kentor.AuthServices.Internal;
 
 namespace Kentor.AuthServices.Configuration
 {
