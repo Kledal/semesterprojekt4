@@ -171,6 +171,7 @@ namespace Makerlab.Controllers
 
                 if (file.ValidFilename())
                 {
+                    file.Booking = db.Bookings.Find(id);
                     file.BookingId = id;
                     db.Files.Add(file);
                     db.SaveChangesAsync();
