@@ -45,7 +45,7 @@ namespace Makerlab.Models
             if (!MvcApplication.Redis.IsConnected) throw new Exception("Redis is not connected.");
             var redisDb = MvcApplication.Redis.GetDatabase();
 
-            redisDb.Publish("commands", new NodeCommand("start_booking", new { UuId = UuId, booking_id = bookingId, file = filePath }).ToString());
+            redisDb.Publish("commands", new NodeCommand("start_booking", new { uuid = UuId, booking_id = bookingId, file = filePath }).ToString());
         }
     }
 }
