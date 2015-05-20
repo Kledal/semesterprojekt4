@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Makerlab.Models;
@@ -39,7 +40,22 @@ namespace Makerlab.Controllers.api
         {
 
             var printer = db.Printers.Find(id);
-            
+
+            if (printer == null)
+            {
+                return BadRequest();
+            }
+
+            var booking = db.Bookings.Find(bookingId);
+            if (booking == null)
+            {
+                return BadRequest();
+            }
+
+
+            string uri = this.Url.Link("Default", new { controller = "Files", id = booking.FileId, action = "GetFile" });
+
+            printer.StartBooking(booking.Id, uri);
 
             return Ok();
         }

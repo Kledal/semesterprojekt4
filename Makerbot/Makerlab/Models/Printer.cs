@@ -39,5 +39,13 @@ namespace Makerlab.Models
 
             redisDb.Publish("commands", new NodeCommand("cancel_print", new { uuid = UuId }).ToString());
         }
+
+        public void StartBooking(int bookingId, string filePath)
+        {
+            if (!MvcApplication.Redis.IsConnected) throw new Exception("Redis is not connected.");
+            var redisDb = MvcApplication.Redis.GetDatabase();
+
+            redisDb.Publish("commands", new NodeCommand("start_booking", new { UuId = UuId, booking_id = bookingId, file = filePath }).ToString());
+        }
     }
 }
