@@ -14,7 +14,8 @@ namespace Makerlab.Controllers
         public ActionResult Index()
         {
             var printerList = new List<object>();
-            foreach (var printer in db.Printers.Where(printer => printer.IsBookable))
+            // db.Printers.Where(printer => printer.IsBookable)
+            foreach (var printer in PrinterManager.Read().Where(printer => printer.IsBookable) )
             {
                   printerList.Add(new {key = printer.Id, label = printer.Name}); 
             }
@@ -24,8 +25,8 @@ namespace Makerlab.Controllers
             foreach (var booking in BookingManager.Read())
             {
                 bookingList.Add(new { text = booking.User.FirstName +" "+ booking.User.LastName,
-                    start_date = booking.StartTime.ToString("g"),
-                    end_date = booking.EndTime.ToString("g"),
+                                      start_date = booking.StartTime.ToString("MM-dd-yyyy HH:mm:ss"),
+                                      end_date = booking.EndTime.ToString("MM-dd-yyyy HH:mm:ss"),
                     printer_id = booking.PrinterId
                 });
             }
@@ -33,7 +34,7 @@ namespace Makerlab.Controllers
             return View();
         }
 
-        [Auth("ApprovedUser", "Administrator")]
+        [Auth("Godkendt Bruger", "Administrator")]
         public ActionResult MyBookings()
         {
             ViewBag.HistoryBookings = db.Bookings.Where(b => b.UserId == CurrentUser.Id && b.StartTime < DateTime.Now).ToList();

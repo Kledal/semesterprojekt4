@@ -42,9 +42,8 @@
                             }
 
                         <td>
-                            <a href="@Url.Action("UploadFile", "Bookings", new { id = booking.Id })" class="btn btn-success"><i class="glyphicon glyphicon-upload"></i> </a> 
-                            <button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
-                            <button class="btn btn-primary"><i class="glyphicon glyphicon-camera"></i></button>
+                            <a href="@Url.Action("UploadFile", "Bookings", new { id = booking.Id })" class="btn btn-success"><i class="glyphicon glyphicon-upload"></i> </a>
+                            <a href="@Url.Action("Delete", "Bookings", new {id = booking.Id})" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         </td>
                     </tr>
                 }

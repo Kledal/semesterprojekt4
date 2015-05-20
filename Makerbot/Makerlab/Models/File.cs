@@ -10,11 +10,6 @@ namespace Makerlab.Models
         public string FileName { get; set; }
         public string FilePath { get; set; }
         public int NumberOfLines { get; set; }
-       
-
-        public int BookingId { get; set; }
-        [Required]
-        public virtual Booking Booking { get; set; }
 
         private readonly string[] _allowedFileTypes = {".gcode"};
 

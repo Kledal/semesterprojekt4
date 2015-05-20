@@ -26,11 +26,10 @@ namespace Makerlab.Controllers
                 var firstName = identity.Claims.FirstOrDefault(claim => claim.Type == "gn").Value;
                 var lastName = identity.Claims.FirstOrDefault(claim => claim.Type == "sn").Value;
 
-
-                var tempUser = new User
+                User tempUser = new Makerlab.Models.User
                 {
                     Email = mail.Value,
-                    UserRole = UserRoleManager.Read().First(ur => ur.RoleName == "DefaultUser"),
+                    UserRole = UserRoleManager.Read().First(ur => ur.RoleName == "Godkendt Bruger"),
                     FirstName = firstName,
                     LastName =  lastName
                 };

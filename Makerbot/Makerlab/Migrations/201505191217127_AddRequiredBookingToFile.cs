@@ -13,7 +13,7 @@ namespace Makerlab.Migrations
             //RenameColumn(table: "dbo.File", name: "FileId", newName: "Id");
             DropPrimaryKey("dbo.File");
             AddColumn("dbo.File", "BookingId", c => c.Int(nullable: false));
-            AlterColumn("dbo.File", "Id", c => c.Int(nullable: false));
+            AlterColumn("dbo.File", "Id", c => c.Int(nullable: false, identity: true));
             AddPrimaryKey("dbo.File", "Id");
             CreateIndex("dbo.File", "Id");
         }

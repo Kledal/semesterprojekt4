@@ -27,6 +27,21 @@ namespace Makerlab.DAL
             }
         }
 
+        public static Booking Update(Booking booking)
+        {
+            using (var db = new MakerContext())
+            {
+                db.Bookings.Attach(booking);
+
+                var updatedPrinter = db.Entry(booking);
+                updatedPrinter.State = EntityState.Modified;
+
+                db.SaveChanges();
+
+                return updatedPrinter.Entity;
+            }
+        }
+
         public static void Delete(Booking booking)
         {
             using (var db = new MakerContext())

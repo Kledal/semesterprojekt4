@@ -53,6 +53,14 @@ namespace Makerlab.Migrations
                     StartTime = new DateTime(2015, 5, 14, 8, 30, 00), 
                     EndTime = new DateTime(2015, 5, 14, 19, 00, 00)
                 });
+            context.Files.AddOrUpdate(x => x.Id,
+                new File
+                {
+                    Id = 1,
+                    FileName = "test.gcode",
+                    FilePath = "test.gcode",
+                    NumberOfLines = 1
+                });
         }
     }
 }

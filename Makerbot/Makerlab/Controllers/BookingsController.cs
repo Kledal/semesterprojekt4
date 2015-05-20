@@ -7,21 +7,17 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Makerlab.DAL;
+using Makerlab.Extensions;
 using Makerlab.Models;
 using File = Makerlab.Models.File;
 
 namespace Makerlab.Controllers
 {
+    [Auth("Godkendt Bruger", "Administrator")]
     public class BookingsController : ApplicationController
     {
         private MakerContext db = new MakerContext();
-
-        // GET: Bookings
-        public async Task<ActionResult> Index()
-        {
-            var bookings = db.Bookings.Include(b => b.File).Include(b => b.Printer).Include(b => b.User);
-            return View(await bookings.ToListAsync());
-        }
 
         // GET: Bookings/Details/5
         public async Task<ActionResult> Details(int? id)
@@ -54,13 +50,19 @@ namespace Makerlab.Controllers
         {
             booking.UserId = CurrentUser.Id;
 
-            var overlappingBookings = 
-                db.Bookings.Where(b => b.StartTime < booking.EndTime && booking.StartTime < b.EndTime).ToList();
+            var overlappingBookings =
+                db.Bookings.Where(b => b.PrinterId == booking.PrinterId && (b.StartTime < booking.EndTime && booking.StartTime < b.EndTime)).ToList();
 
             if (overlappingBookings.Count > 0)
             {
                 ModelState.AddModelError("StartTime", "Din valgte tid er optaget.");
                 ModelState.AddModelError("EndTime", "Din valgte tid er optaget.");
+            }
+
+            if (booking.EndTime < booking.StartTime)
+            {
+                ModelState.AddModelError("StartTime", "Start tiden skal være efter slut tiden.");
+                ModelState.AddModelError("EndTime", "Start tiden skal være efter slut tiden.");
             }
 
             if (ModelState.IsValid)
@@ -134,7 +136,7 @@ namespace Makerlab.Controllers
             Booking booking = await db.Bookings.FindAsync(id);
             db.Bookings.Remove(booking);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("MyBookings", "Frontend");
         }
 
         public ActionResult UploadFile(int id)
@@ -162,28 +164,29 @@ namespace Makerlab.Controllers
                 return RedirectToAction("Index", "Frontend");
             }
 
+            Booking booking = db.Bookings.Find(id);
+
             if (fileUploader != null)
             {
                 var fileName = Path.GetFileName(fileUploader.FileName);
                 var destinationPath = Path.Combine(Server.MapPath("~/App_Data/s3gfiler"), fileName);
                 fileUploader.SaveAs(destinationPath);
-                var file = new File {FileName = fileName, FilePath = destinationPath};
+                var file = new File { FileName = fileName, FilePath = destinationPath };
 
                 if (file.ValidFilename())
                 {
                     file.NumberOfLines = System.IO.File.ReadLines(destinationPath).Count();
-                    file.Booking = db.Bookings.Find(id);
-                    file.BookingId = id;
                     db.Files.Add(file);
-                    db.SaveChangesAsync();
-                    return RedirectToAction("MyBookings", "Frontend");
-                }
-                else
-                {
-                    ViewBag.Message = "Forkert filtype";
-                }
+                    db.SaveChanges();
 
-                
+                    booking.FileId = file.Id;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("MyBookings", "Frontend");
+            }
+            else
+            {
+                ViewBag.Message = "Forkert filtype";
             }
             return View();
         }

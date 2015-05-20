@@ -6,7 +6,10 @@
 
 <script>
     $(function() {
-        $('#starttimepicker, #endtimepicker').datetimepicker({step: 15});
+        $('#starttimepicker, #endtimepicker').datetimepicker({
+            step: 15,
+            minDate: "-@(DateTime.Now)"
+        });
     });
 </script>
 
