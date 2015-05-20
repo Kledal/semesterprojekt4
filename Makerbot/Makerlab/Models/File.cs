@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Linq;
 
 namespace Makerlab.Models
 {
@@ -7,15 +9,24 @@ namespace Makerlab.Models
         public int Id { get; set; }
         public string FileName { get; set; }
         public string FilePath { get; set; }
-        public byte[] FileBytes { get; set; }
-        
-        [MaxLength]
-        public string ContentType { get; set; }
+        public int NumberOfLines { get; set; }
+       
+
+        public int BookingId { get; set; }
+        [Required]
+        public virtual Booking Booking { get; set; }
+
+        private readonly string[] _allowedFileTypes = {".gcode"};
 
         public File()
         {
             
         }
 
+        public bool ValidFilename()
+        {
+            var ext = Path.GetExtension(FileName);
+            return _allowedFileTypes.Contains(ext);
+        }
     }
 }

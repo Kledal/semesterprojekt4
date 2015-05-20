@@ -6,6 +6,7 @@ using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Makerlab.Models;
+using Newtonsoft.Json;
 
 namespace Makerlab.Controllers.api
 {
@@ -30,6 +31,14 @@ namespace Makerlab.Controllers.api
             printer.CancelPrint();
 
             return Ok();
+        }
+
+        [Route("{id:int}/LastFrame")]
+        [HttpGet]
+        public string LastFrame(int id)
+        {
+            var printer = db.Printers.Find(id);
+            return JsonConvert.SerializeObject(new { frame = printer.LastFrame });
         }
 
         // GET api/Printers/5
