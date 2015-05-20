@@ -33,6 +33,17 @@ namespace Makerlab.Controllers.api
             return Ok();
         }
 
+        [Route("{id:int}/StartBooking/{bookingId:int}")]
+        [HttpGet]
+        public IHttpActionResult StartBooking(int id, int bookingId)
+        {
+
+            var printer = db.Printers.Find(id);
+            
+
+            return Ok();
+        }
+
         [Route("{id:int}/LastFrame")]
         [HttpGet]
         public string LastFrame(int id)

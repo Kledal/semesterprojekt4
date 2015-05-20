@@ -72,7 +72,16 @@
                     <tr>
                         <td>@Html.DisplayFor(modelItem => booking.Printer.Name) </td>
                         <td>@Html.DisplayFor(modelItem => booking.StartTime) </td>
-                        <td></td>
+                        @if (booking.File != null)
+                            {
+                                <td>
+                                @Html.DisplayFor(modelItme => booking.File.FileName)
+                                    </td>
+                            }
+                            else
+                            {
+                                <td>Der blev ikke uploadet nogen fil.</td>
+                            }
                     </tr>
                 }
                 </tbody>

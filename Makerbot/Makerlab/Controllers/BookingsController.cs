@@ -169,7 +169,13 @@ namespace Makerlab.Controllers
             if (fileUploader != null)
             {
                 var fileName = Path.GetFileName(fileUploader.FileName);
-                var destinationPath = Path.Combine(Server.MapPath("~/App_Data/s3gfiler"), fileName);
+
+                if (!System.IO.Directory.Exists(Server.MapPath("~/App_Data/gcode")))
+                {
+                    Directory.CreateDirectory(Server.MapPath("~/App_Data/gcode"));
+                }
+
+                var destinationPath = Path.Combine(Server.MapPath("~/App_Data/gcode"), fileName);
                 fileUploader.SaveAs(destinationPath);
                 var file = new File { FileName = fileName, FilePath = destinationPath };
 

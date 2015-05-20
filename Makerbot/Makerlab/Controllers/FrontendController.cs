@@ -38,7 +38,7 @@ namespace Makerlab.Controllers
         public ActionResult MyBookings()
         {
             ViewBag.HistoryBookings = db.Bookings.Where(b => b.UserId == CurrentUser.Id && b.StartTime < DateTime.Now).ToList();
-            return View(db.Bookings.Where(b => b.UserId == CurrentUser.Id && b.StartTime > DateTime.Now).ToList());
+            return View(db.Bookings.Where(b => b.UserId == CurrentUser.Id && b.EndTime > DateTime.Now).ToList());
         }
 
         public ActionResult LogInd()
