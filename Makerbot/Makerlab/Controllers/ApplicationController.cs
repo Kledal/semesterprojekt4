@@ -29,7 +29,7 @@ namespace Makerlab.Controllers
                 User tempUser = new Makerlab.Models.User
                 {
                     Email = mail.Value,
-                    UserRole = UserRoleManager.Read().First(ur => ur.RoleName == "Default Bruger"),
+                    UserRole = UserRoleManager.Read().First(ur => ur.Id == 3),
                     FirstName = firstName,
                     LastName =  lastName
                 };
