@@ -36,8 +36,15 @@
 <script>
     var printer_ids = @Json.Encode(@Model.Select(p => p.Id).ToList());
     $(function() {
-        function loadFrame() {
-            
+
+        for (var i = 0; i < printer_ids.length; i++) {
+            var id = printer_ids[i];
+            setInterval(function(id) {
+                $.getJSON("/api/Printers/" + id + "/LastFrame", function(data) {
+                    var frame = JSON.parse(data).frame;
+                    $("#printer_frame_" + id).attr("src", "data:image/png;base64," + frame);
+                });
+            }, 5000, id);
         }
     });
 </script>
