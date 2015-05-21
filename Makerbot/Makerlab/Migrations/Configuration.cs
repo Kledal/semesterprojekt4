@@ -40,10 +40,10 @@ namespace Makerlab.Migrations
                     UserRoleId = 3
                 });
             context.Printers.AddOrUpdate(p => p.Id,
-                  new Printer() { Id = 1, Name = "Gandalf", IsBookable = true, LastSeen = DateTime.Now },
+                  new Printer() { Id = 1, Name = "Gandalf", IsBookable = true, LastSeen = DateTime.Now, UuId = "55330343434351D072C1" },
                   new Printer() { Id = 2, Name = "Frodo", IsBookable = true, LastSeen = DateTime.Now },
                   new Printer() { Id = 3, Name = "Gollum", IsBookable = true, LastSeen = DateTime.Now, UuId = "55330343534351103222" },
-                  new Printer() { Id = 4, Name = "Saruon", IsBookable = true, LastSeen = DateTime.Now, UuId = "55330343434351D072C1" });
+                  new Printer() { Id = 4, Name = "Saruon", IsBookable = true, LastSeen = DateTime.Now });
             context.Bookings.AddOrUpdate(x => x.Id,
                 new Booking()
                 {
