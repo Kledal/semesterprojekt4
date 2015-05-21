@@ -24,13 +24,9 @@
                     <li class="@Html.IsSelected(action: "Printers", controller: "Frontend")"><a href="@Url.Action("Printers", "Frontend")"><i class="glyphicon glyphicon-print"></i> Printere </a></li>
                 }
 
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li class="@Html.IsSelected(action: "MyBookings")"><a href="@Url.Action("MyBookings", "Frontend")"><i class="glyphicon glyphicon-th-list"></i> Mine bookinger</a></li>
-                }
-
                 @if (ViewContext.Can(UserRoleMethod.CanCreateBooking))
                 {
+                    <li class="@Html.IsSelected(action: "MyBookings")"><a href="@Url.Action("MyBookings", "Frontend")"><i class="glyphicon glyphicon-th-list"></i> Mine bookinger</a></li>
                     <li class="@Html.IsSelected(action: "Create", controller: "Bookings")"><a href="@Url.Action("Create", "Bookings")"><i class="glyphicon glyphicon-plus"></i> Ny booking</a></li>
                 }
             </ul>
