@@ -61,8 +61,8 @@ namespace Makerlab.Controllers
 
             if (booking.EndTime < booking.StartTime)
             {
-                ModelState.AddModelError("StartTime", "Start tiden skal være efter slut tiden.");
-                ModelState.AddModelError("EndTime", "Start tiden skal være efter slut tiden.");
+                ModelState.AddModelError("StartTime", "Slut tiden skal være efter start tiden.");
+                ModelState.AddModelError("EndTime", "Slut tiden skal være efter start tiden.");
             }
 
             if (ModelState.IsValid)
