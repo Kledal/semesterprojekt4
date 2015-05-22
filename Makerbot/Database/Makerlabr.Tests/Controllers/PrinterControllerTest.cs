@@ -26,15 +26,6 @@ namespace Makerlabr.Tests.Controllers
         }
 
         [Test]
-        public void IndexAction_Returns_View()
-        {
-
-            string viewName = "Index";
-            Assert.AreEqual(viewName, ((ViewResult)_uut.Index()).ViewName, "View name should have been {0}", viewName);
-
-        }
-
-        [Test]
         public void CreateAction_Returns_IndexViewWhenModelStateIsValid()
         {
             _uut.ModelState.Clear();

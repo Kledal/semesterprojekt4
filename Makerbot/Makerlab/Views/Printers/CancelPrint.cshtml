@@ -35,7 +35,7 @@
                             
                             <div class="form-actions no-color">
                                 <input type="submit" value="Stop print" class="btn btn-danger"/>
-                                @if (ViewBag.redirectTo)
+                                @if ((string)ViewBag.redirectTo == "frontend")
                                 {
                                     <a href="@Url.Action("Printers", "Frontend")" class="btn btn-success">Tilbage</a>
                                 }
