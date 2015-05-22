@@ -12,29 +12,7 @@ namespace Makerlab.Controllers
     {
         private MakerContext db = new MakerContext();
 
-        // GET: /Printers/
-        public ActionResult Index()
-        {
-            return View("Index",db.Printers.ToList());
-        }
-
-        public ActionResult CancelPrint(int id)
-        {
-            var printer = db.Printers.Find(id);
-            try
-            {
-                printer.CancelPrint();
-            }
-            catch (Exception e)
-            {
-                
-            }
-
-            return RedirectToAction("Printers", "Dashboard");
-        }
-
-        // GET: /Printers/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult CancelPrint(int? id, string to)
         {
             if (id == null)
             {
@@ -45,7 +23,30 @@ namespace Makerlab.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.redirectTo = to;
             return View(printer);
+        }
+
+        [Auth("Administrator", "Godkendt Bruger")]
+        [HttpPost, ActionName("CancelPrint")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CancelPrintConfirm(int id, string to)
+        {
+            var printer = db.Printers.Find(id);
+            try
+            {
+                printer.CancelPrint();
+            }
+            catch (Exception e)
+            {
+                
+            }
+            if (to == "frontend")
+            {
+                return RedirectToAction("Printers", "Frontend");
+            }
+            return RedirectToAction("Printers", "Dashboard");
         }
 
         // GET: /Printers/Create

@@ -25,7 +25,7 @@
                     <td>Bed: @printer.BedTemperature, Nozzle: @printer.NozzleTemperature</td>
                     <td><img id="printer_frame_@(printer.Id)" src="data:image/png;base64, @printer.LastFrame"/></td>
                     <td>
-                        <a href="@Url.Action("CancelPrint", "Printers", new { Id = printer.Id })" class="btn btn-warning btn-sm" title="Annuller print"> <i class="glyphicon glyphicon-trash"></i></a>
+                        <a href="@Url.Action("CancelPrint", "Printers", new { Id = printer.Id, to = "frontend" })" class="btn btn-warning btn-sm" title="Annuller print"> <i class="glyphicon glyphicon-trash"></i></a>
                     </td>
                 </tr>
             }

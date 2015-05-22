@@ -188,6 +188,11 @@ namespace Makerlab.Controllers
                     booking.FileId = file.Id;
                     db.SaveChanges();
                 }
+                else
+                {
+                    ViewBag.Message = "Forkert filtype";
+                    return View();
+                }
                 return RedirectToAction("MyBookings", "Frontend");
             }
             else
