@@ -34,7 +34,15 @@
                             <input type="hidden" name="to" value="@ViewBag.redirectTo"/>
                             
                             <div class="form-actions no-color">
-                                <input type="submit" value="Stop print" class="btn btn-danger" />
+                                <input type="submit" value="Stop print" class="btn btn-danger"/>
+                                @if (ViewBag.redirectTo)
+                                {
+                                    <a href="@Url.Action("Printers", "Frontend")" class="btn btn-success">Tilbage</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Printers", "Dashboard")" class="btn btn-success">Tilbage</a>
+                                }
                             </div>
                         }
                     </div>
