@@ -52,10 +52,6 @@ namespace Makerlab.Tasks
             {
                 
             }
-            
-            //var printer = DAL.PrinterManager.Read(3);
-            //printer.LastSeen = DateTime.Now;
-            //DAL.PrinterManager.Update(printer);
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Makerlab
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; }
         public virtual DbSet<File> Files { get; set; }
-        public virtual DbSet<BookingPrintError> BookingPrintErrors { get; set; }
         public virtual DbSet<Printer> Printers { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<Message> Messages { get; set; }

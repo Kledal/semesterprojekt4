@@ -40,7 +40,6 @@ namespace Makerlab.DAL
                 var persons = db.Users
                     .Include(u => u.UserRole)
                     .Include(u => u.Bookings)
-                    .Include(u => u.BookingPrintErrors)
                     .ToList();
                 return persons;
             }
@@ -51,8 +50,7 @@ namespace Makerlab.DAL
             using (var db = new MakerContext())
             {
                 var user = db.Users.Include(u => u.UserRole)
-                    .Include(u => u.Bookings)
-                    .Include(u => u.BookingPrintErrors).SingleOrDefault(u => u.Email == mail);
+                    .Include(u => u.Bookings).SingleOrDefault(u => u.Email == mail);
                 return user;
             }
         }
@@ -62,8 +60,7 @@ namespace Makerlab.DAL
             using (var db = new MakerContext())
             {
                 var user = db.Users.Include(u => u.UserRole)
-                    .Include(u => u.Bookings)
-                    .Include(u => u.BookingPrintErrors).SingleOrDefault(u => u.Id == id);
+                    .Include(u => u.Bookings).SingleOrDefault(u => u.Id == id);
 
                 return user;
             }

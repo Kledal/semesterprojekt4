@@ -326,9 +326,12 @@
     <Compile Include="Migrations\201505201022540_FileDontHaveBooking.Designer.cs">
       <DependentUpon>201505201022540_FileDontHaveBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505241313493_RemoveBookingPrintError.cs" />
+    <Compile Include="Migrations\201505241313493_RemoveBookingPrintError.Designer.cs">
+      <DependentUpon>201505241313493_RemoveBookingPrintError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
-    <Compile Include="Models\BookingPrintError.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Printer.cs" />
@@ -471,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505201022540_FileDontHaveBooking.resx">
       <DependentUpon>201505201022540_FileDontHaveBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505241313493_RemoveBookingPrintError.resx">
+      <DependentUpon>201505241313493_RemoveBookingPrintError.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

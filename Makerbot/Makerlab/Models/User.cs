@@ -22,7 +22,6 @@ namespace Makerlab.Models
         [DisplayName("Brugerrolle")]
         public virtual UserRole UserRole { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }
-        public virtual ICollection<BookingPrintError> BookingPrintErrors { get; set; }
 
         public User()
         {

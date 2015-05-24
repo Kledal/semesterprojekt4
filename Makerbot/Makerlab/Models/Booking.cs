@@ -18,8 +18,6 @@ namespace Makerlab.Models
 
         public int PrinterId { get; set; }
         public virtual Printer Printer { get; set; }
-
-        public virtual ICollection<BookingPrintError> BookingPrintError { get; set; }
         
         public Booking()
         {
