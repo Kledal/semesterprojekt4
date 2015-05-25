@@ -68,7 +68,7 @@ namespace Makerlab.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(printer);
+            return View("editPrinter", printer);
         }
 
         // GET: /Printers/Edit/5

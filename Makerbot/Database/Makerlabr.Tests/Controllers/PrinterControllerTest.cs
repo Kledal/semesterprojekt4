@@ -43,8 +43,6 @@ namespace Makerlabr.Tests.Controllers
 
             var printers = new List<Printer>();
             mockContext.Setup(r => r.Printers).Returns(set.Object);
-            _uut = new PrintersController();
-
 
             ActionResult result = _uut.Create(new Printer()) as ActionResult;
            
@@ -62,8 +60,8 @@ namespace Makerlabr.Tests.Controllers
             _uut.ModelState.Add("data", new ModelState());
             _uut.ModelState.AddModelError("testError", "test");  // Gør modelstate invalid. 
 
-            string viewName = "Index";
-            Assert.AreEqual(viewName, ((ViewResult)_uut.Index()).ViewName, "View name should have been {0}", viewName);
+            string viewName = "editPrinter";
+            Assert.AreEqual(viewName, ((ViewResult)_uut.Create()).ViewName, "View name should have been {0}", viewName);
 
         }
 
@@ -92,7 +90,7 @@ namespace Makerlabr.Tests.Controllers
             _uut.ModelState.AddModelError("testError", "test");  // Gør modelstate invalid. 
 
             string viewName = "Index";
-            Assert.AreEqual(viewName, ((ViewResult)_uut.Index()).ViewName, "View name should have been {0}", viewName);
+            Assert.AreEqual(viewName, ((ViewResult)_uut.Create()).ViewName, "View name should have been {0}", viewName);
 
         }
 
@@ -121,23 +119,6 @@ namespace Makerlabr.Tests.Controllers
         {
             var john = true;
             Assert.Equals("false", john);
-        }
-
-        [Test]
-        public void Details_Returns_HttpBadRequestWhenIdIsNull()
-        {
-            ActionResult result = _uut.Details(null);
-            Assert.IsInstanceOfType(result, typeof(HttpStatusCodeResult));
-        }
-
-        [Test]
-        public void Details_Returns_HttpNotFoundWhenPrinterIsNull()
-        {
-
-            var printer = new Printer();
-            printer.Id = 0;
-            ActionResult result = _uut.Details(printer.Id);
-            Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult));
         }
 
         [Test]
