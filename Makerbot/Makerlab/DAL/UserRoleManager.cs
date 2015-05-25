@@ -44,11 +44,11 @@ namespace Makerlab.DAL
             }
         }
 
-        public static async Task<UserRole> Read(int id)
+        public static UserRole Read(int id)
         {
             using (var db = new MakerContext())
             {
-                var userRole = await db.UserRoles.Include(u => u.Users).SingleOrDefaultAsync(u => u.Id == id);
+                var userRole = db.UserRoles.Include(u => u.Users).SingleOrDefault(u => u.Id == id);
 
                 return userRole;
             }
